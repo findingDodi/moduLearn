@@ -8,12 +8,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -80,7 +84,7 @@ fun ScaffoldExample() {
                 content = {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
+                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         IconButton(onClick = { /* do something */ }) {
@@ -101,14 +105,39 @@ fun ScaffoldExample() {
             modifier = Modifier.padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Text(
-                modifier = Modifier.padding(8.dp),
-                text = """
-                    This is an example of a scaffold. It uses the Scaffold composable's parameters to create a screen with a simple top app bar, bottom app bar, and floating action button.
-
-                    It also contains some basic inner content, such as this text.
-                """.trimIndent(),
-            )
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                ), modifier = Modifier.width(250.dp).height(100.dp),
+            ) {
+                Text(
+                    text = "OOP1",
+                    modifier = Modifier.fillMaxWidth().padding(20.dp),
+                    textAlign = TextAlign.Right,
+                )
+            }
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                ), modifier = Modifier.width(250.dp).height(100.dp),
+            ) {
+                Text(
+                    text = "MCI",
+                    modifier = Modifier.fillMaxWidth().padding(20.dp),
+                    textAlign = TextAlign.Right,
+                )
+            }
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                ), modifier = Modifier.width(250.dp).height(100.dp),
+            ) {
+                Text(
+                    text = "+",
+                    modifier = Modifier.fillMaxWidth().padding(20.dp),
+                    textAlign = TextAlign.Right,
+                )
+            }
         }
     }
 }
