@@ -7,7 +7,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.unit.sp
 
-
 import de.hsd.modulearn.R
 
 // Set of Material typography styles to start with
