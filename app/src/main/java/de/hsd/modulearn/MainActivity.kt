@@ -24,19 +24,16 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.hsd.modulearn.screens.Oop1Activity
+import de.hsd.modulearn.screens.oop1.Oop1Activity
 import de.hsd.modulearn.ui.theme.*
 
 
@@ -107,7 +104,7 @@ fun ScaffoldExample(activity: ComponentActivity) {
                     .width(250.dp)
                     .height(100.dp)
                     .clickable { // Hier wird ein OnClickListener hinzugefügt
-                        val intent = Intent(activity, de.hsd.modulearn.screens.Oop1Activity::class.java)
+                        val intent = Intent(activity, Oop1Activity::class.java)
                         activity.startActivity(intent)
                     },
             ) {

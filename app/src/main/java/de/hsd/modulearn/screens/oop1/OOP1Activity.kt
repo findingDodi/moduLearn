@@ -1,4 +1,4 @@
-package de.hsd.modulearn.screens
+package de.hsd.modulearn.screens.oop1
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
@@ -18,7 +16,6 @@ import androidx.compose.material.icons.filled.*
 
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.clickable
 import de.hsd.modulearn.ui.theme.*
 

@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.Oop1Activity"
+        <activity android:name=".screens.oop1.Oop1Activity"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity">
             <meta-data
