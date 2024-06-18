@@ -1,65 +1,87 @@
 package de.hsd.modulearn.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.outlined.Close
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.hsd.modulearn.ui.theme.DarkMidGrey
-import de.hsd.modulearn.ui.theme.PrimaryDarkBlue
-import de.hsd.modulearn.ui.theme.Typography
+import androidx.navigation.NavController
+import de.hsd.modulearn.R
+import de.hsd.modulearn.data.Routes
+import de.hsd.modulearn.theme.*
 
 @Composable
-fun Header(title: String, backButton: Boolean = true) {
-    //val outerNavController: NavController<Screen?> by localDI().instance(tag = "outer")
-    //val navController: NavController<Screen> by localDI().instance()
-
-    Box(
-        modifier = Modifier.fillMaxWidth(),
+fun Header(
+    title: String,
+    backButton: Boolean = true,
+    navController: NavController
+){
+    Row (
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .shadow(10.dp)
+            .background(White)
+            .fillMaxWidth()
+            .padding(PaddingValues(top = 40.dp, start = 15.dp, end = 15.dp, bottom = 15.dp))
     ) {
-        if (backButton) Button(
-            colors = ButtonDefaults.buttonColors(PrimaryDarkBlue),
-            shape = MaterialTheme.shapes.extraSmall,
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .shadow(
-                    elevation = 40.dp,
-                    spotColor = DarkMidGrey
+        if(backButton){
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(40.dp)
+                    .shadow(10.dp, RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .padding(10.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.round_arrow_back_24),
+                    contentDescription = "Back",
+                    tint = Color.Black,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clickable {
+                            // zurück navigieren
+                            navController.popBackStack()
+                    }
                 )
-                .size(32.dp)
-                .fillMaxHeight(),
-            contentPadding = PaddingValues(5.dp),
-            onClick = {
-                //navController.pop()
-            },
-        ) {
-            IconButton(onClick = { /* do something */ }) {
-                Icon(Icons.Filled.Home, contentDescription = "Home")
             }
         }
+        Column {
+            Text(text = "$title",
+                style = Typography.headlineLarge,
+                color = PrimaryDarkBlue
+            )
+        }
+
         Text(
-            text = title,
+            text = "50P",
             style = Typography.headlineSmall,
-            color = PrimaryDarkBlue,
+            color = White,
             modifier = Modifier
-                .align(Alignment.TopCenter),
-            textAlign = TextAlign.Center,
+                .clip(RoundedCornerShape(10.dp))
+                .background(PrimaryDarkLilac)
+                .padding(PaddingValues(start = 15.dp, end = 15.dp, top = 5.dp, bottom = 5.dp))
         )
+
     }
 }
