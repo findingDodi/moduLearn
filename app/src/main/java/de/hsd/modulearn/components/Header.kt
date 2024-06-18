@@ -25,7 +25,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.R
-import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.theme.*
 
 @Composable

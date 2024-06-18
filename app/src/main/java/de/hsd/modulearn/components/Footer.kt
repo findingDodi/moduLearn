@@ -24,19 +24,27 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import de.hsd.modulearn.R
 import de.hsd.modulearn.data.BottomMenuContent
+import de.hsd.modulearn.data.Routes.oop1home
+import de.hsd.modulearn.data.Routes.homescreen
+import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.theme.*
 
 @Composable
-fun Footer(modifier: Modifier = Modifier) {
+fun Footer(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
     BottomMenu(
         items = listOf(
-            BottomMenuContent("Home", R.drawable.round_account_balance_24),
-            BottomMenuContent("Lektionen", R.drawable.round_bookmarks_24),
-            BottomMenuContent("Fortschritt", R.drawable.round_bar_chart_24),
+            BottomMenuContent("Home", homescreen, R.drawable.round_account_balance_24),
+            BottomMenuContent("Lektionen", oop1home, R.drawable.round_bookmarks_24),
+            BottomMenuContent("Fortschritt", progressscreen, R.drawable.round_bar_chart_24),
         ),
-        modifier = modifier
+        modifier = modifier,
+        navController
     )
 }
 
@@ -44,6 +52,7 @@ fun Footer(modifier: Modifier = Modifier) {
 fun BottomMenu(
     items: List<BottomMenuContent>,
     modifier: Modifier = Modifier,
+    navController: NavController,
     activeHighlightColor: Color = PrimaryDarkBlue,
     activeTextColor: Color = White,
     inactiveTextColor: Color = PrimaryDarkBlue,
@@ -64,6 +73,7 @@ fun BottomMenu(
         items.forEachIndexed { index, item ->
             BottomMenuItem(
                 item = item,
+                navController,
                 isSelected = index == selectedItemIndex,
                 activeHighlightColor = activeHighlightColor,
                 activeTextColor = activeTextColor,
@@ -79,6 +89,7 @@ fun BottomMenu(
 @Composable
 fun BottomMenuItem(
     item: BottomMenuContent,
+    navController: NavController,
     isSelected: Boolean = false,
     activeHighlightColor: Color = PrimaryDarkBlue,
     activeTextColor: Color = White,
@@ -89,7 +100,7 @@ fun BottomMenuItem(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.clickable {
-            onItemClick()
+            navController.navigate(item.screen)
         }
     ) {
         Box(

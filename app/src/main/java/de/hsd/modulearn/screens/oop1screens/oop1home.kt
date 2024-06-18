@@ -58,7 +58,7 @@ fun Oop1Home( navController: NavController) {
 
         }
         // Footer at the bottom
-        Footer(modifier = Modifier.align(Alignment.BottomCenter))
+        Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
     }
 }
 

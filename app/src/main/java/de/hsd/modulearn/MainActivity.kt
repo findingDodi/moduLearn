@@ -11,6 +11,7 @@ import de.hsd.modulearn.data.Routes.homescreen
 import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.data.Routes.oop1lektion
 import de.hsd.modulearn.data.Routes.oop1kapitel
+import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.screens.*
 import de.hsd.modulearn.screens.oop1screens.*
 
@@ -23,6 +24,9 @@ class MainActivity : ComponentActivity() {
             NavHost(navController = navController, startDestination = homescreen, builder = {
                 composable(homescreen){
                     HomeScreen(navController)
+                }
+                composable(progressscreen) {
+                    ProgressScreen(navController)
                 }
                 composable(oop1home){
                     Oop1Home(navController)
