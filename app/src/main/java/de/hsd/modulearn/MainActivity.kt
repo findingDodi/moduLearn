@@ -23,15 +23,15 @@ import de.hsd.modulearn.screens.oop1.Oop1Activity
 import de.hsd.modulearn.ui.theme.*
 
 class MainActivity : ComponentActivity() {
-    private lateinit var sharedPreferences: SharedPreferences // Declare SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences // Dies habe ich neu gemacht: Declare SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        sharedPreferences = getSharedPreferences("ModulearnPrefs", Context.MODE_PRIVATE) // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("ModulearnPrefs", Context.MODE_PRIVATE) // Dies habe ich neu gemacht: Initialize SharedPreferences
         setContent {
             ModuLearnTheme {
-                ScaffoldExample(this, sharedPreferences) // Pass SharedPreferences to ScaffoldExample
+                ScaffoldExample(this, sharedPreferences) // Dies habe ich neu gemacht: Pass SharedPreferences to ScaffoldExample
             }
         }
     }
@@ -92,9 +92,9 @@ fun ScaffoldExample(activity: ComponentActivity, sharedPreferences: SharedPrefer
                     .width(250.dp)
                     .height(100.dp)
                     .clickable {
-                        // Hier wird ein OnClickListener hinzugefügt
+                        // Dies habe ich neu gemacht: OnClickListener hinzugefügt
                         val intent = Intent(activity, Oop1Activity::class.java)
-                        intent.putExtra("points", sharedPreferences.getInt("points", 0)) // Pass current points
+                        intent.putExtra("points", sharedPreferences.getInt("points", 0)) // Dies habe ich neu gemacht: Pass current points
                         activity.startActivity(intent)
                     },
             ) {

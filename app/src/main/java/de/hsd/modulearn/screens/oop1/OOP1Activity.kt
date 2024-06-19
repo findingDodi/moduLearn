@@ -24,14 +24,14 @@ import de.hsd.modulearn.ui.theme.*
 import androidx.compose.ui.Alignment
 
 class Oop1Activity : ComponentActivity() {
-    private lateinit var sharedPreferences: SharedPreferences // Declare SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences // Dies habe ich neu gemacht: Declare SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences = getSharedPreferences("ModulearnPrefs", Context.MODE_PRIVATE) // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("ModulearnPrefs", Context.MODE_PRIVATE) // Dies habe ich neu gemacht: Initialize SharedPreferences
         setContent {
             ModuLearnTheme {
-                Oop1Screen(this, sharedPreferences) // Pass SharedPreferences to Oop1Screen
+                Oop1Screen(this, sharedPreferences) // Dies habe ich neu gemacht: Pass SharedPreferences to Oop1Screen
             }
         }
     }
@@ -40,14 +40,14 @@ class Oop1Activity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Oop1Screen(activity: ComponentActivity, sharedPreferences: SharedPreferences) {
-    var points by remember { mutableStateOf(sharedPreferences.getInt("points", 0)) } // Read points from SharedPreferences
+    var points by remember { mutableStateOf(sharedPreferences.getInt("points", 0)) } // Dies habe ich neu gemacht: Read points from SharedPreferences
     val clickedLessons = remember {
         mutableStateListOf(
             sharedPreferences.getBoolean("lesson1_clicked", false),
             sharedPreferences.getBoolean("lesson2_clicked", false),
             sharedPreferences.getBoolean("lesson3_clicked", false)
         )
-    } // List to store clicked states
+    } // Dies habe ich neu gemacht: List to store clicked states
 
     Column {
         TopAppBar(
@@ -76,7 +76,7 @@ fun Oop1Screen(activity: ComponentActivity, sharedPreferences: SharedPreferences
                         contentColor = White
                     )
                 ) {
-                    Text("$points P", style = Typography.headlineSmall) // Display current points
+                    Text("$points P", style = Typography.headlineSmall) // Dies habe ich neu gemacht: Display current points
                 }
             }
         )
@@ -104,7 +104,7 @@ fun Oop1Screen(activity: ComponentActivity, sharedPreferences: SharedPreferences
                 sharedPreferences,
                 clickedLessons,
                 onPointsUpdated = { newPoints ->
-                    points = newPoints // Update points state
+                    points = newPoints // Dies habe ich neu gemacht: Update points state
                 }
             )
         }
@@ -140,13 +140,13 @@ fun displayOpp1Chapters(
                             2 -> 1000 // Lektion 3
                             else -> 0
                         }
-                        val newPoints = sharedPreferences.getInt("points", 0) + increment // Increase points based on lesson
+                        val newPoints = sharedPreferences.getInt("points", 0) + increment // Dies habe ich neu gemacht: Increase points based on lesson
                         sharedPreferences.edit()
                             .putInt("points", newPoints)
-                            .putBoolean("lesson${index + 1}_clicked", true) // Mark lesson as clicked
-                            .apply() // Save new points and clicked state to SharedPreferences
-                        clickedLessons[index] = true // Update local clicked state
-                        onPointsUpdated(newPoints) // Update points in the UI
+                            .putBoolean("lesson${index + 1}_clicked", true) // Dies habe ich neu gemacht: Mark lesson as clicked
+                            .apply() // Dies habe ich neu gemacht: Save new points and clicked state to SharedPreferences
+                        clickedLessons[index] = true // Dies habe ich neu gemacht: Update local clicked state
+                        onPointsUpdated(newPoints) // Dies habe ich neu gemacht: Update points in the UI
                     }
             ) {
                 Text(
