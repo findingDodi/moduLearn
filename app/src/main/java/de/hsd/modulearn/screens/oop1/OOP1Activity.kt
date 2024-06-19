@@ -1,6 +1,8 @@
 package de.hsd.modulearn.screens.oop1
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,11 +24,14 @@ import de.hsd.modulearn.ui.theme.*
 import androidx.compose.ui.Alignment
 
 class Oop1Activity : ComponentActivity() {
+    private lateinit var sharedPreferences: SharedPreferences // Declare SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPreferences = getSharedPreferences("ModulearnPrefs", Context.MODE_PRIVATE) // Initialize SharedPreferences
         setContent {
             ModuLearnTheme {
-                Oop1Screen(this)
+                Oop1Screen(this, sharedPreferences) // Pass SharedPreferences to Oop1Screen
             }
         }
     }
@@ -34,7 +39,16 @@ class Oop1Activity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Oop1Screen(activity: ComponentActivity) {
+fun Oop1Screen(activity: ComponentActivity, sharedPreferences: SharedPreferences) {
+    var points by remember { mutableStateOf(sharedPreferences.getInt("points", 0)) } // Read points from SharedPreferences
+    val clickedLessons = remember {
+        mutableStateListOf(
+            sharedPreferences.getBoolean("lesson1_clicked", false),
+            sharedPreferences.getBoolean("lesson2_clicked", false),
+            sharedPreferences.getBoolean("lesson3_clicked", false)
+        )
+    } // List to store clicked states
+
     Column {
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
@@ -55,14 +69,14 @@ fun Oop1Screen(activity: ComponentActivity) {
             actions = {
                 Button(
                     onClick = {
-                        // do something
+                        // Show points
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = PrimaryDarkLilac,
                         contentColor = White
                     )
                 ) {
-                    Text("50P", style = Typography.headlineSmall)
+                    Text("$points P", style = Typography.headlineSmall) // Display current points
                 }
             }
         )
@@ -85,29 +99,54 @@ fun Oop1Screen(activity: ComponentActivity) {
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            displayOpp1Chapters()
+            displayOpp1Chapters(
+                activity,
+                sharedPreferences,
+                clickedLessons,
+                onPointsUpdated = { newPoints ->
+                    points = newPoints // Update points state
+                }
+            )
         }
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun displayOpp1Chapters() {
+fun displayOpp1Chapters(
+    activity: ComponentActivity,
+    sharedPreferences: SharedPreferences,
+    clickedLessons: MutableList<Boolean>,
+    onPointsUpdated: (Int) -> Unit
+) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(4) { index ->
+        items(3) { index ->
             Card(
                 colors = CardDefaults.cardColors(
-                    containerColor = PrimaryDarkBlue,
-                    contentColor = White
+                    containerColor = if (clickedLessons[index]) LightGrey else PrimaryDarkBlue,
+                    contentColor = if (clickedLessons[index]) Black else White
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable {
-
+                    .clickable(
+                        enabled = !clickedLessons[index]
+                    ) {
+                        val increment = when (index) {
+                            0 -> 20  // Lektion 1
+                            1 -> 55  // Lektion 2
+                            2 -> 1000 // Lektion 3
+                            else -> 0
+                        }
+                        val newPoints = sharedPreferences.getInt("points", 0) + increment // Increase points based on lesson
+                        sharedPreferences.edit()
+                            .putInt("points", newPoints)
+                            .putBoolean("lesson${index + 1}_clicked", true) // Mark lesson as clicked
+                            .apply() // Save new points and clicked state to SharedPreferences
+                        clickedLessons[index] = true // Update local clicked state
+                        onPointsUpdated(newPoints) // Update points in the UI
                     }
             ) {
                 Text(
