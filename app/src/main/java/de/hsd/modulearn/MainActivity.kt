@@ -22,6 +22,17 @@ import androidx.compose.ui.unit.dp
 import de.hsd.modulearn.screens.oop1.Oop1Activity
 import de.hsd.modulearn.ui.theme.*
 
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import de.hsd.modulearn.data.Routes.homescreen
+import de.hsd.modulearn.data.Routes.oop1home
+import de.hsd.modulearn.data.Routes.oop1lektion
+import de.hsd.modulearn.data.Routes.oop1kapitel
+import de.hsd.modulearn.data.Routes.progressscreen
+import de.hsd.modulearn.screens.*
+import de.hsd.modulearn.screens.oop1screens.*
+
 class MainActivity : ComponentActivity() {
     private lateinit var sharedPreferences: SharedPreferences // Dies habe ich neu gemacht: Declare SharedPreferences
 
@@ -49,98 +60,26 @@ fun ScaffoldExample(activity: ComponentActivity, sharedPreferences: SharedPrefer
                 ),
                 title = {
                     Text("moduLearn")
+            val navController = rememberNavController()
+            NavHost(navController = navController, startDestination = homescreen, builder = {
+                composable(homescreen){
+                    HomeScreen(navController)
                 }
-            )
-        },
-        bottomBar = {
-            BottomAppBar(
-                modifier = Modifier.fillMaxWidth(),
-                containerColor = White, // Hintergrundfarbe
-                contentColor = Black // Textfarbe
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    IconButton(onClick = { /* do something */ }) {
-                        Icon(Icons.Filled.Home, contentDescription = "Home")
-                    }
-                    IconButton(onClick = { /* do something */ }) {
-                        Icon(Icons.Filled.List, contentDescription = "List")
-                    }
-                    IconButton(onClick = { /* do something */ }) {
-                        Icon(Icons.Filled.Settings, contentDescription = "Settings")
-                    }
+                composable(progressscreen) {
+                    ProgressScreen(navController)
                 }
-            }
-        },
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(20.dp), // Festen Abstand zwischen den Elementen
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            Card(
-                colors = CardDefaults.cardColors(
-                    containerColor = PrimaryDarkBlue,
-                    contentColor = White
-                ), modifier = Modifier
-                    .width(250.dp)
-                    .height(100.dp)
-                    .clickable {
-                        // Dies habe ich neu gemacht: OnClickListener hinzugefügt
-                        val intent = Intent(activity, Oop1Activity::class.java)
-                        intent.putExtra("points", sharedPreferences.getInt("points", 0)) // Dies habe ich neu gemacht: Pass current points
-                        activity.startActivity(intent)
-                    },
-            ) {
-                Text(
-                    text = "OOP1",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp),
-                    textAlign = TextAlign.Right,
-                    style = Typography.headlineSmall
-                )
-            }
-            Card(
-                colors = CardDefaults.cardColors(
-                    containerColor = PrimaryDarkBlue,
-                    contentColor = White
-                ), modifier = Modifier
-                    .width(250.dp)
-                    .height(100.dp),
-            ) {
-                Text(
-                    text = "MCI",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp),
-                    textAlign = TextAlign.Right,
-                    style = Typography.headlineSmall
-                )
-            }
-            Card(
-                colors = CardDefaults.cardColors(
-                    containerColor = LightGrey,
-                    contentColor = PrimaryDarkBlue
-                ), modifier = Modifier
-                    .width(250.dp)
-                    .height(100.dp),
-            ) {
-                Text(
-                    text = "+",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp),
-                    textAlign = TextAlign.Center,
-                    style = Typography.titleLarge
-                )
-            }
+                composable(oop1home){
+                    Oop1Home(navController)
+                }
+                composable(oop1lektion+"/{title}"){
+                    val title = it.arguments?.getString("title")
+                    Oop1LektionView(navController, title?:"Kein Titel")
+                }
+                composable(oop1kapitel+"/{title}"){
+                    val title = it.arguments?.getString("title")
+                    Oop1ChapterView(navController, title?:"Kein Titel", content = "Hallo Test")
+                }
+            } )
         }
     }
 }

@@ -1,4 +1,4 @@
-package de.hsd.modulearn.ui.theme
+package de.hsd.modulearn.theme
 
 import androidx.compose.ui.graphics.Color
 
