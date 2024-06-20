@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.oop1.Oop1Lektion
@@ -59,6 +60,19 @@ fun Oop1Home( navController: NavController) {
         }
         // Footer at the bottom
         Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
+
+        Box(modifier = Modifier
+            .align(Alignment.BottomEnd)
+            .padding(bottom = 120.dp, end = 15.dp)){
+            ButtonWithIcon(
+                iconId = R.drawable.round_chat_bubble_24,
+                backgroundcolor = PrimaryDarkBlue,
+                color = White,
+                text = "ChatBot",
+                destinationRoute = Routes.chatBot,
+                navController = navController
+            )
+        }
     }
 }
 

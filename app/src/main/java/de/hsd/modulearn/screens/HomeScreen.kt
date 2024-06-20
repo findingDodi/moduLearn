@@ -51,9 +51,10 @@ import kotlin.io.path.moveTo
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Box(modifier = Modifier
-        .background(White)
-        .fillMaxSize()
+    Box(
+        modifier = Modifier
+            .background(White)
+            .fillMaxSize()
     ) {
         Column(
             modifier = Modifier
@@ -61,20 +62,6 @@ fun HomeScreen(navController: NavController) {
                 .padding(bottom = 56.dp) // Optional: Platz für den Footer schaffen
         ) {
             Header("moduLearn", false, navController)
-
-            Box (
-                modifier = Modifier
-                    .padding(15.dp)
-            ){
-                ButtonWithIcon(
-                    iconId = R.drawable.round_chat_bubble_24,
-                    backgroundcolor = PrimaryDarkBlue ,
-                    color = White ,
-                    text = "ChatBot" ,
-                    destinationRoute = Routes.chatBot,
-                    navController = navController
-                )
-            }
 
             moduleOverview(
                 modules = listOf(
@@ -89,11 +76,22 @@ fun HomeScreen(navController: NavController) {
                 ), navController
             )
 
-
         }
 
-        // Footer at the bottom
         Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
+
+        Box(modifier = Modifier
+            .align(Alignment.BottomEnd)
+            .padding(bottom = 120.dp, end = 15.dp)){
+            ButtonWithIcon(
+                iconId = R.drawable.round_chat_bubble_24,
+                backgroundcolor = PrimaryDarkBlue,
+                color = White,
+                text = "ChatBot",
+                destinationRoute = Routes.chatBot,
+                navController = navController
+            )
+        }
     }
 }
 
@@ -110,7 +108,7 @@ fun moduleOverview(modules: List<Module>, navController:NavController) {
             modifier = Modifier
                 .padding(15.dp)
         )
-        
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(1),
             contentPadding = PaddingValues(start= 7.5.dp, end=7.5.dp, bottom = 100.dp),
@@ -121,7 +119,7 @@ fun moduleOverview(modules: List<Module>, navController:NavController) {
                 ModuleItem(module = modules[it], navController)
             }
         }
-        
+
     }
 }
 

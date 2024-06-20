@@ -2,7 +2,9 @@ package de.hsd.modulearn.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
@@ -15,18 +17,20 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.getChat
+import de.hsd.modulearn.theme.Black
+import de.hsd.modulearn.theme.PrimaryDarkBlue
 import de.hsd.modulearn.theme.PrimaryLightBlue
 import de.hsd.modulearn.theme.PrimaryMidBlue
 import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 import kotlinx.coroutines.launch
 
-
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatBotView(navController: NavController) {
 
@@ -55,14 +59,18 @@ fun ChatBotView(navController: NavController) {
                 var response by remember { mutableStateOf<String?>(null) }
                 val coroutineScope = rememberCoroutineScope()
 
-
                 TextField(
                     value = question,
                     onValueChange = { question = it },
                     label = { Text("Frage eingeben") },
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = PrimaryLightBlue,
+                        focusedLabelColor = Black,
+                        cursorColor = Black,
+                        focusedIndicatorColor = PrimaryDarkBlue,
+                    ),
                     modifier = Modifier
-                        .padding(bottom = 16.dp)
-                        .background(PrimaryMidBlue)
+                        .padding(bottom = 16.dp),
                 )
 
                 Button(
@@ -71,6 +79,7 @@ fun ChatBotView(navController: NavController) {
                             response = getChat(question) ?: "Keine Antwort erhalten"
                         }
                     },
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryDarkBlue)
                 ) {
                     Text(text = "Frage senden")
                 }
