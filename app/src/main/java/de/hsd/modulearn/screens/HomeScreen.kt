@@ -38,10 +38,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.aallam.openai.api.chat.ChatMessage
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.BottomMenuContent
-import de.hsd.modulearn.data.ChatBotTest
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.theme.*
@@ -61,7 +61,7 @@ fun HomeScreen(navController: NavController) {
         ) {
             Header("moduLearn", false, navController)
 
-            ChatBotTest()
+            ChatBotView(navController = navController, question = "was ist programmieren?")
 
             moduleOverview(
                 modules = listOf(
