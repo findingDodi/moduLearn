@@ -43,6 +43,7 @@ import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.BottomMenuContent
 import de.hsd.modulearn.data.Module
+import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.theme.*
 import kotlin.io.path.Path
@@ -61,7 +62,19 @@ fun HomeScreen(navController: NavController) {
         ) {
             Header("moduLearn", false, navController)
 
-            ChatBotView(navController = navController, question = "was ist programmieren?")
+            Box (
+                modifier = Modifier
+                    .padding(15.dp)
+            ){
+                ButtonWithIcon(
+                    iconId = R.drawable.round_chat_bubble_24,
+                    backgroundcolor = PrimaryDarkBlue ,
+                    color = White ,
+                    text = "ChatBot" ,
+                    destinationRoute = Routes.chatBot,
+                    navController = navController
+                )
+            }
 
             moduleOverview(
                 modules = listOf(

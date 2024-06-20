@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import de.hsd.modulearn.data.Routes.chatBot
 import de.hsd.modulearn.data.Routes.homescreen
 import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.data.Routes.oop1lektion
@@ -44,6 +45,10 @@ class MainActivity : ComponentActivity() {
                 composable(oop1quiz+"/{title}"){
                     val title = it.arguments?.getString("title")
                     Oop1Quiz(navController, title?:"Kein Titel")
+                }
+
+                composable(chatBot){
+                    ChatBotView(navController)
                 }
             } )
         }
