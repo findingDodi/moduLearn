@@ -1,45 +1,86 @@
 package de.hsd.modulearn.components
 
-import androidx.compose.material.icons.Icons
-
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import de.hsd.modulearn.R
+import de.hsd.modulearn.theme.*
 
-import de.hsd.modulearn.ui.theme.*
-
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Header(title: String) {
-
-    TopAppBar(
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = White,
-            titleContentColor = PrimaryDarkBlue,
-        ),
-        title = {
-            Text(title)
-        },
-        actions = {
-            Button(
-                onClick = {
-                    // do something
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = PrimaryDarkLilac,
-                    contentColor = White
-                )
+fun Header(
+    title: String,
+    backButton: Boolean = true,
+    navController: NavController
+){
+    Row (
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .shadow(10.dp)
+            .background(White)
+            .fillMaxWidth()
+            .padding(PaddingValues(top = 40.dp, start = 15.dp, end = 15.dp, bottom = 15.dp))
+    ) {
+        if(backButton){
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(40.dp)
+                    .shadow(10.dp, RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .padding(10.dp)
             ) {
-                Text("50P", style = Typography.headlineSmall)
+                Icon(
+                    painter = painterResource(id = R.drawable.round_arrow_back_24),
+                    contentDescription = "Back",
+                    tint = Color.Black,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clickable {
+                            // zurück navigieren
+                            navController.popBackStack()
+                    }
+                )
             }
         }
-    )
+        Column {
+            Text(text = "$title",
+                style = Typography.headlineLarge,
+                color = PrimaryDarkBlue
+            )
+        }
+
+        Text(
+            text = "50P",
+            style = Typography.headlineSmall,
+            color = White,
+            modifier = Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(PrimaryDarkLilac)
+                .padding(PaddingValues(start = 15.dp, end = 15.dp, top = 5.dp, bottom = 5.dp))
+        )
+
+    }
 }
