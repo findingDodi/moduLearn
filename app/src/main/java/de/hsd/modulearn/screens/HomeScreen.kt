@@ -41,6 +41,7 @@ import androidx.navigation.compose.rememberNavController
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.BottomMenuContent
+import de.hsd.modulearn.data.ChatBotTest
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.theme.*
@@ -59,6 +60,9 @@ fun HomeScreen(navController: NavController) {
                 .padding(bottom = 56.dp) // Optional: Platz für den Footer schaffen
         ) {
             Header("moduLearn", false, navController)
+
+            ChatBotTest()
+
             moduleOverview(
                 modules = listOf(
                     Module(
@@ -71,6 +75,8 @@ fun HomeScreen(navController: NavController) {
                     ),
                 ), navController
             )
+
+
         }
 
         // Footer at the bottom
@@ -145,6 +151,7 @@ fun ModuleItem (
                     .padding(vertical = 6.dp, horizontal = 15.dp)
             )
         }
+
 
     }
 }

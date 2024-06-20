@@ -16,6 +16,7 @@ import de.hsd.modulearn.data.Routes.oop1quiz
 import de.hsd.modulearn.screens.*
 import de.hsd.modulearn.screens.oop1screens.*
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,6 @@ class MainActivity : ComponentActivity() {
                     val title = it.arguments?.getString("title")
                     Oop1ChapterView(navController, title?:"Kein Titel", content = "Hallo Test")
                 }
-
                 composable(oop1quiz+"/{title}"){
                     val title = it.arguments?.getString("title")
                     Oop1Quiz(navController, title?:"Kein Titel")
