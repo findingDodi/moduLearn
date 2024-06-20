@@ -34,11 +34,13 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.OffsetEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.aallam.openai.api.chat.ChatMessage
+import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.BottomMenuContent
@@ -129,6 +131,11 @@ fun ModuleItem (
     module: Module,
     navController:NavController
 ){
+
+    //Für die Punkte: Kontext und MainActivity-Instanz abrufen
+    val context = LocalContext.current
+    val mainActivity = context as MainActivity
+
     BoxWithConstraints(
         modifier = Modifier
             .padding(7.5.dp)
@@ -148,12 +155,19 @@ fun ModuleItem (
                 modifier = Modifier.align(Alignment.TopStart)
             )
             // Start Button
+            // Start Button
             Text(
                 text = "Start",
                 color = White,
                 style = Typography.bodyMedium,
                 modifier = Modifier
                     .clickable {
+                        //Für die Punkte: Punkte basierend auf dem Modultitel erhöhen
+                        when (module.title) {
+                            "OOP1" -> mainActivity.setPoints(mainActivity.getPoints() + 20)
+                            "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
+                            // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
+                        }
                         navController.navigate(oop1home)
                     }
                     .align(Alignment.BottomEnd)

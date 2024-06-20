@@ -21,9 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
 import de.hsd.modulearn.theme.*
 
@@ -33,6 +35,13 @@ fun Header(
     backButton: Boolean = true,
     navController: NavController
 ){
+
+    // Für die Punkte: Kontext und MainActivity-Instanz abrufen
+    val context = LocalContext.current
+    val mainActivity = context as MainActivity
+    val points = mainActivity.getPoints() // Für die Punkte: Abrufen der aktuellen Punkte
+
+
     Row (
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -71,9 +80,9 @@ fun Header(
                 color = PrimaryDarkBlue
             )
         }
-
+        // Für die Punkte: Anzeige der aktuellen Punkte im Header
         Text(
-            text = "50P",
+            text = "$points P",
             style = Typography.headlineSmall,
             color = White,
             modifier = Modifier

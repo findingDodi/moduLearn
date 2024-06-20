@@ -1,5 +1,7 @@
 package de.hsd.modulearn
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,9 +21,13 @@ import de.hsd.modulearn.screens.oop1screens.*
 
 
 class MainActivity : ComponentActivity() {
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        sharedPreferences = getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
+
         setContent {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = homescreen, builder = {
@@ -53,4 +59,18 @@ class MainActivity : ComponentActivity() {
             } )
         }
     }
+
+    // Für die Punkte: Methode zum Abrufen der aktuellen Punkte aus SharedPreferences
+    fun getPoints(): Int {
+        return sharedPreferences.getInt("points", 0)
+    }
+
+    // Für die Punkte: Methode zum Speichern der Punkte in SharedPreferences
+    fun setPoints(points: Int) {
+        with(sharedPreferences.edit()) {
+            putInt("points", points)
+            apply()
+        }
+    }
+
 }
