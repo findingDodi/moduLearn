@@ -14,44 +14,34 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.OffsetEffect
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import de.hsd.modulearn.R
-import de.hsd.modulearn.components.*
-import de.hsd.modulearn.data.BottomMenuContent
+import de.hsd.modulearn.MainActivity
+import de.hsd.modulearn.components.Footer
+import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes.oop1home
-import de.hsd.modulearn.theme.*
-import kotlin.io.path.Path
-import kotlin.io.path.moveTo
+import de.hsd.modulearn.theme.PrimaryDarkBlue
+import de.hsd.modulearn.theme.PrimaryMidBlue
+import de.hsd.modulearn.theme.PrimaryMidLilac
+import de.hsd.modulearn.theme.Typography
+import de.hsd.modulearn.theme.White
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Box(modifier = Modifier
-        .background(White)
-        .fillMaxSize()
+    Box(
+        modifier = Modifier
+            .background(White)
+            .fillMaxSize()
     ) {
         Column(
             modifier = Modifier
@@ -78,40 +68,42 @@ fun HomeScreen(navController: NavController) {
     }
 }
 
-
-
 @Composable
-fun moduleOverview(modules: List<Module>, navController:NavController) {
-    Column (modifier = Modifier
-        .fillMaxWidth()){
-
+fun moduleOverview(modules: List<Module>, navController: NavController) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
         Text(
             text = "Modulübersicht",
             style = Typography.headlineSmall,
             modifier = Modifier
                 .padding(15.dp)
         )
-        
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(1),
-            contentPadding = PaddingValues(start= 7.5.dp, end=7.5.dp, bottom = 100.dp),
+            contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 100.dp),
             modifier = Modifier
                 .fillMaxHeight()
         ) {
-            items(modules.size){
+            items(modules.size) {
                 ModuleItem(module = modules[it], navController)
             }
         }
-        
     }
 }
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun ModuleItem (
+fun ModuleItem(
     module: Module,
-    navController:NavController
-){
+    navController: NavController
+) {
+    // Dies habe ich neu gemacht: Kontext und MainActivity-Instanz abrufen
+    val context = LocalContext.current
+    val mainActivity = context as MainActivity
+
     BoxWithConstraints(
         modifier = Modifier
             .padding(7.5.dp)
@@ -137,6 +129,12 @@ fun ModuleItem (
                 style = Typography.bodyMedium,
                 modifier = Modifier
                     .clickable {
+                        // Dies habe ich neu gemacht: Punkte basierend auf dem Modultitel erhöhen
+                        when (module.title) {
+                            "OOP1" -> mainActivity.setPoints(mainActivity.getPoints() + 20)
+                            "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
+                            // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
+                        }
                         navController.navigate(oop1home)
                     }
                     .align(Alignment.BottomEnd)
@@ -145,6 +143,5 @@ fun ModuleItem (
                     .padding(vertical = 6.dp, horizontal = 15.dp)
             )
         }
-
     }
 }

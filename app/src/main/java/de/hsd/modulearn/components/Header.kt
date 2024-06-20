@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,9 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
 import de.hsd.modulearn.theme.*
 
@@ -32,8 +32,13 @@ fun Header(
     title: String,
     backButton: Boolean = true,
     navController: NavController
-){
-    Row (
+) {
+    // Dies habe ich neu gemacht: Kontext und MainActivity-Instanz abrufen
+    val context = LocalContext.current
+    val mainActivity = context as MainActivity
+    val points = mainActivity.getPoints() // Dies habe ich neu gemacht: Abrufen der aktuellen Punkte
+
+    Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -42,7 +47,7 @@ fun Header(
             .fillMaxWidth()
             .padding(PaddingValues(top = 40.dp, start = 15.dp, end = 15.dp, bottom = 15.dp))
     ) {
-        if(backButton){
+        if (backButton) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
@@ -61,19 +66,21 @@ fun Header(
                         .clickable {
                             // zurück navigieren
                             navController.popBackStack()
-                    }
+                        }
                 )
             }
         }
         Column {
-            Text(text = "$title",
+            Text(
+                text = "$title",
                 style = Typography.headlineLarge,
                 color = PrimaryDarkBlue
             )
         }
 
+        // Dies habe ich neu gemacht: Anzeige der aktuellen Punkte im Header
         Text(
-            text = "50P",
+            text = "$points P",
             style = Typography.headlineSmall,
             color = White,
             modifier = Modifier
@@ -81,6 +88,5 @@ fun Header(
                 .background(PrimaryDarkLilac)
                 .padding(PaddingValues(start = 15.dp, end = 15.dp, top = 5.dp, bottom = 5.dp))
         )
-
     }
 }
