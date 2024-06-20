@@ -3,112 +3,96 @@ package de.hsd.modulearn.screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.OffsetEffect
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.aallam.openai.api.chat.ChatMessage
 import de.hsd.modulearn.R
-import de.hsd.modulearn.components.*
-import de.hsd.modulearn.data.BottomMenuContent
+import de.hsd.modulearn.components.ButtonWithIcon
+import de.hsd.modulearn.components.Footer
+import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.theme.*
-import kotlin.io.path.Path
-import kotlin.io.path.moveTo
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Box(modifier = Modifier
-        .background(White)
-        .fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 56.dp) // Optional: Platz für den Footer schaffen
-        ) {
-            Header("moduLearn", false, navController)
+    Scaffold (
 
-            Box (
+        topBar = { Header("moduLearn", false, navController) },
+        bottomBar = { Footer(navController) }
+
+    ) { innerPadding ->
+        Box(modifier = Modifier
+            .background(White)
+            .fillMaxSize()
+            .padding(innerPadding)
+        ) {
+            Column(
                 modifier = Modifier
-                    .padding(15.dp)
-            ){
-                ButtonWithIcon(
-                    iconId = R.drawable.round_chat_bubble_24,
-                    backgroundcolor = PrimaryDarkBlue ,
-                    color = White ,
-                    text = "ChatBot" ,
-                    destinationRoute = Routes.chatBot,
-                    navController = navController
+                    .fillMaxSize()
+                    .padding(bottom = 56.dp) // Optional: Platz für den Footer schaffen
+            ) {
+
+                Box (
+                    modifier = Modifier
+                        .padding(15.dp)
+                ){
+                    ButtonWithIcon(
+                        iconId = R.drawable.round_chat_bubble_24,
+                        backgroundcolor = PrimaryDarkBlue ,
+                        color = White ,
+                        text = "ChatBot" ,
+                        destinationRoute = Routes.chatBot,
+                        navController = navController
+                    )
+                }
+
+                ModuleOverview(
+                    modules = listOf(
+                        Module(
+                            title = "OOP1",
+                            moduleColor = PrimaryMidBlue
+                        ),
+                        Module(
+                            title = "MCI",
+                            moduleColor = PrimaryMidLilac
+                        ),
+                    ), navController
                 )
             }
-
-            moduleOverview(
-                modules = listOf(
-                    Module(
-                        title = "OOP1",
-                        moduleColor = PrimaryMidBlue
-                    ),
-                    Module(
-                        title = "MCI",
-                        moduleColor = PrimaryMidLilac
-                    ),
-                ), navController
-            )
-
-
         }
-
-        // Footer at the bottom
-        Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
     }
 }
 
 
 
 @Composable
-fun moduleOverview(modules: List<Module>, navController:NavController) {
+fun ModuleOverview(modules: List<Module>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()){
 
         Text(
             text = "Modulübersicht",
             style = Typography.headlineSmall,
-            modifier = Modifier
-                .padding(15.dp)
+            modifier = Modifier.padding(15.dp)
         )
         
         LazyVerticalGrid(
@@ -121,7 +105,6 @@ fun moduleOverview(modules: List<Module>, navController:NavController) {
                 ModuleItem(module = modules[it], navController)
             }
         }
-        
     }
 }
 
@@ -164,7 +147,6 @@ fun ModuleItem (
                     .padding(vertical = 6.dp, horizontal = 15.dp)
             )
         }
-
 
     }
 }

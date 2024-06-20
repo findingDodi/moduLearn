@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,41 +31,44 @@ import de.hsd.modulearn.theme.*
 
 @Composable
 fun Oop1Home( navController: NavController) {
-    Box(modifier = Modifier
-        .background(White)
-        .fillMaxSize()
-    ){
-        Column {
-            Header("OOP1", true,  navController)
+    Scaffold(
 
-            lecturesOverview(oop1Lektionen = listOf(
-                Oop1Lektion(
-                    title = "01 - Grundlagen",
-                    description = "Hallo Test"
-                ),
-                Oop1Lektion(
-                    title = "02 - Programmiersprachen",
-                    description = "Hallo Test"
-                ),
-                Oop1Lektion(
-                    title = "03 - Grundlagen",
-                    description = "Hallo Test"
-                ),
-                Oop1Lektion(
-                    title = "04 - Programmiersprachen",
-                    description = "Hallo Test"
-                ),
-            ), navController)
+        topBar = { Header("moduLearn", false, navController) },
+        bottomBar = { Footer(navController) }
 
+    ) { innerPadding ->
+        Box(modifier = Modifier
+            .background(White)
+            .fillMaxSize()
+            .padding(innerPadding)
+        ){
+            Column {
+                LecturesOverview(oop1Lektionen = listOf(
+                    Oop1Lektion(
+                        title = "01 - Grundlagen",
+                        description = "Hallo Test"
+                    ),
+                    Oop1Lektion(
+                        title = "02 - Programmiersprachen",
+                        description = "Hallo Test"
+                    ),
+                    Oop1Lektion(
+                        title = "03 - Grundlagen",
+                        description = "Hallo Test"
+                    ),
+                    Oop1Lektion(
+                        title = "04 - Programmiersprachen",
+                        description = "Hallo Test"
+                    ),
+                ), navController)
+            }
         }
-        // Footer at the bottom
-        Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
     }
 }
 
 
 @Composable
-fun lecturesOverview(oop1Lektionen: List<Oop1Lektion>, navController:NavController) {
+fun LecturesOverview(oop1Lektionen: List<Oop1Lektion>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()){
 
