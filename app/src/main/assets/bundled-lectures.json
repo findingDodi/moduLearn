@@ -1,0 +1,88 @@
+{
+  "lectures": [
+    {
+      "title": "Grundlagen der Programmierung",
+      "description": "Willkommen zum Quiz über das Thema „Grundlagen der Programmierung“!",
+      "chapter": [
+        {
+          "title": "Datentypen",
+          "content": []
+        },
+        {
+          "title": "Variablen",
+          "content": []
+        }
+      ]
+    },
+    {
+      "title": "Prozeduren und Funktionen",
+      "description": "Willkommen zum Quiz über das Thema „Prozeduren und Funktionen“!",
+      "chapter": [
+        {
+          "title": "Prozeduren",
+          "content": []
+        },
+        {
+          "title": "Funktionen",
+          "chapter": []
+        }
+      ]
+    },
+    {
+      "title": "Konzept der Objektorientierung",
+      "description": "Willkommen zum Quiz über das Thema „Objektorientierung“!",
+      "chapter": [
+        {
+          "title": "OOP Einführung & Konzepte",
+          "content": []
+        }
+      ]
+    },
+    {
+      "title": "Klassen und Objekte",
+      "description": "Willkommen zum Quiz über das Thema „Klassen und Objekte“!",
+      "chapter": [
+        {
+          "title": "Konstruktoren",
+          "content": []
+        },
+        {
+          "title": "Klassenvariablen",
+          "content": []
+        },
+        {
+          "title": "Klassenmethoden",
+          "content": []
+        }
+      ]
+    },
+    {
+      "title": "Vererbung",
+      "description": "Willkommen zum Quiz über das Thema „Vererbung“!",
+      "chapter": [
+        {
+          "title": "Vererbung",
+          "content": []
+        },
+        {
+          "title": "Interfaces",
+          "content": []
+        },
+        {
+          "title": "Abstrakte Klassen",
+          "content": []
+        }
+      ]
+    },
+    {
+      "title": "Zugriffssteuerung",
+      "description": "Willkommen zum Quiz über das Thema „Zugriffssteuerung“!",
+      "chapter": [
+        {
+          "title": "Package-Organisation & Zugriffssteuerung",
+          "content": []
+        }
+      ]
+    }
+  ]
+}
