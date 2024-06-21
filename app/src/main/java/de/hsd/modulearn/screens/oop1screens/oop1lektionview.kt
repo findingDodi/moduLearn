@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,70 +41,75 @@ import de.hsd.modulearn.data.oop1.Oop1Kapitel
 import de.hsd.modulearn.theme.*
 
 @Composable
-fun Oop1LektionView( navController: NavController, title :String) {
-    Box(modifier = Modifier
-        .background(White)
-        .fillMaxSize()
-    ){
-        Column {
-            Header("OOP1", true,  navController)
-            Text(
-                text = title,
-                style = Typography.headlineMedium,
-                modifier = Modifier
-                    .padding(15.dp)
-            )
+fun Oop1LektionView(navController: NavController, title :String) {
+    Scaffold (
 
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .padding(15.dp)
-            ) {
-                ButtonWithIcon(
-                    iconId = R.drawable.round_arrow_forward_24,
-                    backgroundcolor = PrimaryDarkLilac,
-                    color = White,
-                    text = "Quiz starten",
-                    destinationRoute = Routes.oop1quiz + "/Lektion_ID",
-                    navController = navController,
+        topBar = { Header("OOP1", false, navController) },
+        bottomBar = { Footer(navController) }
+
+    ) {innerPadding ->
+        Box(modifier = Modifier
+            .background(White)
+            .fillMaxSize()
+            .padding(innerPadding).padding(20.dp)
+        ){
+            Column {
+                Text(
+                    text = title,
+                    style = Typography.headlineMedium,
+                    modifier = Modifier
+                        .padding(15.dp)
                 )
+
+                Box(
+                    contentAlignment = Alignment.Center,
+                ) {
+                    ButtonWithIcon(
+                        iconId = R.drawable.round_arrow_forward_24,
+                        backgroundcolor = PrimaryDarkLilac,
+                        color = White,
+                        text = "Quiz starten",
+                        destinationRoute = Routes.oop1quiz + "/Lektion_ID",
+                        navController = navController,
+                    )
+                }
+
+                ChaptersOverview(oop1Kapitel = listOf(
+                    Oop1Kapitel(
+                        title = "Compile and Run",
+                        description = "Hallo Test"
+                    ),
+                    Oop1Kapitel(
+                        title = "Warum Java?",
+                        description = "Hallo Test"
+                    ),
+                    Oop1Kapitel(
+                        title = "Was ist Programmieren?",
+                        description = "Hallo Test"
+                    )
+                ), navController)
+
             }
-
-            chaptersOverview(oop1Kapitel = listOf(
-                Oop1Kapitel(
-                    title = "Compile and Run",
-                    description = "Hallo Test"
-                ),
-                Oop1Kapitel(
-                    title = "Warum Java?",
-                    description = "Hallo Test"
-                ),
-                Oop1Kapitel(
-                    title = "Was ist Programmieren?",
-                    description = "Hallo Test"
-                )
-            ), navController)
-
         }
-        Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
     }
+
 }
 
 @Composable
-fun chaptersOverview(oop1Kapitel: List<Oop1Kapitel>, navController:NavController) {
+fun ChaptersOverview(oop1Kapitel: List<Oop1Kapitel>, navController:NavController) {
     Column (modifier = Modifier
-        .fillMaxWidth()){
+        .fillMaxWidth()
+    ) {
 
         Text(
             text = "Kapitelübersicht",
             style = Typography.headlineSmall,
             modifier = Modifier
-                .padding(PaddingValues(top = 20.dp, start = 15.dp, end = 15.dp, bottom= 15.dp))
+                .padding(PaddingValues(bottom= 15.dp))
         )
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(start= 7.5.dp, end=7.5.dp, bottom = 100.dp),
             modifier = Modifier
                 .fillMaxHeight()
         ) {
@@ -129,7 +135,6 @@ fun Oop1KapitelItem(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(15.dp)
         ) {
             Text(
                 text = lektion.title,

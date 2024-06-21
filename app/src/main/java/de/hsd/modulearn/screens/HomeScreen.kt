@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,54 +54,60 @@ import kotlin.io.path.moveTo
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Box(
-        modifier = Modifier
-            .background(White)
-            .fillMaxSize()
-    ) {
-        Column(
+    Scaffold (
+
+        topBar = { Header("moduLearn", false, navController) },
+        bottomBar = { Footer(navController) }
+
+    ) {innerPadding ->
+        Box(
             modifier = Modifier
+                .background(White)
                 .fillMaxSize()
-                .padding(bottom = 56.dp) // Optional: Platz für den Footer schaffen
+                .padding(innerPadding).padding(20.dp)
         ) {
-            Header("moduLearn", false, navController)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
 
-            moduleOverview(
-                modules = listOf(
-                    Module(
-                        title = "OOP1",
-                        moduleColor = PrimaryMidBlue
-                    ),
-                    Module(
-                        title = "MCI",
-                        moduleColor = PrimaryMidLilac
-                    ),
-                ), navController
-            )
+                ModuleOverview(
+                    modules = listOf(
+                        Module(
+                            title = "OOP1",
+                            moduleColor = PrimaryMidBlue
+                        ),
+                        Module(
+                            title = "MCI",
+                            moduleColor = PrimaryMidLilac
+                        ),
+                    ), navController
+                )
 
-        }
+            }
 
-        Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
-
-        Box(modifier = Modifier
-            .align(Alignment.BottomEnd)
-            .padding(bottom = 120.dp, end = 15.dp)){
-            ButtonWithIcon(
-                iconId = R.drawable.round_chat_bubble_24,
-                backgroundcolor = PrimaryDarkBlue,
-                color = White,
-                text = "ChatBot",
-                destinationRoute = Routes.chatBot,
-                navController = navController
-            )
+            Box(modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(bottom = 120.dp, end = 15.dp)
+            ) {
+                ButtonWithIcon(
+                    iconId = R.drawable.round_chat_bubble_24,
+                    backgroundcolor = PrimaryDarkBlue,
+                    color = White,
+                    text = "ChatBot",
+                    destinationRoute = Routes.chatBot,
+                    navController = navController
+                )
+            }
         }
     }
+
 }
 
 
 
 @Composable
-fun moduleOverview(modules: List<Module>, navController:NavController) {
+fun ModuleOverview(modules: List<Module>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()){
 
@@ -108,7 +115,7 @@ fun moduleOverview(modules: List<Module>, navController:NavController) {
             text = "Modulübersicht",
             style = Typography.headlineSmall,
             modifier = Modifier
-                .padding(15.dp)
+                .padding(PaddingValues(bottom= 15.dp))
         )
 
         LazyVerticalGrid(
@@ -154,7 +161,6 @@ fun ModuleItem (
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
             )
-            // Start Button
             // Start Button
             Text(
                 text = "Start",
