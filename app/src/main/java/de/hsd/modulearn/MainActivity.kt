@@ -16,6 +16,7 @@ import de.hsd.modulearn.data.Routes.oop1lektion
 import de.hsd.modulearn.data.Routes.oop1kapitel
 import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.data.Routes.oop1quiz
+import de.hsd.modulearn.data.Routes.quizzesscreen
 import de.hsd.modulearn.screens.*
 import de.hsd.modulearn.screens.oop1screens.*
 
@@ -36,6 +37,9 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(progressscreen) {
                     ProgressScreen(navController)
+                }
+                composable(quizzesscreen) {
+                    QuizzesScreen(navController)
                 }
                 composable(oop1home){
                     Oop1Home(navController)

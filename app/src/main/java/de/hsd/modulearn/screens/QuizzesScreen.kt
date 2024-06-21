@@ -26,46 +26,41 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
-import de.hsd.modulearn.components.ButtonWithIcon
-import de.hsd.modulearn.components.Footer
-import de.hsd.modulearn.components.Header
+import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.Routes.oop1home
-import de.hsd.modulearn.theme.PrimaryDarkBlue
-import de.hsd.modulearn.theme.PrimaryMidBlue
-import de.hsd.modulearn.theme.PrimaryMidLilac
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun QuizzesScreen(navController: NavController) {
     Scaffold (
 
-        topBar = { Header("moduLearn", false, navController) },
-        bottomBar = { Footer(navController, 0) }
+        topBar = { Header("Quizzes", false, navController) },
+        bottomBar = { Footer(navController, 2) }
 
     ) {innerPadding ->
         Box(
             modifier = Modifier
                 .background(White)
                 .fillMaxSize()
-                .padding(innerPadding).padding(20.dp)
+                .padding(innerPadding)
+                .padding(20.dp)
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
 
-                ModuleOverview(
+                QuizzesOverview(
                     modules = listOf(
                         Module(
-                            title = "OOP1",
+                            title = "Quiz 1",
                             moduleColor = PrimaryMidBlue
                         ),
                         Module(
-                            title = "MCI",
-                            moduleColor = PrimaryMidLilac
+                            title = "Quiz 1",
+                            moduleColor = PrimaryMidBlue
                         ),
                     ), navController
                 )
@@ -90,15 +85,14 @@ fun HomeScreen(navController: NavController) {
 
 }
 
-
-
 @Composable
-fun ModuleOverview(modules: List<Module>, navController:NavController) {
+fun QuizzesOverview(modules: List<Module>, navController:NavController) {
     Column (modifier = Modifier
-        .fillMaxWidth()){
+        .fillMaxWidth()
+    ){
 
         Text(
-            text = "Modulübersicht",
+            text = "Quizzesübersicht",
             style = Typography.headlineSmall,
             modifier = Modifier
                 .padding(PaddingValues(bottom= 15.dp))
@@ -111,7 +105,7 @@ fun ModuleOverview(modules: List<Module>, navController:NavController) {
                 .fillMaxHeight()
         ) {
             items(modules.size){
-                ModuleItem(module = modules[it], navController)
+                QuizzesItem(module = modules[it], navController)
             }
         }
 
@@ -120,7 +114,7 @@ fun ModuleOverview(modules: List<Module>, navController:NavController) {
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun ModuleItem (
+fun QuizzesItem (
     module: Module,
     navController:NavController
 ){
