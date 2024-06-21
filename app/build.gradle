@@ -47,8 +47,6 @@ android {
 }
 
 dependencies {
-    implementation libs.androidx.appcompat
-    implementation libs.androidx.recyclerview
     def nav_version = "2.7.7"
 
     implementation libs.androidx.core.ktx
@@ -69,13 +67,15 @@ dependencies {
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
 
-    implementation libs.androidx.navigation.compose
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 
-    implementation libs.androidx.activity.compose.v131
-    implementation libs.androidx.ui.v104
-    implementation libs.androidx.material.v104
-    implementation libs.ui.tooling.preview
-    implementation libs.androidx.lifecycle.runtime.ktx.v231
-    implementation libs.androidx.runtime.livedata.v104
-    implementation libs.androidx.foundation
+    // import Kotlin API client BOM
+    implementation platform('com.aallam.openai:openai-client-bom:3.8.1')
+
+    // define dependencies without versions
+    implementation 'com.aallam.openai:openai-client'
+    runtimeOnly 'io.ktor:ktor-client-okhttp'
+
+
+
 }

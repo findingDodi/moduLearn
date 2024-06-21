@@ -17,27 +17,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.R
+import de.hsd.modulearn.components.ButtonChatBot
+import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Module
+import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProgressScreen(navController: NavController) {
-    Box(modifier = Modifier
-        .background(White)
-        .fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 56.dp) // Optional: Platz für den Footer schaffen
-        ) {
-            Header("Fortschritt", false, navController)
-        }
+    Scaffold (
 
-        // Footer at the bottom
-        Footer(modifier = Modifier.align(Alignment.BottomCenter), navController)
+        topBar = { Header("Fortschritt", false, navController) },
+        bottomBar = { Footer(navController) }
+
+    ) {innerPadding ->
+        Box(modifier = Modifier
+            .background(White)
+            .fillMaxSize()
+            .padding(innerPadding).padding(20.dp)
+        ) {
+            ButtonChatBot(navController)
+        }
     }
 }
