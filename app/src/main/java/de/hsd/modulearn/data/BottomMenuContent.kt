@@ -6,5 +6,5 @@ import androidx.compose.ui.graphics.vector.ImageVector
 data class BottomMenuContent(
     val title: String,
     val screen: String,
-    val icon: ImageVector
+    val icon: Int
 )

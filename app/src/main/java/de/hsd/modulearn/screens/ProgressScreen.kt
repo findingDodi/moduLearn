@@ -32,13 +32,14 @@ fun ProgressScreen(navController: NavController) {
     Scaffold (
 
         topBar = { Header("Fortschritt", false, navController) },
-        bottomBar = { Footer(navController) }
+        bottomBar = { Footer(navController, 3) }
 
     ) {innerPadding ->
         Box(modifier = Modifier
             .background(White)
             .fillMaxSize()
-            .padding(innerPadding).padding(20.dp)
+            .padding(innerPadding)
+            .padding(20.dp)
         ) {
             ButtonChatBot(navController)
         }

@@ -35,13 +35,14 @@ fun Oop1Home(navController: NavController) {
     Scaffold (
 
         topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController) }
+        bottomBar = { Footer(navController,1) }
 
     ) {innerPadding ->
         Box(modifier = Modifier
             .background(White)
             .fillMaxSize()
-            .padding(innerPadding).padding(20.dp)
+            .padding(innerPadding)
+            .padding(20.dp)
         ){
             Column {
                 LecturesOverview(oop1Lektionen = listOf(

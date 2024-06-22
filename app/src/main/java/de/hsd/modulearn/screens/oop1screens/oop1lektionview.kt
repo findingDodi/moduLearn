@@ -45,13 +45,14 @@ fun Oop1LektionView(navController: NavController, title :String) {
     Scaffold (
 
         topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController) }
+        bottomBar = { Footer(navController, 1) }
 
     ) {innerPadding ->
         Box(modifier = Modifier
             .background(White)
             .fillMaxSize()
-            .padding(innerPadding).padding(20.dp)
+            .padding(innerPadding)
+            .padding(20.dp)
         ){
             Column {
                 Text(
@@ -99,14 +100,8 @@ fun Oop1LektionView(navController: NavController, title :String) {
 fun ChaptersOverview(oop1Kapitel: List<Oop1Kapitel>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
+        .padding(top = 20.dp)
     ) {
-
-        Text(
-            text = "Kapitelübersicht",
-            style = Typography.headlineSmall,
-            modifier = Modifier
-                .padding(PaddingValues(bottom= 15.dp))
-        )
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -127,7 +122,7 @@ fun Oop1KapitelItem(
     navController: NavController) {
     BoxWithConstraints(
         modifier = Modifier
-            .padding(7.5.dp)
+            .padding(5.dp)
             .aspectRatio(1f)
             .clip(RoundedCornerShape(10.dp))
             .background(PrimaryMidLilac)
@@ -135,6 +130,7 @@ fun Oop1KapitelItem(
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(10.dp)
         ) {
             Text(
                 text = lektion.title,
@@ -152,7 +148,7 @@ fun Oop1KapitelItem(
                         navController.navigate(Routes.oop1kapitel + "/" + lektion.title)
                     }
                     .align(Alignment.BottomEnd)
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(5.dp))
                     .background(PrimaryDarkLilac)
                     .padding(vertical = 6.dp, horizontal = 15.dp)
             )
