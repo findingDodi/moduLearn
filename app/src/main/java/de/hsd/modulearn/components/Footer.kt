@@ -33,9 +33,9 @@ fun Footer(
 ) {
     val items = listOf(
         BottomMenuContent("Home", homescreen, R.drawable.round_home_24),
-        BottomMenuContent("Lectures", oop1home, R.drawable.round_bookmarks_24),
+        BottomMenuContent("Lektionen", oop1home, R.drawable.round_bookmarks_24),
         BottomMenuContent("Quizzes", quizzesscreen, R.drawable.round_lightbulb_24),
-        BottomMenuContent("Process", progressscreen, R.drawable.round_bar_chart_24),
+        BottomMenuContent("Erfolge", progressscreen, R.drawable.round_bar_chart_24),
     )
 
     NavigationBar(
