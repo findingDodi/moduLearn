@@ -1,0 +1,208 @@
+{
+  "title": "Prozeduren und Funktionen",
+  "questions": [
+    {
+      "questionText": "Was ist eine Prozedur?",
+      "answerOptions": [
+        "Ein Datentyp.",
+        "Eine Methode, die keinen Rückgabewert hat.",
+        "Eine Methode, die einen Wert zurückgibt."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Methoden sind ein benannter, abrufbarer Code-Abschnitt. Dabei unterscheidet man zwischen Funktionen, die einen Wert am Ende zurückgeben und Prozeduren, die keinen Wert zurückgeben."
+    },
+    {
+      "questionText": "Wie definiert man eine Prozedur in Java?",
+      "answerOptions": [
+        "Mit dem Schlüsselwort 'function'.",
+        "Mit dem Schlüsselwort 'void'.",
+        "Mit dem Schlüsselwort 'return'."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Void ist der Datentyp einer Prozedur."
+    },
+    {
+      "questionText": "Wie ruft man eine Prozedur in Java auf?",
+      "answerOptions": [
+        "Mit dem Schlüsselwort 'call'.",
+        "Mit dem Namen der Prozedur und eventuellen Argumenten in geschweiften Klammern.",
+        "Mit dem Schlüsselwort 'run'.",
+        "Mit dem Namen der Prozedur und eventuellen Argumenten in runden Klammern."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        3
+      ],
+      "explanation": "Syntax: <name>();"
+    },
+    {
+      "questionText": "Was gehört zur Signatur einer Prozedur?",
+      "answerOptions": [
+        "Die Rückgabetypen einer Prozedur.",
+        "Der Name einer Prozedur.",
+        "Die Dokumentation einer Prozedur.",
+        "Die Parameterliste einer Prozedur."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        1,
+        3
+      ],
+      "explanation": "Die Signatur einer Prozedur setzt sich zusammen aus dem Namen und der Parameterliste."
+    },
+    {
+      "questionText": "Was ist Javadoc?",
+      "answerOptions": [
+        "Eine Programmiersprache.",
+        "Ein Dokumentationswerkzeug für Java-Code.",
+        "Eine Entwicklungsumgebung für Java."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Javadoc ein vorgeschriebenes Format zur Beschreibung von Java-Code."
+    },
+    {
+      "questionText": "Wie sieht die Javadoc-Syntax aus?",
+      "answerOptions": [
+        "Der Block-Kommentar beginnt mit '*'.",
+        "Der Block-Kommentar beginnt mit '/*'.",
+        "Der Block-Kommentar beginnt mit '/**'.",
+        "Tags werden mit einem '@' begonnen."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        2,
+        3
+      ],
+      "explanation": "Der Javadoc-Kommentar wird mit einem '/**' begonnen, darauf folgt eine Beschreibung, was gemacht werden soll und schließlich folgt die Auflistung der Tags."
+    },
+    {
+      "questionText": "Was ist eine Funktion?",
+      "answerOptions": [
+        "Ein Datentyp.",
+        "Eine Methode, die keinen Rückgabewert hat.",
+        "Eine Methode, die einen Wert zurückgibt."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Methoden sind ein benannter, abrufbarer Code-Abschnitt. Dabei unterscheidet man zwischen Funktionen, die einen Wert am Ende zurückgeben, und Prozeduren, die keinen Wert zurückgeben."
+    },
+    {
+      "questionText": "Wie definiert man eine Funktion in Java?",
+      "answerOptions": [
+        "Mit dem Schlüsselwort 'void'.",
+        "Mit dem Schlüsselwort 'function'.",
+        "Mit dem Rückgabetypen und dem Namen der Funktion."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Bei der Definition von Funktionen wird der Datentyp des Werts angegeben, der am Ende zurückgegeben wird. Genau wie bei Prozeduren, bekommt eine Funktion einen Namen."
+    },
+    {
+      "questionText": "Wie ruft man eine Funktion in Java auf?",
+      "answerOptions": [
+        "Mit dem Namen der Funktion und eventuellen Argumenten in runden Klammern.",
+        "Mit dem Namen der Funktion und eventuellen Argumenten in geschweiften Klammern.",
+        "Mit dem Schlüsselwort 'call'.",
+        "Mit dem Schlüsselwort 'run'."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Syntax: <name>(); \n Der beim Aufruf ausgegebene Wert kann in einer Variable des passenden Datentyps gespeichert und anschließend verwendet werden."
+    },
+    {
+      "questionText": "Was ist der Unterschied zwischen einer Funktion und einer Prozedur?",
+      "answerOptions": [
+        "Eine Funktion hat keinen Rückgabewert, aber eine Prozedur schon.",
+        "Eine Prozedur hat keinen Rückgabewert, aber eine Funktion schon.",
+        "Eine Funktion kann nicht aufgerufen werden.",
+        "Es gibt keinen Unterschied."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Methoden sind ein benannter, abrufbarer Code-Abschnitt. Dabei unterscheidet man zwischen Funktionen, die einen Wert am Ende zurückgeben, und Prozeduren, die keinen Wert zurückgeben."
+    },
+    {
+      "questionText": "Was sind formale Parameter in einer Funktion?",
+      "answerOptions": [
+        "Die Parameter, die bei Aufruf der Funktion übergeben werden.",
+        "Die Parameter, die beim Definieren  der Funktion im Code angegeben."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Beim Aufruf einer Funktion werden innerhalb der Klammern die aktuellen Parameter angegeben. Diese Werte werden dann überall dort im Funktionsablauf verwendet, wo die formalen Parameter stehen."
+    },
+    {
+      "questionText": "Was gehört zur Signatur einer Funktion?",
+      "answerOptions": [
+        "Die Parameterliste einer Funktion.",
+        "Die Dokumentation einer Funktion.",
+        "Der Name einer Funktion."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Die Signatur einer Funktion setzt sich zusammen aus dem Namen und der Parameterliste."
+    },
+    {
+      "questionText": "Was ist der Zweck des Überladens von Funktionen?",
+      "answerOptions": [
+        "Die Vermeidung von Namenskonflikten.",
+        "Die Erhöhung der Lesbarkeit von Code.",
+        "Die Möglichkeit, eine Funktion mit verschiedenen Argumenttypen zu definieren."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Es ist möglich, Funktionen bzw. Prozeduren mit dem gleichen Namen zu definieren, sofern sie sich beim Aufruf durch die Parameterliste eindeutig voneinander unterscheiden."
+    },
+    {
+      "questionText": "Was sind rekursive Funktionen?",
+      "answerOptions": [
+        "Funktionen, die sich selbst aufrufen.",
+        "Funktionen, die auf eine spezielle Art und Weise definiert sind.",
+        "Funktionen, die nur in bestimmten Fällen ausgeführt werden."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Rekursive Funktionen sind eine 'elegantere' Vorgehensweise für rekursive Probleme, die über das mehrfache Ausführen einer Funktion über eine Schleife gelöst werden."
+    },
+    {
+      "questionText": "Was gilt für die Benennung von Funktionen?",
+      "answerOptions": [
+        "Der Name drückt aus, was getan werden soll.",
+        "Der Name drückt aus, was das Ergebnis ist.",
+        "Bei einer Funktion, die einen booleschen Wert zurückgibt, wird der erfragte Zustand als Name verwendet."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        1,
+        2
+      ],
+      "explanation": "Anders als bei Prozeduren, gibt der Name einer Funktion nicht an, was getan werden soll, sondern was das Ergebnis ist."
+    }
+  ]
+}

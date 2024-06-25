@@ -1,0 +1,115 @@
+{
+  "title": "Konzept der Objektorientierung",
+  "questions": [
+    {
+      "questionText": "Was sind Vorteile von objektorientierter Programmierung?",
+      "answerOptions": [
+        "Mehr Wiederverwendbarkeit von Code.",
+        "Bessere Strukturierung von Code.",
+        "Einfachere Fehlerbehebung.",
+        "Man kann von überall auf die Daten zugreifen."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "In objektorientierten Programmiersprache werden Daten und Funktionalitäten zu Objekten verbunden, ihre Eigenschaften werden in Klassen beschrieben."
+    },
+    {
+      "questionText": "Was versteht man unter Kapselung?",
+      "answerOptions": [
+        "Daten und Methoden sind über eine Schnittstelle zugänglich.",
+        "Implementierungsdetails werden in einer Klasse verborgen.",
+        "Mittels Gettern und Settern kann man immer auf Daten zugreifen."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Die Kapselung ist Teil des DOOM-Konzepts. Dabei gilt, dass der Zugriff auf die Eigenschaften eines Objekts streng geregelt wird, mit anderen Worten: sie werden gekapselt."
+    },
+    {
+      "questionText": "Was besagt das DOOM-Prinzip?",
+      "answerOptions": [
+        "Der Zugriff auf Daten eines Objektes geschieht über die Methoden des Objektes.",
+        "Man hat von außen Zugriff auf die Daten eines Objektes.",
+        "Zwischen Daten und Methoden eines Objekts besteht keine Verknüpfung.",
+        "Zusammengehörige Daten und Methoden bilden eine Einheit."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        3
+      ],
+      "explanation": "Das DOOM-Konzept besagt, dass die Daten und Methoden eines Objekts eng miteinander verknüpft sind. Der Zugriff wird durch die Kapselung streng reguliert: Methoden können von außen aufgerufen werden, wohingegen die Daten verborgen bleiben. Stattdessen läuft der Zugriff auf die Daten über die Methoden ab."
+    },
+    {
+      "questionText": "Welche Vorgehensweise entspricht dem OO-Konzept?",
+      "answerOptions": [
+        "Der Zugriff auf Eigenschaften eines Objekts läuft über öffentliche Variablen.",
+        "Das Objekt wird beauftragt, etwas mit Daten zu tun.",
+        "Beide Vorgehensweisen entsprechen dem OO-Konzept."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Der OO-Ansatz beschreibt die Vorgehensweise, dass man das Objekt beauftragt etwas mit seinen Daten zu tun (über Methoden), statt direkt auf die Daten von außen zuzugreifen."
+    },
+    {
+      "questionText": "Was ist eine Klasse?",
+      "answerOptions": [
+        "Eine Sammlung von Objekten.",
+        "Ein Datentyp zur Definition gleichartiger Objekte.",
+        "Die Instanz eines Objekts."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Eine Klasse beschreibt die gemeinsamen Eigenschaften gleichartiger Objekte, sie ist also ein Datentyp. Die Instanz einer Klasse wird Objekt genannt."
+    },
+    {
+      "questionText": "Was ist ein Objekt?",
+      "answerOptions": [
+        "Eine Sammlung von Klassen.",
+        "Eine Instanz einer Klasse.",
+        "Eine Methode in einer Klasse."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Ein Objekt ist die Instanz einer Klasse und besitzt somit alle Eigenschaften dieser Klasse."
+    },
+    {
+      "questionText": "Was sind IVs?",
+      "answerOptions": [
+        "IV steht für Instanz Variablen und bezieht sich auf Variablen, die in einer Methode definiert sind.",
+        "IV steht für Instanz Variablen und bezieht sich auf die Daten eines Objekts.",
+        "IV steht für Integer Variables und bezieht sich auf Variablen, die mit ganzzahligen Werten arbeiten."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Instanz-Variablen (IVs) sind die Daten eines Objekts und werden in einer Klasse definiert. Jede Instanz dieser Klasse besitzt dann eine solche Variable."
+    },
+    {
+      "questionText": "Was sind IMs?",
+      "answerOptions": [
+        "IM steht für Instanz Methoden und bezieht sich auf Methoden, die direkt auf Objekte angewendet werden können.",
+        "IM steht für Instanz Methoden und bezieht sich auf Methoden, die direkt auf Klassen angewendet werden können.",
+        "IM steht für Integer Methods und bezieht sich auf Methoden, die mit ganzzahligen Werten arbeiten."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Instanz-Methoden (IMs) sind die Prozeduren und Funktionen eines Objekts und werden in einer Klasse definiert. Innerhalb der IMs kann nun auf die IVs zugegriffen werden, um den Zweck der Methode zu erfüllen. "
+    }
+  ]
+}

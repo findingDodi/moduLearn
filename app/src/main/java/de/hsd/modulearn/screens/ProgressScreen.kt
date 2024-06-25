@@ -22,7 +22,11 @@ fun ProgressScreen(navController: NavController) {
     Scaffold (
 
         topBar = { Header("Fortschritt", false, navController) },
-        bottomBar = { Footer(navController, 3) }
+        bottomBar = { Footer(navController, 3) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
+
 
     ) {innerPadding ->
 
@@ -32,10 +36,6 @@ fun ProgressScreen(navController: NavController) {
             .padding(innerPadding)
             .padding(20.dp)
         ) {
-            Column(modifier = Modifier
-                .fillMaxWidth()) {
-                ButtonChatBot(navController)
-            }
 
         }
 

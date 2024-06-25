@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.oop1.Question
@@ -41,6 +42,7 @@ fun Oop1Quiz(
     Scaffold(
         topBar = { Header(title = title, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
+
     ) { innerPadding ->
         Box(
             modifier = Modifier

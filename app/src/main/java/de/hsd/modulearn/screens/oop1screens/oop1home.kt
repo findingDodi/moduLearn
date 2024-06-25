@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.oop1.Lektion
+import de.hsd.modulearn.data.oop1.Lecture
 import de.hsd.modulearn.theme.*
 
 @Composable
@@ -35,7 +35,10 @@ fun Oop1Home(navController: NavController) {
     Scaffold (
 
         topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController,1) }
+        bottomBar = { Footer(navController,1) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
 
     ) {innerPadding ->
         Box(modifier = Modifier
@@ -46,46 +49,32 @@ fun Oop1Home(navController: NavController) {
         ){
             Column {
                 LecturesOverview(oop1Lektionen = listOf(
-                    Lektion(
+                    Lecture(
                         title = "01 - Grundlagen",
                         description = "Hallo Test"
                     ),
-                    Lektion(
+                    Lecture(
                         title = "02 - Programmiersprachen",
                         description = "Hallo Test"
                     ),
-                    Lektion(
+                    Lecture(
                         title = "03 - Grundlagen",
                         description = "Hallo Test"
                     ),
-                    Lektion(
+                    Lecture(
                         title = "04 - Programmiersprachen",
                         description = "Hallo Test"
                     ),
                 ), navController)
 
             }
-
-            Box(modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(bottom = 120.dp, end = 15.dp)){
-                ButtonWithIcon(
-                    iconId = R.drawable.round_chat_bubble_24,
-                    backgroundcolor = PrimaryDarkBlue,
-                    color = White,
-                    text = "ChatBot",
-                    destinationRoute = Routes.chatBot,
-                    navController = navController
-                )
-            }
         }
     }
-
 }
 
 
 @Composable
-fun LecturesOverview(oop1Lektionen: List<Lektion>, navController:NavController) {
+fun LecturesOverview(oop1Lektionen: List<Lecture>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
     ) {
@@ -102,7 +91,7 @@ fun LecturesOverview(oop1Lektionen: List<Lektion>, navController:NavController) 
                 .fillMaxHeight()
         ) {
             items(oop1Lektionen.size){
-                Oop1LektionItem(lektion = oop1Lektionen[it], navController)
+                Oop1LektionItem(lecture = oop1Lektionen[it], navController)
             }
         }
     }
@@ -111,7 +100,7 @@ fun LecturesOverview(oop1Lektionen: List<Lektion>, navController:NavController) 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun Oop1LektionItem (
-    lektion: Lektion,
+    lecture: Lecture,
     navController:NavController
 ){
     BoxWithConstraints(
@@ -127,7 +116,7 @@ fun Oop1LektionItem (
                 .padding(15.dp)
         ) {
             Text(
-                text = lektion.title,
+                text = lecture.title,
                 style = Typography.headlineSmall,
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
@@ -139,7 +128,7 @@ fun Oop1LektionItem (
                 style = Typography.labelLarge,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Routes.oop1lektion + "/" + lektion.title)
+                        navController.navigate(Routes.oop1lektion + "/" + lecture.title)
                     }
                     .align(Alignment.BottomEnd)
                     .clip(RoundedCornerShape(5.dp))

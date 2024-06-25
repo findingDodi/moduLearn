@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.theme.Typography
@@ -21,7 +22,10 @@ fun Oop1ChapterView(navController: NavController, title :String, content: String
     Scaffold (
 
         topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController,1) }
+        bottomBar = { Footer(navController,1) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
 
     ) {innerPadding ->
         Box(modifier = Modifier

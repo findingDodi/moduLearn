@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.R
+import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
@@ -36,7 +37,10 @@ fun Oop1LektionView(navController: NavController, title :String) {
     Scaffold (
 
         topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController, 1) }
+        bottomBar = { Footer(navController, 1) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
 
     ) {innerPadding ->
         Box(modifier = Modifier
@@ -67,17 +71,17 @@ fun Oop1LektionView(navController: NavController, title :String) {
                 }
 
                 ChaptersOverview(chapter = listOf(
-                    Kapitel(
+                    Chapter(
                         title = "Compile and Run",
                         description = "Hallo Test",
                         content = "Test"
                     ),
-                    Kapitel(
+                    Chapter(
                         title = "Warum Java?",
                         description = "Hallo Test",
                         content = "Test"
                     ),
-                    Kapitel(
+                    Chapter(
                         title = "Was ist Programmieren?",
                         description = "Hallo Test",
                         content = "Test"
@@ -91,7 +95,7 @@ fun Oop1LektionView(navController: NavController, title :String) {
 }
 
 @Composable
-fun ChaptersOverview(chapter: List<Kapitel>, navController:NavController) {
+fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
         .padding(top = 20.dp)
@@ -112,7 +116,7 @@ fun ChaptersOverview(chapter: List<Kapitel>, navController:NavController) {
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun KapitelItem(
-    lektion: Kapitel,
+    lektion: Chapter,
     navController: NavController) {
     BoxWithConstraints(
         modifier = Modifier

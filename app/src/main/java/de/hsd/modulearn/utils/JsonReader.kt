@@ -3,7 +3,7 @@ package de.hsd.modulearn.utils
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import de.hsd.modulearn.data.oop1.Lektion
+import de.hsd.modulearn.data.oop1.Lecture
 import de.hsd.modulearn.data.oop1.Quiz
 import java.io.InputStreamReader
 
@@ -26,19 +26,19 @@ class JsonReader {
         return gson.fromJson(reader, type)
     }
 
-    fun loadLectureFromJson(context: Context): Lektion {
+    fun loadLectureFromJson(context: Context): Lecture {
         val gson = Gson()
         val jsonFile = context.assets.open("lectures/lecture01.json")
         val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<Lektion>() {}.type
+        val type = object : TypeToken<Lecture>() {}.type
         return gson.fromJson(reader, type)
     }
 
-    fun loadAllLecturesFromJson(context: Context): List<Lektion> {
+    fun loadAllLecturesFromJson(context: Context): List<Lecture> {
         val gson = Gson()
         val jsonFile = context.assets.open("lectures/lecture01.json")
         val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<List<Lektion>>() {}.type
+        val type = object : TypeToken<List<Lecture>>() {}.type
         return gson.fromJson(reader, type)
     }
 

@@ -1,0 +1,147 @@
+{
+  "title": "Interfaces",
+  "questions": [
+    {
+      "questionText": "Was ist der Nutzen von Interfaces?",
+      "answerOptions": [
+        "Sie erlauben die Mehrfachvererbung in Java.",
+        "Sie definieren eine Schnittstelle, die von Klassen implementiert werden kann, um bestimmte Methoden bereitzustellen.",
+        "Sie sind eine alternative Möglichkeit, um abstrakte Klassen zu definieren.",
+        "Sie werden verwendet, um private Methoden in Klassen zu definieren."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "In Java kann eine Klasse immer nur von einer Superklasse erben, wohingegen mehrere Interfaces implementiert werden können."
+    },
+    {
+      "questionText": "Wie werden Interfaces in Java definiert?",
+      "answerOptions": [
+        "Mit dem Schlüsselwort 'class'.",
+        "Mit dem Schlüsselwort 'interface'.",
+        "Mit dem Schlüsselwort 'implements'.",
+        "Mit dem Schlüsselwort 'abstract'."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Syntax: <access_modifier> interface <interface_name> {...}"
+    },
+    {
+      "questionText": "Wie werden Methoden in einem Interface automatisch definiert?",
+      "answerOptions": [
+        "private",
+        "private abstract",
+        "public",
+        "public abstract"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        3
+      ],
+      "explanation": "Methoden eines Interfaces werden automatisch als public abstract definiert, da der Zugriff von außen möglich sein soll und kein Body notwendig ist."
+    },
+    {
+      "questionText": "Welche Art von Variablen kann in einem Interface definiert werden?",
+      "answerOptions": [
+        "Private Variablen",
+        "Public Variablen",
+        "Static Final Variablen",
+        "Private und Public Variablen"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Interfaces besitzen keine Instanz-Variablen, aber es ist möglich statische Konstanten zu definieren."
+    },
+    {
+      "questionText": "Was sind Default Methoden in einem Interface?",
+      "answerOptions": [
+        "Methoden, die automatisch von jeder Klasse, die das Interface implementiert, überschrieben werden müssen.",
+        "Methoden, die in einer Implementierungsklasse überschrieben werden können, aber nicht müssen.",
+        "Methoden, die in einem Interface nicht definiert werden dürfen.",
+        "Methoden, die keinen Body besitzen"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Neben abstrakten Methoden, können auch Default-Methoden definiert werden, die einen Body besitzen. Dadurch wird Code-Duplikation in den Subtypen vermieden."
+    },
+    {
+      "questionText": "Wie wird ein Interface implementiert?",
+      "answerOptions": [
+        "Mit dem Schlüsselwort 'class'.",
+        "Mit dem Schlüsselwort 'interface'.",
+        "Mit dem Schlüsselwort 'implements'.",
+        "Mit dem Schlüsselwort 'extends'."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Syntax: class <klassen_name> implements <interface_name>"
+    },
+    {
+      "questionText": "Was ist der Unterschied zwischen einer abstrakten Klasse und einem Interface?",
+      "answerOptions": [
+        "Abstrakte Klassen können nicht implementiert werden, aber Interfaces schon.",
+        "Abstrakte Klassen können Variablen und Methoden implementieren, aber Interfaces nicht.",
+        "Interfaces erlauben Mehrfachvererbung, abstrakte Klassen nicht.",
+        "Abstrakte Klassen erlauben Mehrfachvererbung, aber Interfaces nicht."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "In Java kann eine Klasse immer nur von einer Superklasse erben, ganz gleich, ob diese abstrakt oder nicht-abstrakt ist. Interfaces bieten dahingegen eine Möglichkeit der Mehrfachvererbung."
+    },
+    {
+      "questionText": "Welche Aussage zu Variablen in einem Interface ist korrekt?",
+      "answerOptions": [
+        "Variablen in einem Interface dürfen keinen Wert besitzen.",
+        "Variablen in einem Interface sind automatisch static final.",
+        "Es gibt keine Variablen in einem Interface."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Variablen sind immer static final, da ein Interface nur statische Konstanten besitzen darf."
+    },
+    {
+      "questionText": "Welche Aussage zu Interfaces und Vererbung ist korrekt?",
+      "answerOptions": [
+        "Interfaces können nur von anderen Interfaces erben.",
+        "Interfaces können von anderen Interfaces und Klassen erben.",
+        "Wenn eine Superklasse ein Interface implementiert, implementieren auch alle Subklassen das Interface.",
+        "Wenn eine Superklasse ein Interface implementiert, gilt das nicht für die Subklassen."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Interfaces können nur von anderen Interfaces erben, nicht von Klassen. Die Implementierung von Interfaces wird mit vererbt."
+    },
+    {
+      "questionText": "Was gilt für eine Klasse K, die ein Interface I implementiert?",
+      "answerOptions": [
+        "Die Klasse K wird zu einem Subtyp des implementierten Interfaces I.",
+        "Das Interface wird zu einem Subtyp der implementierenden Klasse.",
+        "K is_a I.",
+        "I is_a K."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "'<subtyp> is_a <supertyp>' ist die formale Ausdrucksweise, um das Verhältnis zwischen einem Supertyp und einem Subtyp anzugeben."
+    }
+  ]
+}
