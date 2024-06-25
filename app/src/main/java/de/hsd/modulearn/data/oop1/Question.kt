@@ -3,9 +3,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Question(
-    val text: String,
-    val options: List<String>,
-    val type: String,
+    val questionText: String,
+    val answerOptions: List<String>,
     val answer: List<Int>,
     val explanation: String
 )

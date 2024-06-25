@@ -43,7 +43,7 @@ fun ProgressScreen(navController: NavController) {
                 .fillMaxWidth()) {
                 jsonData.forEach { item ->
                     Text(
-                        text = "${item.id}: ${item.name}",
+                        text = "${item.title}: ${item.questions}",
                         style = Typography.headlineSmall,
                         modifier = Modifier
                             .padding(PaddingValues(bottom= 15.dp))
