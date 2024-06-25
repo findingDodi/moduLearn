@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.oop1.Oop1Lektion
+import de.hsd.modulearn.data.oop1.Lektion
 import de.hsd.modulearn.theme.*
 
 @Composable
@@ -46,19 +46,19 @@ fun Oop1Home(navController: NavController) {
         ){
             Column {
                 LecturesOverview(oop1Lektionen = listOf(
-                    Oop1Lektion(
+                    Lektion(
                         title = "01 - Grundlagen",
                         description = "Hallo Test"
                     ),
-                    Oop1Lektion(
+                    Lektion(
                         title = "02 - Programmiersprachen",
                         description = "Hallo Test"
                     ),
-                    Oop1Lektion(
+                    Lektion(
                         title = "03 - Grundlagen",
                         description = "Hallo Test"
                     ),
-                    Oop1Lektion(
+                    Lektion(
                         title = "04 - Programmiersprachen",
                         description = "Hallo Test"
                     ),
@@ -85,7 +85,7 @@ fun Oop1Home(navController: NavController) {
 
 
 @Composable
-fun LecturesOverview(oop1Lektionen: List<Oop1Lektion>, navController:NavController) {
+fun LecturesOverview(oop1Lektionen: List<Lektion>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
     ) {
@@ -111,7 +111,7 @@ fun LecturesOverview(oop1Lektionen: List<Oop1Lektion>, navController:NavControll
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun Oop1LektionItem (
-    lektion: Oop1Lektion,
+    lektion: Lektion,
     navController:NavController
 ){
     BoxWithConstraints(

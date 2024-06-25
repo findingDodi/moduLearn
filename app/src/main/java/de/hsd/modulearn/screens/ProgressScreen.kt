@@ -3,25 +3,20 @@ package de.hsd.modulearn.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
-import de.hsd.modulearn.theme.*
-import de.hsd.modulearn.utils.JsonReader
+import de.hsd.modulearn.theme.White
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProgressScreen(navController: NavController) {
     Scaffold (
@@ -30,8 +25,6 @@ fun ProgressScreen(navController: NavController) {
         bottomBar = { Footer(navController, 3) }
 
     ) {innerPadding ->
-        val context = LocalContext.current
-        val jsonData = JsonReader().loadJson(context)
 
         Box(modifier = Modifier
             .background(White)
@@ -41,15 +34,6 @@ fun ProgressScreen(navController: NavController) {
         ) {
             Column(modifier = Modifier
                 .fillMaxWidth()) {
-                jsonData.forEach { item ->
-                    Text(
-                        text = "${item.title}: ${item.questions}",
-                        style = Typography.headlineSmall,
-                        modifier = Modifier
-                            .padding(PaddingValues(bottom= 15.dp))
-                    )
-                }
-
                 ButtonChatBot(navController)
             }
 

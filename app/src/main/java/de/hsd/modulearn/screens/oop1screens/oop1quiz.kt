@@ -21,12 +21,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import de.hsd.modulearn.components.*
+import de.hsd.modulearn.components.Footer
+import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.oop1.Question
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.JsonReader
@@ -37,6 +37,7 @@ fun Oop1Quiz(
     title: String
 ) {
     var selectedAnswer by remember { mutableStateOf(-1) }
+
     Scaffold(
         topBar = { Header(title = title, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
@@ -48,48 +49,49 @@ fun Oop1Quiz(
                 .padding(innerPadding)
                 .padding(20.dp)
         ) {
-            val jsonData = JsonReader().loadJson(LocalContext.current)
+            val jsonData = JsonReader().loadQuizFromJson(LocalContext.current)
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier.verticalScroll(rememberScrollState())
             ) {
 
-                jsonData.forEach { item ->
-                    item.questions.forEach { question: Question ->
 
-                        Text(text = question.questionText,
-                            style = Typography.displaySmall,
-                            modifier = Modifier
-                                .padding(PaddingValues(bottom= 15.dp))
+                jsonData.questions.forEach { question: Question ->
+
+                    Text(text = question.questionText,
+                        style = Typography.displaySmall,
+                        modifier = Modifier
+                            .padding(PaddingValues(bottom= 15.dp))
+                    )
+
+                    question.answerOptions.forEachIndexed { index, answer ->
+                        AnswerOption(
+                            answer = answer,
+                            isSelected = index == selectedAnswer,
+                            onClick = { selectedAnswer = index }
                         )
+                    }
 
-                        question.answerOptions.forEachIndexed { index, answer ->
-                            AnswerOption(
-                                answer = answer,
-                                isSelected = index == selectedAnswer,
-                                onClick = { selectedAnswer = index }
-                            )
-                        }
-                        Button(
-                            onClick = {
-                                // Aktion ausführen, z.B. Antwort speichern oder weiterleiten
-                                if (selectedAnswer != -1) {
-                                    // Beispiel: Antwort weiterleiten
-                                    //println("Ausgewählte Antwort: ${answers[selectedAnswer]}")
-                                }
-                            },
-                            enabled = selectedAnswer != -1,
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = PrimaryDarkBlue,
-                                contentColor = White,
-                            ),
-                            modifier = Modifier.padding(top = 20.dp)
-                        ) {
-                            Text(text = "Antwort senden")
-                        }
+                    Button(
+                        onClick = {
+                            // Aktion ausführen, z.B. Antwort speichern oder weiterleiten
+                            if (selectedAnswer != -1) {
+                                // Beispiel: Antwort weiterleiten
+                                //println("Ausgewählte Antwort: ${answers[selectedAnswer]}")
+                            }
+                        },
+                        enabled = selectedAnswer != -1,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = PrimaryDarkBlue,
+                            contentColor = White,
+                        ),
+                        modifier = Modifier.padding(top = 20.dp)
+                    ) {
+                        Text(text = "Antwort senden")
                     }
                 }
+
             }
         }
     }

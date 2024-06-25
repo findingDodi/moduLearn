@@ -66,7 +66,7 @@ fun Oop1LektionView(navController: NavController, title :String) {
                     )
                 }
 
-                ChaptersOverview(oop1Kapitel = listOf(
+                ChaptersOverview(chapter = listOf(
                     Kapitel(
                         title = "Compile and Run",
                         description = "Hallo Test",
@@ -91,7 +91,7 @@ fun Oop1LektionView(navController: NavController, title :String) {
 }
 
 @Composable
-fun ChaptersOverview(oop1Kapitel: List<Kapitel>, navController:NavController) {
+fun ChaptersOverview(chapter: List<Kapitel>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
         .padding(top = 20.dp)
@@ -102,8 +102,8 @@ fun ChaptersOverview(oop1Kapitel: List<Kapitel>, navController:NavController) {
             modifier = Modifier
                 .fillMaxHeight()
         ) {
-            items(oop1Kapitel.size){
-                KapitelItem(lektion = oop1Kapitel[it], navController)
+            items(chapter.size){
+                KapitelItem(lektion = chapter[it], navController)
             }
         }
     }
