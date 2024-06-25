@@ -1,11 +1,10 @@
 [
   {
-    "id": 1,
     "title": "Grundlagen der Programmierung",
     "questions": [
       {
-        "question_text": "Was definiert ein Datentyp?",
-        "answer_options": [
+        "questionText": "Was definiert ein Datentyp?",
+        "answerOptions": [
           "Den Namen einer Variable.",
           "Den Wertebereich, der gespeichert werden kann.",
           "Die Operationen, die auf einen Wert möglich sind."
@@ -18,8 +17,8 @@
         "explanation": "Damit die CPU immer das 'Richtige' mit den 'richtigen Sachen macht, wird durch einen Datentyp festgelegt, was das 'Richtige' ist. Ein Datentyp definiert somit, welche Wertebereich gespeichert werden kann und welche Operationen auf diesem Wert möglich sind."
       },
       {
-        "question_text": "Welche der folgenden Datentypen ist nicht in Java vorhanden?",
-        "answer_options": [
+        "questionText": "Welche der folgenden Datentypen ist nicht in Java vorhanden?",
+        "answerOptions": [
           "int",
           "double",
           "float",
@@ -32,8 +31,8 @@
         "explanation": "Datentypen für Fließkommazahlen sind 'float' und 'double'."
       },
       {
-        "question_text": "Was ist der Unterschied zwischen einer Ganzzahl (int) und einer Fließkommazahl (double) in Java?",
-        "answer_options": [
+        "questionText": "Was ist der Unterschied zwischen einer Ganzzahl (int) und einer Fließkommazahl (double) in Java?",
+        "answerOptions": [
           "Eine Ganzzahl ist eine ganze Zahl ohne Dezimalstellen, während eine Fließkommazahl eine Zahl mit Dezimalstellen ist.",
           "Eine Ganzzahl ist größer als eine Fließkommazahl.",
           "Eine Ganzzahl kann negative Werte haben, während eine Fließkommazahl nur positive Werte haben kann."
@@ -45,8 +44,8 @@
         "explanation": "Es gibt mehrere Datentypen für Zahlen aufgrund der ökonomischen Nutzung des Speichers. Dabei unterscheidet man Datentypen für ganze Zahlen (byte, short, int, long) und Datentypen für Fließkommazahlen (float, double)."
       },
       {
-        "question_text": "Welchen Wertebereich hat der primitive Datentyp 'short' in Java?",
-        "answer_options": [
+        "questionText": "Welchen Wertebereich hat der primitive Datentyp 'short' in Java?",
+        "answerOptions": [
           "-128 bis 127",
           "0 bis 65535",
           "-32768 bis 32767"
@@ -58,8 +57,8 @@
         "explanation": "Ein Byte besitzt den Wertebereich von -128 bis 127. Der zweite Wertebereich gehört zu keinen Datentypen, da immer positive und negative Werte abgedeckt werden."
       },
       {
-        "question_text": "Was ist ein Referenz-Datentyp in Java?",
-        "answer_options": [
+        "questionText": "Was ist ein Referenz-Datentyp in Java?",
+        "answerOptions": [
           "Ein Datentyp, der primitive Werte enthält.",
           "Ein Datentyp, der auf Objekte verweist.",
           "Ein Datentyp, der zur Speicherung von Texten verwendet wird."
@@ -71,8 +70,8 @@
         "explanation": "Eine Variable von einem Referenz-Datentyp beinhaltet den Verweis auf den eigentlichen Wert im Speicher, anstelle des Wertes selbst. Dabei kann es sich z.B. um einen String zur Speicherung von Texten handeln."
       },
       {
-        "question_text": "Welche Zuweisungen sind erlaubt?",
-        "answer_options": [
+        "questionText": "Welche Zuweisungen sind erlaubt?",
+        "answerOptions": [
           "byte -> short",
           "short -> int",
           "long -> float"
@@ -86,8 +85,8 @@
         "explanation": "Einer Variablen eines Zahlen-Datentyp kann man dann einen Wert eines anderen Zahlen-Datentyps zuweisen, wenn dabei keine 'Platzprobleme' im Speicher entstehen. Das heißt Zuweisungen von 'kleineren' Zahlenwerten in 'größere' Zahlen-Variablen sind erlaubt."
       },
       {
-        "question_text": "Welcher primitive Datentyp wird in Java für Wahrheitswerte verwendet?",
-        "answer_options": [
+        "questionText": "Welcher primitive Datentyp wird in Java für Wahrheitswerte verwendet?",
+        "answerOptions": [
           "boolean",
           "int",
           "double"
@@ -99,8 +98,8 @@
         "explanation": "Eine Variable des Datentyps boolean kann genau zwei Werte annehmen: true oder false. Dieser dient beispielsweise zur Speicherung der Ergebnisse von logischen Operationen."
       },
       {
-        "question_text": "Was besagt das Schisser-Prinzip?",
-        "answer_options": [
+        "questionText": "Was besagt das Schisser-Prinzip?",
+        "answerOptions": [
           "Einer Variable eines Zahlen-Datentyp kann man nie einen Wert eines anderen Zahlendatentyps zuweisen.",
           "Einer Variable eines Zahlen-Datentyp kann man immer einen Wert eines anderen Zahlendatentyps zuweisen.",
           "Der Compiler gibt bereits eine Fehlermeldung, wenn es möglich ist, dass ein Datenverlust stattfindet."
