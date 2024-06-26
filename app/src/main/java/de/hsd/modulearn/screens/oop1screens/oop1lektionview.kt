@@ -36,7 +36,7 @@ import de.hsd.modulearn.theme.*
 fun Oop1LektionView(navController: NavController, title :String) {
     Scaffold (
 
-        topBar = { Header("OOP1", false, navController) },
+        topBar = { Header("OOP1", true, navController) },
         bottomBar = { Footer(navController, 1) },
         floatingActionButton = {
             ButtonChatBot(navController = navController)
@@ -53,8 +53,7 @@ fun Oop1LektionView(navController: NavController, title :String) {
                 Text(
                     text = title,
                     style = Typography.headlineMedium,
-                    modifier = Modifier
-                        .padding(15.dp)
+                    modifier = Modifier.padding(15.dp)
                 )
 
                 Box(

@@ -40,7 +40,7 @@ fun Oop1Quiz(
     var selectedAnswer by remember { mutableStateOf(-1) }
 
     Scaffold(
-        topBar = { Header(title = title, navController = navController) },
+        topBar = { Header(title = title, backButton = true, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
 
     ) { innerPadding ->
@@ -51,7 +51,7 @@ fun Oop1Quiz(
                 .padding(innerPadding)
                 .padding(20.dp)
         ) {
-            val jsonData = JsonReader().loadQuizFromJson(LocalContext.current)
+            val quiz = JsonReader().loadQuizFromJson(LocalContext.current)
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -59,7 +59,7 @@ fun Oop1Quiz(
             ) {
 
 
-                jsonData.questions.forEach { question: Question ->
+                quiz.questions.forEach { question: Question ->
 
                     Text(text = question.questionText,
                         style = Typography.displaySmall,

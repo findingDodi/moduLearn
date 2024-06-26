@@ -36,7 +36,7 @@ class JsonReader {
 
     fun loadAllLecturesFromJson(context: Context): List<Lecture> {
         val gson = Gson()
-        val jsonFile = context.assets.open("lectures/lecture01.json")
+        val jsonFile = context.assets.open("lectures/lectures_combined.json")
         val reader = InputStreamReader(jsonFile)
         val type = object : TypeToken<List<Lecture>>() {}.type
         return gson.fromJson(reader, type)

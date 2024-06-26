@@ -21,7 +21,7 @@ import de.hsd.modulearn.theme.White
 fun Oop1ChapterView(navController: NavController, title :String, content: String) {
     Scaffold (
 
-        topBar = { Header("OOP1", false, navController) },
+        topBar = { Header("OOP1", true, navController) },
         bottomBar = { Footer(navController,1) },
         floatingActionButton = {
             ButtonChatBot(navController = navController)

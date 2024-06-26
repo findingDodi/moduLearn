@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Grundlagen der Programmierung",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Variablen",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Prozeduren und Funktionen",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Konzept der Objektorientierung",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Klassen und Objekte",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Vererbung",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Interfaces",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Abstrakte Klassen",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "title": "Zugriffssteuerung",
+    "description": "Beschreibung",
+    "chapters": [
+      {
+        "title": "Kapitel 01",
+        "description": "Beschreibung",
+        "content": ""
+      },
+      {
+        "title": "Kapitel 02",
+        "description": "Beschreibung",
+        "content": ""
+      }
+    ]
+  }
+]
