@@ -31,18 +31,19 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.oop1.Question
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.JsonReader
+import androidx.compose.material3.LinearProgressIndicator
 
 @Composable
 fun Oop1Quiz(
     navController: NavController,
     title: String
 ) {
+    var currentQuestionIndex by remember { mutableStateOf(0) }
     var selectedAnswer by remember { mutableStateOf(-1) }
 
     Scaffold(
         topBar = { Header(title = title, backButton = true, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
-
     ) { innerPadding ->
         Box(
             modifier = Modifier
@@ -57,47 +58,81 @@ fun Oop1Quiz(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier.verticalScroll(rememberScrollState())
             ) {
+                // Fortschrittsanzeige
+                ProgressBar(
+                    currentQuestionIndex = currentQuestionIndex,
+                    totalQuestions = quiz.questions.size
+                )
 
+                val question = quiz.questions[currentQuestionIndex]
 
-                quiz.questions.forEach { question: Question ->
+                Text(
+                    text = question.questionText ?: "",
+                    style = Typography.headlineSmall,
+                    modifier = Modifier
+                        .padding(PaddingValues(bottom = 15.dp))
+                )
 
-                    Text(text = question.questionText,
-                        style = Typography.displaySmall,
-                        modifier = Modifier
-                            .padding(PaddingValues(bottom= 15.dp))
+                question.answerOptions?.forEachIndexed { index, answer ->
+                    AnswerOption(
+                        answer = answer,
+                        isSelected = index == selectedAnswer,
+                        onClick = { selectedAnswer = index }
                     )
-
-                    question.answerOptions.forEachIndexed { index, answer ->
-                        AnswerOption(
-                            answer = answer,
-                            isSelected = index == selectedAnswer,
-                            onClick = { selectedAnswer = index }
-                        )
-                    }
-
-                    Button(
-                        onClick = {
-                            // Aktion ausführen, z.B. Antwort speichern oder weiterleiten
-                            if (selectedAnswer != -1) {
-                                // Beispiel: Antwort weiterleiten
-                                //println("Ausgewählte Antwort: ${answers[selectedAnswer]}")
-                            }
-                        },
-                        enabled = selectedAnswer != -1,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = PrimaryDarkBlue,
-                            contentColor = White,
-                        ),
-                        modifier = Modifier.padding(top = 20.dp)
-                    ) {
-                        Text(text = "Antwort senden")
-                    }
                 }
 
+                Button(
+                    onClick = {
+                        // Aktion ausführen, z.B. Antwort speichern oder weiterleiten
+                        if (selectedAnswer != -1) {
+                            // Hier könnte die Antwort gespeichert oder verarbeitet werden
+
+                            // Zur nächsten Frage gehen, wenn nicht die letzte Frage erreicht ist
+                            if (currentQuestionIndex < quiz.questions.size - 1) {
+                                currentQuestionIndex++
+                                // Zurücksetzen der ausgewählten Antwort für die neue Frage
+                                selectedAnswer = -1
+                            } else {
+                                // Hier könnte eine Aktion nach dem Abschluss des Quiz durchgeführt werden
+                                // Zum Beispiel Navigation zur Ergebnisseite
+                            }
+                        }
+                    },
+                    enabled = selectedAnswer != -1,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = PrimaryDarkBlue,
+                        contentColor = White,
+                    ),
+                    modifier = Modifier.padding(top = 20.dp)
+                ) {
+                    if (currentQuestionIndex < quiz.questions.size - 1) {
+                        Text(text = "Nächste Frage")
+                    } else {
+                        Text(text = "Quiz beenden")
+                    }
+                }
             }
         }
     }
 }
+
+@Composable
+fun ProgressBar(
+    currentQuestionIndex: Int,
+    totalQuestions: Int
+) {
+    val progress = ((currentQuestionIndex + 1) / totalQuestions.toFloat())
+
+    LinearProgressIndicator(
+        progress = progress,
+        color = PrimaryDarkBlue,
+        trackColor = LightGrey,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 10.dp)
+    )
+}
+
 
 @Composable
 fun AnswerOption(
