@@ -32,9 +32,10 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.oop1.*
 import de.hsd.modulearn.theme.*
+import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
-fun Oop1LektionView(navController: NavController, title :String) {
+fun Oop1LektionView(navController: NavController, id : Int, title :String) {
     Scaffold (
 
         topBar = { Header("OOP1", true, navController) },
@@ -66,28 +67,16 @@ fun Oop1LektionView(navController: NavController, title :String) {
                         backgroundcolor = PrimaryDarkLilac,
                         color = White,
                         text = "Quiz starten",
-                        destinationRoute = Routes.oop1quiz + "/Lektion_ID",
+                        destinationRoute = Routes.oop1quiz + "/" + id,
                         navController = navController,
                     )
                 }
 
-                ChaptersOverview(chapter = listOf(
-                    Chapter(
-                        title = "Compile and Run",
-                        description = "Hallo Test",
-                        content = "Test"
-                    ),
-                    Chapter(
-                        title = "Warum Java?",
-                        description = "Hallo Test",
-                        content = "Test"
-                    ),
-                    Chapter(
-                        title = "Was ist Programmieren?",
-                        description = "Hallo Test",
-                        content = "Test"
-                    )
-                ), navController)
+                val chapterList = AssetLoader().getChaptersFromLectureById(id)
+
+                if (chapterList != null) {
+                    ChaptersOverview(chapterList, navController)
+                }
 
             }
         }
@@ -107,7 +96,7 @@ fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
                 .fillMaxHeight()
         ) {
             items(chapter.size){
-                ChapterItem(lektion = chapter[it], navController)
+                ChapterItem(chapter = chapter[it], navController)
             }
         }
     }
@@ -116,7 +105,7 @@ fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun ChapterItem(
-    lektion: Chapter,
+    chapter: Chapter,
     navController: NavController) {
     BoxWithConstraints(
         modifier = Modifier
@@ -131,7 +120,7 @@ fun ChapterItem(
                 .padding(10.dp)
         ) {
             Text(
-                text = lektion.title,
+                text = chapter.title,
                 style = Typography.titleSmall,
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
@@ -143,7 +132,7 @@ fun ChapterItem(
                 style = Typography.labelLarge,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Routes.oop1kapitel + "/" + lektion.title)
+                        navController.navigate(Routes.oop1kapitel + "/" + chapter.title + "/" + chapter.content)
                     }
                     .align(Alignment.BottomCenter)
                     .clip(RoundedCornerShape(5.dp))

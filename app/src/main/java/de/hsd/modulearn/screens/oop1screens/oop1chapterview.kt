@@ -42,7 +42,8 @@ fun Oop1ChapterView(navController: NavController, title :String, content: String
                         .padding(15.dp)
                 )
 
-                Text(text = content,
+                Text(
+                    text = content,
                     style = Typography.bodyLarge,
                     modifier = Modifier
                         .padding(15.dp))

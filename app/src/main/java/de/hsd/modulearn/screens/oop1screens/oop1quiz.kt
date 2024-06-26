@@ -32,17 +32,18 @@ import de.hsd.modulearn.data.oop1.Question
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.JsonReader
 import androidx.compose.material3.LinearProgressIndicator
+import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
 fun Oop1Quiz(
     navController: NavController,
-    title: String
+    id : Int,
 ) {
     var currentQuestionIndex by remember { mutableStateOf(0) }
     var selectedAnswer by remember { mutableStateOf(-1) }
 
     Scaffold(
-        topBar = { Header(title = title, backButton = true, navController = navController) },
+        topBar = { Header(title = "Quiz", backButton = true, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
     ) { innerPadding ->
         Box(
@@ -52,33 +53,39 @@ fun Oop1Quiz(
                 .padding(innerPadding)
                 .padding(20.dp)
         ) {
-            val quiz = JsonReader().loadQuizFromJson(LocalContext.current)
+            val quiz = AssetLoader().getQuizById(id)
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 modifier = Modifier.verticalScroll(rememberScrollState())
             ) {
                 // Fortschrittsanzeige
-                ProgressBar(
-                    currentQuestionIndex = currentQuestionIndex,
-                    totalQuestions = quiz.questions.size
-                )
-
-                val question = quiz.questions[currentQuestionIndex]
-
-                Text(
-                    text = question.questionText ?: "",
-                    style = Typography.headlineSmall,
-                    modifier = Modifier
-                        .padding(PaddingValues(bottom = 15.dp))
-                )
-
-                question.answerOptions?.forEachIndexed { index, answer ->
-                    AnswerOption(
-                        answer = answer,
-                        isSelected = index == selectedAnswer,
-                        onClick = { selectedAnswer = index }
+                if (quiz != null) {
+                    ProgressBar(
+                        currentQuestionIndex = currentQuestionIndex,
+                        totalQuestions = quiz.questions.size
                     )
+                }
+
+                val question = quiz?.questions?.get(currentQuestionIndex)
+
+                if (question != null) {
+                    Text(
+                        text = question.questionText ?: "",
+                        style = Typography.headlineSmall,
+                        modifier = Modifier
+                            .padding(PaddingValues(bottom = 15.dp))
+                    )
+                }
+
+                if (question != null) {
+                    question.answerOptions?.forEachIndexed { index, answer ->
+                        AnswerOption(
+                            answer = answer,
+                            isSelected = index == selectedAnswer,
+                            onClick = { selectedAnswer = index }
+                        )
+                    }
                 }
 
                 Button(
@@ -88,13 +95,15 @@ fun Oop1Quiz(
                             // Hier könnte die Antwort gespeichert oder verarbeitet werden
 
                             // Zur nächsten Frage gehen, wenn nicht die letzte Frage erreicht ist
-                            if (currentQuestionIndex < quiz.questions.size - 1) {
-                                currentQuestionIndex++
-                                // Zurücksetzen der ausgewählten Antwort für die neue Frage
-                                selectedAnswer = -1
-                            } else {
-                                // Hier könnte eine Aktion nach dem Abschluss des Quiz durchgeführt werden
-                                // Zum Beispiel Navigation zur Ergebnisseite
+                            if (quiz != null) {
+                                if (currentQuestionIndex < quiz.questions.size - 1) {
+                                    currentQuestionIndex++
+                                    // Zurücksetzen der ausgewählten Antwort für die neue Frage
+                                    selectedAnswer = -1
+                                } else {
+                                    // Hier könnte eine Aktion nach dem Abschluss des Quiz durchgeführt werden
+                                    // Zum Beispiel Navigation zur Ergebnisseite
+                                }
                             }
                         }
                     },
@@ -105,10 +114,12 @@ fun Oop1Quiz(
                     ),
                     modifier = Modifier.padding(top = 20.dp)
                 ) {
-                    if (currentQuestionIndex < quiz.questions.size - 1) {
-                        Text(text = "Nächste Frage")
-                    } else {
-                        Text(text = "Quiz beenden")
+                    if (quiz != null) {
+                        if (currentQuestionIndex < quiz.questions.size - 1) {
+                            Text(text = "Nächste Frage")
+                        } else {
+                            Text(text = "Quiz beenden")
+                        }
                     }
                 }
             }

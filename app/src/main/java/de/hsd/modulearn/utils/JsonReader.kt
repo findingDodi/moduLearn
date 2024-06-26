@@ -18,28 +18,54 @@ class JsonReader {
         return gson.fromJson(reader, type)
     }
 
-    fun loadAllQuizzesFromJson(context: Context): List<Quiz> {
+
+    fun loadQuizFromJson(id : Int): Quiz {
+        val fileName = "quizzes/quiz0$id.json"
+
         val gson = Gson()
-        val jsonFile = context.assets.open("lectures/lecture01.json")
+        val context = AppContext.getContext()
+        val jsonFile = context.assets.open(fileName)
         val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<List<Quiz>>() {}.type
+        val type = object : TypeToken<Quiz>() {}.type
         return gson.fromJson(reader, type)
     }
 
-    fun loadLectureFromJson(context: Context): Lecture {
+    fun loadAllLecturesFromJson(): List<Lecture> {
         val gson = Gson()
-        val jsonFile = context.assets.open("lectures/lecture01.json")
+        val lectureList = mutableListOf<Lecture>()
+        val context = AppContext.getContext()
+
+        // Hole eine Liste aller Dateien im "lectures" Ordner
+        val assetManager = context.assets
+        val files = assetManager.list("lectures")
+
+        // Überprüfe, ob Dateien gefunden wurden
+        if (files != null) {
+            for (fileName in files) {
+                if (fileName.endsWith(".json")) {
+                    val jsonFile = assetManager.open("lectures/$fileName")
+                    val reader = InputStreamReader(jsonFile)
+                    val type = object : TypeToken<List<Lecture>>() {}.type
+                    val lectures: List<Lecture> = gson.fromJson(reader, type)
+                    lectureList.addAll(lectures)
+                }
+            }
+        }
+
+        return lectureList
+    }
+
+    fun loadBundledLectureFromJson(): List <Lecture>  {
+        val fileName = "lectures/lectures_combined.json"
+
+        val context = AppContext.getContext()
+
+        val gson = Gson()
+        val jsonFile = context.assets.open(fileName)
         val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<Lecture>() {}.type
+        val type = object : TypeToken <List<Lecture>>() {}.type
         return gson.fromJson(reader, type)
     }
 
-    fun loadAllLecturesFromJson(context: Context): List<Lecture> {
-        val gson = Gson()
-        val jsonFile = context.assets.open("lectures/lectures_combined.json")
-        val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<List<Lecture>>() {}.type
-        return gson.fromJson(reader, type)
-    }
 
 }

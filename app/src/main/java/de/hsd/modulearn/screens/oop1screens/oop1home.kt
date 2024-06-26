@@ -33,7 +33,9 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.oop1.Lecture
 import de.hsd.modulearn.theme.*
+import de.hsd.modulearn.utils.AssetLoader
 import de.hsd.modulearn.utils.JsonReader
+import kotlinx.serialization.json.Json
 
 @Composable
 fun Oop1Home(navController: NavController) {
@@ -52,8 +54,7 @@ fun Oop1Home(navController: NavController) {
             .padding(innerPadding)
             .padding(20.dp)
         ){
-
-            val lecturesFromJson = JsonReader().loadAllLecturesFromJson(LocalContext.current)
+            val lectureList = AssetLoader().fullLectureList
 
             Column (modifier = Modifier
                 .fillMaxWidth()
@@ -67,8 +68,8 @@ fun Oop1Home(navController: NavController) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                 ) {
-                    items(lecturesFromJson.size){
-                        LectureItem(lecture = lecturesFromJson[it], navController)
+                    items(lectureList.size){
+                        LectureItem(lecture = lectureList[it], navController)
                     }
                 }
             }
@@ -108,7 +109,7 @@ fun LectureItem (
                 style = Typography.labelLarge,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Routes.oop1lektion + "/" + lecture.title)
+                        navController.navigate(Routes.oop1lektion + "/" + lecture.id + "/" + lecture.title)
                     }
                     .align(Alignment.BottomCenter)
                     .clip(RoundedCornerShape(5.dp))
