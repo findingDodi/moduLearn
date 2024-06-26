@@ -62,7 +62,7 @@ fun QuizzesScreen(navController: NavController) {
                             moduleColor = PrimaryMidBlue
                         ),
                         Module(
-                            title = "Quiz 1",
+                            title = "Quiz 2",
                             moduleColor = PrimaryMidBlue
                         ),
                     ), navController

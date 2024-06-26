@@ -19,6 +19,7 @@ import de.hsd.modulearn.data.Routes.oop1quiz
 import de.hsd.modulearn.data.Routes.quizzesscreen
 import de.hsd.modulearn.screens.*
 import de.hsd.modulearn.screens.oop1screens.*
+import de.hsd.modulearn.utils.JsonReader
 
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +27,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val jsonReader = JsonReader()
+        //jsonReader.printAllQuestions(this)
 
         sharedPreferences = getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
 
