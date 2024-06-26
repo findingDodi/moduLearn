@@ -4,6 +4,7 @@ package de.hsd.modulearn.screens.oop1screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -49,11 +50,12 @@ fun Oop1LektionView(navController: NavController, title :String) {
             .padding(innerPadding)
             .padding(20.dp)
         ){
-            Column {
+            Column (
+                verticalArrangement = Arrangement.spacedBy(15.dp),
+            ) {
                 Text(
                     text = title,
-                    style = Typography.headlineMedium,
-                    modifier = Modifier.padding(15.dp)
+                    style = Typography.headlineSmall
                 )
 
                 Box(
@@ -97,7 +99,6 @@ fun Oop1LektionView(navController: NavController, title :String) {
 fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
-        .padding(top = 20.dp)
     ) {
 
         LazyVerticalGrid(
@@ -106,7 +107,7 @@ fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
                 .fillMaxHeight()
         ) {
             items(chapter.size){
-                KapitelItem(lektion = chapter[it], navController)
+                ChapterItem(lektion = chapter[it], navController)
             }
         }
     }
@@ -114,14 +115,14 @@ fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun KapitelItem(
+fun ChapterItem(
     lektion: Chapter,
     navController: NavController) {
     BoxWithConstraints(
         modifier = Modifier
             .padding(5.dp)
-            .aspectRatio(1f)
-            .clip(RoundedCornerShape(10.dp))
+            .aspectRatio(1.25f)
+            .clip(RoundedCornerShape(5.dp))
             .background(PrimaryMidLilac)
     ) {
         Box(
@@ -131,7 +132,7 @@ fun KapitelItem(
         ) {
             Text(
                 text = lektion.title,
-                style = Typography.headlineSmall,
+                style = Typography.titleSmall,
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
             )
@@ -144,10 +145,10 @@ fun KapitelItem(
                     .clickable {
                         navController.navigate(Routes.oop1kapitel + "/" + lektion.title)
                     }
-                    .align(Alignment.BottomEnd)
+                    .align(Alignment.BottomCenter)
                     .clip(RoundedCornerShape(5.dp))
                     .background(PrimaryDarkLilac)
-                    .padding(vertical = 6.dp, horizontal = 15.dp)
+                    .padding(vertical = 6.dp, horizontal = 26.dp)
             )
         }
     }

@@ -123,7 +123,7 @@ fun ModuleItem (
         modifier = Modifier
             .padding(7.5.dp)
             .aspectRatio(2f)
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(5.dp))
             .background(module.moduleColor)
     ) {
         Box(
@@ -153,7 +153,7 @@ fun ModuleItem (
                         navController.navigate(oop1home)
                     }
                     .align(Alignment.BottomEnd)
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(5.dp))
                     .background(PrimaryDarkBlue)
                     .padding(vertical = 6.dp, horizontal = 15.dp)
             )

@@ -77,18 +77,18 @@ val Typography = Typography(
     ),
 
     titleMedium = TextStyle(
-        fontFamily = RalewayFontFamily,
+        fontFamily = RobotoFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 15.sp,
-        lineHeight = 21.sp,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
         letterSpacing = 0.sp,
     ),
 
     titleSmall = TextStyle(
         fontFamily = RobotoFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 12.sp,
-        lineHeight = 15.sp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        lineHeight = 20.sp,
         letterSpacing = 0.sp,
     ),
 

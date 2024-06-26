@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,10 +32,7 @@ import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.oop1.Lecture
-import de.hsd.modulearn.theme.PrimaryDarkBlue
-import de.hsd.modulearn.theme.PrimaryMidBlue
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.JsonReader
 
 @Composable
@@ -67,8 +66,6 @@ fun Oop1Home(navController: NavController) {
 
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    modifier = Modifier
-                        .fillMaxHeight()
                 ) {
                     items(lecturesFromJson.size){
                         LectureItem(lecture = lecturesFromJson[it], navController)
@@ -99,7 +96,7 @@ fun LectureItem (
         ) {
             Text(
                 text = lecture.title,
-                style = Typography.titleMedium,
+                style = Typography.titleSmall,
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
             )

@@ -55,22 +55,22 @@ fun Header(
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .size(40.dp)
+                    .size(35.dp)
                     .shadow(10.dp, RoundedCornerShape(10.dp))
                     .clip(RoundedCornerShape(10.dp))
                     .background(Color.White)
-                    .padding(10.dp)
+                    .padding(5.dp)
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.round_arrow_back_24),
                     contentDescription = "Back",
                     tint = Color.Black,
                     modifier = Modifier
-                        .size(24.dp)
+                        .size(20.dp)
                         .clickable {
                             // zurück navigieren
                             navController.popBackStack()
-                    }
+                        }
                 )
             }
         }
@@ -81,15 +81,21 @@ fun Header(
             )
         }
         // Für die Punkte: Anzeige der aktuellen Punkte im Header
-        Text(
-            text = "$points P",
-            style = Typography.headlineSmall,
-            color = White,
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
+                .shadow(10.dp, RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
                 .background(PrimaryDarkLilac)
-                .padding(PaddingValues(start = 15.dp, end = 15.dp, top = 5.dp, bottom = 5.dp))
-        )
+                .padding(horizontal = 15.dp, vertical = 5.dp)
+        ) {
+            Text(
+                text = "$points P",
+                style = Typography.titleMedium,
+                color = White
+            )
+        }
+
 
     }
 }
