@@ -1,0 +1,88 @@
+{
+  "title": "Zugriffssteuerung",
+  "questions": [
+    {
+      "questionText": "Was ist ein Package in Java?",
+      "answerOptions": [
+        "Eine Gruppierung von Klassen und Interfaces.",
+        "Eine Datei mit dem Namen package.java, die die Metadaten eines Programms enthält.",
+        "Eine spezielle Klasse, die verwendet wird, um Zugriff auf Klassen in einem anderen Package zu regeln."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Die Ordnung von Java-Files erfolgt mittels packaging. Dabei werden inhaltlich-zusammengehörende Klassen gruppiert."
+    },
+    {
+      "questionText": "Wofür werden Packages verwendet?",
+      "answerOptions": [
+        "Packages ermöglichen, Klassen und Interfaces logisch zu gruppieren.",
+        "Packages ermöglichen, den Zugriff auf Klassen und Interfaces zu steuern.",
+        "Packages ermöglichen Vererbung."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Packaging erlaubt zum einen die logische Gruppierung von Java-Files und bietet zu anderen die Zugriffssteuerung durch den Access Modifier 'protected'."
+    },
+    {
+      "questionText": "Was ist der Zweck von Zugriffssteuerung durch Access Modifier?",
+      "answerOptions": [
+        "Einschränkung des Zugriffs auf Klassen, Methoden und Variablen.",
+        "Erleichterung des Zugriffs auf Klassen, Methoden und Variablen.",
+        "Unterbindung des Zugriffs auf Klassen, Methoden und Variablen."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Mittels Access Modifiern kan man den Zugriff auf Klassen, Methoden und Variablen auf unterschiedlichen Ebenen einschränken. Dabei unterscheidet man 'private', 'protected' und 'public'. Wenn man keinen expliziten Modifier angibt, wird der Default verwendet."
+    },
+    {
+      "questionText": "Welcher Access Modifier gibt an, dass eine Klasse oder ein Variable nur innerhalb der aktuellen Klasse sichtbar sein sollte?",
+      "answerOptions": [
+        "public",
+        "private",
+        "protected",
+        "keine Zugriffssteuerung angegeben"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Alle Instanz-Variablen und -Methoden, die als private deklariert werden, können nur intern in dieser Klasse verwendet werden. Von außen ist kein Zugriff möglich."
+    },
+    {
+      "questionText": "Welche Access Modifier gibt an, dass eine Methode oder ein Variable von überall aus sichtbar sein sollte?",
+      "answerOptions": [
+        "public",
+        "private",
+        "protected",
+        "keine Zugriffssteuerung angegeben"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Alle Instanz-Variablen und -Methoden, die als public deklariert werden, sind von überall aus zugänglich. Damit das OO-Konzept eingehalten wird, sollten nur IM public sein. Diese werden dann als öffentliche Schnittstelle zum objekt betrachtet."
+    },
+    {
+      "questionText": "Was bedeutet es, wenn eine Variable als 'protected' deklariert wird?",
+      "answerOptions": [
+        "Die Variable ist nur innerhalb der Klasse sichtbar.",
+        "Die Variable ist innerhalb des aktuellen Pakets sichtbar.",
+        "Die Variable ist von überall aus sichtbar.",
+        "Die Variable ist für Subklassen sichtbar."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        1,
+        3
+      ],
+      "explanation": "Alle Instanz-Variablen und -Methoden, die als protected deklariert werden, stehen sowohl im aktuellen Package als auch in allen definierten Subklassen zur Verfügung."
+    }
+  ]
+}

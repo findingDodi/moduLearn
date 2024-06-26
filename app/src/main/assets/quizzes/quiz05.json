@@ -1,0 +1,257 @@
+{
+  "title": "Klassen und Objekte",
+  "questions": [
+    {
+      "questionText": "Was ist ein Constructor?",
+      "answerOptions": [
+        "Eine Methode, die aufgerufen wird, um ein Objekt zu erzeugen.",
+        "Eine Methode, die verwendet wird, um den Zugriff auf eine Klasse zu steuern.",
+        "Eine Methode, die die Vererbung von Eigenschaften zwischen Klassen ermöglicht."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Ein Konstruktor ist eine besondere Art von Methoden, die für die allgemeine Initialisierung eines Objekts verwendet wird. Ein Konstruktor wird ohne Rückgabetyp definiert, ist aber auch nicht vom Typ void. Er wird ausschließlich nach dem Schlüsselwort 'new' oder innerhalb eines anderen Konstruktors aufgerufen."
+    },
+    {
+      "questionText": "Was ist das 'Armenrecht' in Bezug auf Constructor?",
+      "answerOptions": [
+        "Der Compiler ergänzt immer automagically einen Default-Constructor mit leerem Body.",
+        "Der Compiler ergänzt automagically einen Default-Constructor mit leerem Body, wenn kein Constructor explizit definiert wird.",
+        "Der Compiler ergänzt automagically einen Konstruktor mit einem Standardparameter."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Der automagically eingefügte Konstruktor dient der Bequemlichkeit und verkürzt den Code. Allerdings liegt dadurch auch eine häufige Fehlerquelle vor."
+    },
+    {
+      "questionText": "Wofür kann man Konstruktoren überladen?",
+      "answerOptions": [
+        "Das Überladen ermöglicht, mehrere Konstruktoren zu definieren, die unterschiedliche Namen haben.",
+        "Das Überladen ermöglicht, den gleichen Konstruktor für verschiedene Klassen zu definieren.",
+        "Das Überladen ermöglicht, verschiedene Konstruktoren zu definieren, die unterschiedliche Parameter akzeptieren."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Genau wie bei Prozeduren und Funktionen ist es möglich, mehrere Konstruktoren zu definieren, die sich in den Parametern, die sie akzeptieren unterscheiden."
+    },
+    {
+      "questionText": "Wofür wird this innerhalb eines Konstruktors verwendet?",
+      "answerOptions": [
+        "this referenziert die zuletzt definierte Variable.",
+        "this referenziert den Konstruktor.",
+        "this referenziert das Ziel-Objekt.",
+        "this() führt zum Aufruf eines anderen Konstruktors der gleichen Klasse."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        2,
+        3
+      ],
+      "explanation": "Mit this wird das Ziel-Objekt, das heißt das neu-erzeugte Objekt, referenziert. Wenn ein anderer Konstruktor der aktuellen Klasse aufgerufen werden soll, kann this() verwendet werden."
+    },
+    {
+      "questionText": "Welche Vorgehensweise ist richtig?",
+      "answerOptions": [
+        "Kleinere Konstruktoren rufen Größere auf.",
+        "Größere Konstruktoren rufen Kleinere auf.",
+        "Es sollte immer nur den Default-Konstruktor in einer Klasse geben."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Um Konstruktoren innerhalb eines Konstruktors der gleichen Klasse aufzurufen, wird zunächst ein 'größerer' definiert, welchem die Werte für mehrere bzw. alle IVs übergeben werden. Wenn nun weitere Konstruktoren implementiert werden, werden nicht in diesen selbst die IVs gesetzt, stattdessen wird der 'größere' Konstruktor mittels this() aufgerufen."
+    },
+    {
+      "questionText": "Was ist eine Klassenvariable?",
+      "answerOptions": [
+        "Eine Variable, die der Klasse selbst zugeordnet ist.",
+        "Eine Variable, die von jedem Objekt der Klasse geteilt wird.",
+        "Eine Variable, die nur von einer Methode innerhalb der Klasse genutzt werden kann.",
+        "Eine Variable, die nur innerhalb des Konstruktors der Klasse genutzt werden kann."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Im Gegensatz zu Instanz-Variablen sind Klassen-Variablen der Klasse selbst zugeordnet und somit unabhängig von den Instanzen dieser Klasse. Sie kommt nur ein einziges Mal vor und wird auch statische Variable genannt."
+    },
+    {
+      "questionText": "Wie kann auf eine Klassenvariable zugegriffen werden?",
+      "answerOptions": [
+        "Durch den Aufruf einer Instanzmethode der Klasse.",
+        "Durch den Aufruf einer Klassenmethode der Klasse.",
+        "Durch den direkten Zugriff auf die Variable durch die Klasse."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Syntax: <klassen_name>.<variablen_name> \n Beispiel: StudiCV.laufendeNummer"
+    },
+    {
+      "questionText": "Welches Schlüsselwort wird genutzt, um eine Klassenvariable zu deklarieren?",
+      "answerOptions": [
+        "private",
+        "public",
+        "static"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Syntax: <access_modifier> static <datentyp> <variablen_name>; \n Beispiel: private static int laufendeNummer;"
+    },
+    {
+      "questionText": "Was ist der Unterschied zwischen einer Instanzvariable und einer Klassenvariable?",
+      "answerOptions": [
+        "Eine Instanzvariable ist statisch und wird von der gesamten Klasse geteilt, während eine Klassenvariable an ein spezifisches Objekt gebunden ist.",
+        "Eine Instanzvariable ist an ein spezifisches Objekt gebunden, während eine Klassenvariable von jedem Objekt der Klasse geteilt wird.",
+        "Eine Instanzvariable kann nur innerhalb der Klasse genutzt werden, während eine Klassenvariable von außerhalb der Klasse genutzt werden kann."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Instanzvariablen sind abhängig von einer Instanz. Klassenvariablen sind der Klasse selbst zugeordnet."
+    },
+    {
+      "questionText": "Können Klassenvariablen geerbt werden?",
+      "answerOptions": [
+        "Ja, sie werden automatisch an alle Subklassen vererbt.",
+        "Nein, Klassenvariablen können nicht vererbt werden."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Statische Eigenschaften werden vererbt und stehen somit in den Subklassen zur Verfügung. Sie existieren jedoch auch weiterhin nur ein einziges Mal."
+    },
+    {
+      "questionText": "Welches Schlüsselwort wird genutzt, um eine Konstante zu deklarieren?",
+      "answerOptions": [
+        "final",
+        "static",
+        "const"
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Syntax: static final <datentyp> <variablen_name> \n Beispiel: static final String IBAN_PREFIX = 'DE"
+    },
+    {
+      "questionText": "Wann werden Konstanten verwendet?",
+      "answerOptions": [
+        "Sie werden genutzt, um Werte fest zu definieren, die während der Laufzeit des Programms nicht verändert werden können.",
+        "Sie dienen dazu, Variablen innerhalb einer Klasse zu speichern.",
+        "Sie werden verwendet, um Methoden innerhalb einer Klasse aufzurufen."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Konstanten besitzen einen Wert, der nur einmal gesetzt wird und danach nicht mehr geändert werden kann. Daher werden sie als Klassenvariable definiert."
+    },
+    {
+      "questionText": "Was sind Klassenmethoden?",
+      "answerOptions": [
+        "Methoden, die nur von Objekten einer Klasse aufgerufen werden können.",
+        "Methoden, die nur innerhalb einer Klasse aufgerufen werden können.",
+        "Methoden, die direkt von der Klasse aufgerufen werden können."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Im Gegensatz zu Instanz-Methoden sind Klassen-Methoden der Klasse selbst zugeordnet und somit unabhängig von den Instanzen dieser Klasse. Die Methode soll also funktionieren, ohne dass dafür ein Objekt vorhanden ist."
+    },
+    {
+      "questionText": "Wie wird eine Klassenmethode außerhalb der Klasse aufgerufen?",
+      "answerOptions": [
+        "Über eine Objektinstanz der Klasse",
+        "Mit dem Klassennamen gefolgt von einem Punkt und dem Methodennamen.",
+        "Mit dem Methodennamen gefolgt von einem Punkt und dem Klassennamen."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Syntax: <klassen_name>.<methoden_name>(); \n Beispiel: StudiCM.zufaelligerString()"
+    },
+    {
+      "questionText": "Wie wird eine Klassenmethode innerhalb der Klasse aufgerufen?",
+      "answerOptions": [
+        "Mit dem Methodennamen.",
+        "Mit dem Klassennamen gefolgt von einem Punkt und dem Methodennamen.",
+        "Mit dem Methodennamen gefolgt von einem Punkt und dem Klassennamen."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Innerhalb der Klasse ist die Angabe des Klassennamens beim Aufruf optional."
+    },
+    {
+      "questionText": "Welche Aussagen sind korrekt?",
+      "answerOptions": [
+        "In Klassenmethoden kann man this verwenden.",
+        "In Klassenmethoden kann man this nicht verwenden.",
+        "this referenziert in Klassenmethoden die Klasse selbst.",
+        "this führt in Klassenmethoden zu einem Fehler."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        3
+      ],
+      "explanation": "Da Klassen-Methoden unabhängig von Objekten der Klasse sind, gibt es auch kein Ziel-Objekt, das von this referenziert wird. Somit führt die Verwendung von this zu einem Fehler."
+    },
+    {
+      "questionText": "Welches Schlüsselwort wird verwendet, um eine Klassenmethode zu definieren?",
+      "answerOptions": [
+        "this",
+        "super",
+        "static"
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Mit dem Schlüsselwort static können Variablen und Methoden zu Klassenvariablen und Klassenmethoden werden"
+    },
+    {
+      "questionText": "Können Klassenmethoden private sein?",
+      "answerOptions": [
+        "Ja, aber sie können dann nur innerhalb der Klasse aufgerufen werden.",
+        "Nein, Klassenmethoden müssen immer public sein."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Syntax: <access_modifier> static <datentyp> <methoden_name>() {...}; \n Beispiel: public static String zufaelligerString() {...};"
+    },
+    {
+      "questionText": "Werden Klassenmethoden an Subklassen vererbt?",
+      "answerOptions": [
+        "Ja, Klassenmethoden stehen auch in den Subklassen bereit.",
+        "Nein, Klassenmethoden werden nicht vererbt."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Statische Eigenschaften werden vererbt und stehen somit in den Subklassen zur Verfügung."
+    }
+  ]
+}

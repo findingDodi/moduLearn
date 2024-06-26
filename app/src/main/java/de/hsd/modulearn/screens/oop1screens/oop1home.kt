@@ -15,27 +15,35 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import de.hsd.modulearn.R
-import de.hsd.modulearn.components.*
+import de.hsd.modulearn.components.ButtonChatBot
+import de.hsd.modulearn.components.Footer
+import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.oop1.Oop1Lektion
+import de.hsd.modulearn.data.oop1.Lecture
 import de.hsd.modulearn.theme.*
+import de.hsd.modulearn.utils.JsonReader
 
 @Composable
 fun Oop1Home(navController: NavController) {
     Scaffold (
 
-        topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController,1) }
+        topBar = { Header("OOP1", true, navController) },
+        bottomBar = { Footer(navController,1) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
 
     ) {innerPadding ->
         Box(modifier = Modifier
@@ -44,65 +52,25 @@ fun Oop1Home(navController: NavController) {
             .padding(innerPadding)
             .padding(20.dp)
         ){
-            Column {
-                LecturesOverview(oop1Lektionen = listOf(
-                    Oop1Lektion(
-                        title = "01 - Grundlagen",
-                        description = "Hallo Test"
-                    ),
-                    Oop1Lektion(
-                        title = "02 - Programmiersprachen",
-                        description = "Hallo Test"
-                    ),
-                    Oop1Lektion(
-                        title = "03 - Grundlagen",
-                        description = "Hallo Test"
-                    ),
-                    Oop1Lektion(
-                        title = "04 - Programmiersprachen",
-                        description = "Hallo Test"
-                    ),
-                ), navController)
 
-            }
+            val lecturesFromJson = JsonReader().loadAllLecturesFromJson(LocalContext.current)
 
-            Box(modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(bottom = 120.dp, end = 15.dp)){
-                ButtonWithIcon(
-                    iconId = R.drawable.round_chat_bubble_24,
-                    backgroundcolor = PrimaryDarkBlue,
-                    color = White,
-                    text = "ChatBot",
-                    destinationRoute = Routes.chatBot,
-                    navController = navController
+            Column (modifier = Modifier
+                .fillMaxWidth()
+            ) {
+                Text(
+                    text = "Lektionenübersicht",
+                    style = Typography.headlineSmall,
+                    modifier = Modifier.padding(PaddingValues(bottom= 15.dp))
                 )
-            }
-        }
-    }
 
-}
-
-
-@Composable
-fun LecturesOverview(oop1Lektionen: List<Oop1Lektion>, navController:NavController) {
-    Column (modifier = Modifier
-        .fillMaxWidth()
-    ) {
-        Text(
-            text = "Lektionenübersicht",
-            style = Typography.headlineSmall,
-            modifier = Modifier
-                .padding(PaddingValues(bottom= 15.dp))
-        )
-
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxHeight()
-        ) {
-            items(oop1Lektionen.size){
-                Oop1LektionItem(lektion = oop1Lektionen[it], navController)
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                ) {
+                    items(lecturesFromJson.size){
+                        LectureItem(lecture = lecturesFromJson[it], navController)
+                    }
+                }
             }
         }
     }
@@ -110,15 +78,15 @@ fun LecturesOverview(oop1Lektionen: List<Oop1Lektion>, navController:NavControll
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun Oop1LektionItem (
-    lektion: Oop1Lektion,
+fun LectureItem (
+    lecture: Lecture,
     navController:NavController
 ){
     BoxWithConstraints(
         modifier = Modifier
             .padding(7.5.dp)
-            .aspectRatio(1f)
-            .clip(RoundedCornerShape(10.dp))
+            .aspectRatio(1.25f)
+            .clip(RoundedCornerShape(5.dp))
             .background(PrimaryMidBlue)
     ) {
         Box(
@@ -127,11 +95,12 @@ fun Oop1LektionItem (
                 .padding(15.dp)
         ) {
             Text(
-                text = lektion.title,
-                style = Typography.headlineSmall,
+                text = lecture.title,
+                style = Typography.titleSmall,
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
             )
+
             // Start Button
             Text(
                 text = "Lektion starten",
@@ -139,9 +108,9 @@ fun Oop1LektionItem (
                 style = Typography.labelLarge,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Routes.oop1lektion + "/" + lektion.title)
+                        navController.navigate(Routes.oop1lektion + "/" + lecture.title)
                     }
-                    .align(Alignment.BottomEnd)
+                    .align(Alignment.BottomCenter)
                     .clip(RoundedCornerShape(5.dp))
                     .background(PrimaryDarkBlue)
                     .padding(vertical = 6.dp, horizontal = 15.dp)

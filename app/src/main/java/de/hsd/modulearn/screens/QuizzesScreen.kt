@@ -37,7 +37,10 @@ fun QuizzesScreen(navController: NavController) {
     Scaffold (
 
         topBar = { Header("Quizzes", false, navController) },
-        bottomBar = { Footer(navController, 2) }
+        bottomBar = { Footer(navController, 2) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
 
     ) {innerPadding ->
         Box(
@@ -66,23 +69,8 @@ fun QuizzesScreen(navController: NavController) {
                 )
 
             }
-
-            Box(modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(bottom = 120.dp, end = 15.dp)
-            ) {
-                ButtonWithIcon(
-                    iconId = R.drawable.round_chat_bubble_24,
-                    backgroundcolor = PrimaryDarkBlue,
-                    color = White,
-                    text = "ChatBot",
-                    destinationRoute = Routes.chatBot,
-                    navController = navController
-                )
-            }
         }
     }
-
 }
 
 @Composable

@@ -1,0 +1,87 @@
+{
+  "title": "Variablen",
+  "questions": [
+    {
+      "questionText": "Welche Konventionen gibt es in Java bei der Benennung von Variablen?",
+      "answerOptions": [
+        "Variablen müssen mit einem Großbuchstaben beginnen.",
+        "Variablennamen sollten aussagekräftig sein und aus mehreren Wörtern bestehen, die aus mit Hilfe von CamelCase zusammengesetzt werden.",
+        "Variablennamen sollten möglichst kurz sein und am besten nur Abkürzungen sein.",
+        "Variablennamen sollten nur aus Zahlen bestehen."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Der Name einer Variable sollte ein gut-beschreibender Bezeichner sein. Dabei gilt, dass er aus beliebig vielen Buchstaben, Ziffern und Underscores bestehen darf, sofern er nicht mit einer Ziffer beginnt und kein reserviertes Wort enthält."
+    },
+    {
+      "questionText": "Wie werden Variablen in Java definiert?",
+      "answerOptions": [
+        "Variablen müssen mit dem Schlüsselwort 'var' deklariert werden.",
+        "Variablen müssen mit dem Datentyp und einem Bezeichner (Namen) deklariert werden.",
+        "Variablen müssen mit dem Schlüsselwort 'let' deklariert werden."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Syntax: <datentyp> <name>; \n Beispiel: int my_number;"
+    },
+    {
+      "questionText": "Was ist Strong-Typing?",
+      "answerOptions": [
+        "Ein Konzept, bei dem Variablen ohne explizite Typisierung verwendet werden können.",
+        "Ein Konzept, bei dem Variablen verschiedene Datentypen gleichzeitig annehmen können.",
+        "Ein Konzept, bei dem Variablen bei der Deklaration einen Datentyp erhalten und dieser während der Laufzeit des Programms nicht geändert werden kann."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Strong-Typing gehört zum Schisser-Prinzip und stellt somit sicher, dass Fehlerquellen frühzeitig gefunden werden können."
+    },
+    {
+      "questionText": "Welche Vorteile hat Strong-Typing in der Programmierung?",
+      "answerOptions": [
+        "Erhöhung der Lesbarkeit und Verständlichkeit des Codes, Verbesserung der Codequalität.",
+        "Erhöhung der Geschwindigkeit und Effizienz des Programms, Verkürzung der Entwicklungszeit.",
+        "Erkennung von Fehlern zur Kompilierzeit.",
+        "Es gibt kein Strong-Typing."
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Strong-Typing beschreibt das Konzept der frühen und starken Datentyp-Prüfung und unterstützt daher das Schisser-Prinzip."
+    },
+    {
+      "questionText": "Welcher Operator wird in Java verwendet, um den Wert einer Variable zu ändern?",
+      "answerOptions": [
+        "=",
+        "==",
+        "!="
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Der Operator '=' wird verwendet, um einer Variablen einen (neuen) Wert zuzuweisen."
+    },
+    {
+      "questionText": "Welche Zustände kann eine Referenz-Variable annehmen?",
+      "answerOptions": [
+        "Nicht initialisiert",
+        "null",
+        "Eine Referenz"
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        1,
+        2
+      ],
+      "explanation": "Eine Referenz-Variable kann nicht 'nicht initialisiert' sein, sonst kommt es zu einer Fehlermeldung. Abhilfe schafft hier der Zustand 'null', der bedeutet, dass die Referenz noch 'unbekannt' ist."
+    }
+  ]
+}

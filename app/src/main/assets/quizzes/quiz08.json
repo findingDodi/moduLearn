@@ -1,0 +1,119 @@
+{
+  "title": "Abstrakte Klassen",
+  "questions": [
+    {
+      "questionText": "Wofür werden abstrakte Klassen verwendet?",
+      "answerOptions": [
+        "Sie dienen als Vorlage für spezifische Klassen.",
+        "Sie dienen dazu, eine Klasse instanziierbar zu machen.",
+        "Sie dienen dazu, die Vererbungshierarchie zu vereinfachen.",
+        "Sie unterscheiden sich nicht von anderen Klassen."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Eine abstrakte Klasse ist eine Klasse, die nicht instanziiert werden kann und als Superklasse für spezifischere Klassen genutzt wird."
+    },
+    {
+      "questionText": "Wie wird eine abstrakte Klasse definiert?",
+      "answerOptions": [
+        "class MyClass",
+        "public abstract class MyClass",
+        "abstract class MyClass",
+        "abstract MyClass"
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        1,
+        2
+      ],
+      "explanation": "Syntax: <access_modifier> abstract class <klassen_name> {...}"
+    },
+    {
+      "questionText": "Können Objekte von abstrakten Klassen instanziiert werden?",
+      "answerOptions": [
+        "Ja, sie können, wie normale Klassen instanziiert werden.",
+        "Ja, aber nur in Ausnahmefällen.",
+        "Ja, aber nur, wenn die abstrakte Methode nicht aufgerufen wird.",
+        "Nein, es ist nicht möglich, Objekte von abstrakten Klassen zu instanziieren."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        3
+      ],
+      "explanation": "Eine abstrakte Klasse kann nicht instanziiert werden."
+    },
+    {
+      "questionText": "Können Variablen mit dem Datentyp der abstrakten Klasse definiert werden?",
+      "answerOptions": [
+        "Ja, sie können, wie normale Variablen definiert werden.",
+        "Ja, aber nur, wenn die abstrakte Klasse keine abstrakte Methode definiert.",
+        "Ja, aber nur, wenn die abstrakte Klasse keine Variablen enthält.",
+        "Nein, das ist nicht möglich."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Durch das Definieren von Variablen mit dem Datentyp einer abstrakten Klasse wird Polymorphismus ermöglicht."
+    },
+    {
+      "questionText": "Was sind abstrakte Methoden?",
+      "answerOptions": [
+        "Methoden, die in einer abstrakten Klasse definiert sind und keine Rückgabe haben.",
+        "Methoden, die in einer abstrakten Klasse definiert sind und keinen Namen haben.",
+        "Methoden, die in einer abstrakten Klasse definiert sind und keinen Body haben.",
+        "Es gibt keine abstrakten Methoden."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Eine abstrakte Methode besitzt keinen Body und kann somit auch nicht ausgeführt werden."
+    },
+    {
+      "questionText": "Was gilt für abstrakte Methoden?",
+      "answerOptions": [
+        "Abstrakte Methoden müssen in einer nicht-abstrakten Subklasse redefiniert werden",
+        "Abstrakte Methoden müssen in einer nicht-abstrakten Subklasse nicht redefiniert werden",
+        "Abstrakte Methoden müssen in einer abstrakten Subklasse redefiniert werden",
+        "Abstrakte Methoden können in einer abstrakten Subklasse redefiniert werden"
+      ],
+      "type": "MULTIPLE_CHOICE",
+      "answer": [
+        0,
+        3
+      ],
+      "explanation": "In jeder nicht-abstrakten Subklasse muss die abstrakte Methode redefiniert werden, da sie potenziell aufgerufen werden kann. Dahingegen ist die Redefinition in einer abstrakten Subklasse nicht notwendig, da kein Aufruf möglich ist."
+    },
+    {
+      "questionText": "Können nicht-abstrakte Methoden in einer abstrakten Klasse definiert werden?",
+      "answerOptions": [
+        "Ja, das ist möglich.",
+        "Ja, aber nur, wenn die nicht-abstrakte Methode keinen Rückgabewert hat.",
+        "Ja, aber nur, wenn die nicht-abstrakte Methode nicht aufgerufen wird.",
+        "Nein, das ist nicht möglich."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Eine abstrakte Klasse kann auch nicht-abstrakte Methoden besitzen, beispielsweise um eine gemeinsame Methode der Subklassen zu definieren."
+    },
+    {
+      "questionText": "Können abstrakte Methoden in nicht-abstrakten Klassen definiert werden",
+      "answerOptions": [
+        "Ja, das ist möglich.",
+        "Ja, aber nur in bestimmten Klassen.",
+        "Ja, aber nur, wenn die abstrakte Methode nicht aufgerufen wird.",
+        "Nein, das ist nicht möglich."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        3
+      ],
+      "explanation": "Eine nicht-abstrakte Klasse kann keinen abstrakten Methoden besitzen, da der Aufruf zu einem Fehler führe würde."
+    }
+  ]
+}

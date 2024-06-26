@@ -17,6 +17,7 @@ val SecondaryRed = Color(0xFFEDB8A8)
 val White = Color(0xFFF6F6F6)
 val Black = Color(0xFF2A2A2A)
 
+val LighterGrey = Color(0xFFFFFFFF)
 val LightGrey = Color(0xFFE6E6E6)
 val LightMidGrey = Color(0xFFBDBDBD)
 val DarkGrey = Color(0xFF555555)

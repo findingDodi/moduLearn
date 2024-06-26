@@ -1,0 +1,95 @@
+{
+  "title": "Vererbung",
+  "questions": [
+    {
+      "questionText": "Was ist der Nutzen von Vererbung?",
+      "answerOptions": [
+        "Vererbung ermöglicht das Wiederverwenden von Code und die Reduzierung von Redundanz.",
+        "Vererbung erhöht die Komplexität von Klassen und erschwert die Wartbarkeit von Code.",
+        "Vererbung ist nur bei sehr speziellen Anwendungsfällen sinnvoll."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "Gemeinsame Eigenschaften mehrere Klassen sollen nur 1x in einer Klasse definiert werden und in allen Klassen bereitstehen. Dies wird durch das Vererbungskonzept ermöglicht."
+    },
+    {
+      "questionText": "Was ist die is_a Beziehung?",
+      "answerOptions": [
+        "Eine Beziehung zwischen einer Superklasse und einer Subklasse.",
+        "Eine Beziehung zwischen Objekten verschiedener Klassen.",
+        "Eine Beziehung zwischen einem Attribut und einem Objekt."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        0
+      ],
+      "explanation": "'<subtyp> is_a <supertyp>' ist die formale Ausdrucksweise, um das Verhältnis zwischen einer Superklasse und einer Subklasse anzugeben."
+    },
+    {
+      "questionText": "Was besagt das Substitutions-Prinzip?",
+      "answerOptions": [
+        "Objekte einer Superklasse können an Stelle von Objekten der Subklasse verwendet werden.",
+        "Objekte einer Subklasse können an Stelle von Objekten der Superklasse verwendet werden."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Das Substitutions-Prinzip gründet auf dem Schisser-Prinzip. Hier wird sichergestellt, dass alle Methoden-Aufrufe für die Variable auch nach der Zuweisung noch funktionieren müssen, das heißt, dass das Objekt, das nun referenziert wird, mindestens alle Eigenschaften des vorherigen Objekts besitzen muss. Dies trifft auf alle Objekte der Subklasse zu."
+    },
+    {
+      "questionText": "Was ist die Rolle der Klasse 'Object' in der Vererbungshierarchie?",
+      "answerOptions": [
+        "Sie ist eine spezielle Klasse, die nur von der Java Virtual Machine verwendet wird.",
+        "Sie ist eine Klasse, die nur von fortgeschrittenen Programmierern verwendet wird.",
+        "Sie ist die Klasse, von der alle anderen Klassen abgeleitet werden."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Object ist die Mutter aller Klasse und die Default-Superklasse. Wenn bei der Definition einer Klasse keine Superklasse angegeben wird, ist die Klasse also automatisch Superklasse. Somit ist jeder Typ (in)direkt von Object abgeleitet."
+    },
+    {
+      "questionText": "Was ist ein UML-Diagramm?",
+      "answerOptions": [
+        "Ein Diagramm, das den Datenfluss innerhalb eines Programms darstellt.",
+        "Ein Diagramm, das die Struktur und Verhaltensweise von Klassen und Objekten in einem System darstellt."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "UML ist kurz für 'Unified Modeling Language'."
+    },
+    {
+      "questionText": "Wie werden Subklassen in Java definiert?",
+      "answerOptions": [
+        "Mit dem Schlüsselwort 'inherits'.",
+        "Mit dem Schlüsselwort 'extends'.",
+        "Mit dem Schlüsselwort 'implements'.",
+        "Mit dem Schlüsselwort 'abstract'."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        1
+      ],
+      "explanation": "Syntax: public class <name> extends <superklasse> {...} \n Beispiel: public class Kreis extends Form {...}"
+    },
+    {
+      "questionText": "Wie wird der Constructor der Superklasse aufgerufen?",
+      "answerOptions": [
+        "Mittels 'superconstructor()'.",
+        "Mittels 'this()'.",
+        "Mittels 'super()'."
+      ],
+      "type": "SINGLE_CHOICE",
+      "answer": [
+        2
+      ],
+      "explanation": "Allgemein gilt, dass jede Klasse selbst für ihre IVs verantwortlich ist. Somit muss im Konstruktor einer Subklasse dafür gesorgt werden, dass ein Konstruktor der Superklasse aufgerufen wird. Der Compiler erzeugt automagically einen Aufruf von super() als erste Zeile, es sei denn, dort steht bereits ein Aufruf eines Konstruktors der Superklasse."
+    }
+  ]
+}

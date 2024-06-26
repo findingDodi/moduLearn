@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
+import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
@@ -43,14 +44,18 @@ fun HomeScreen(navController: NavController) {
     Scaffold (
 
         topBar = { Header("moduLearn", false, navController) },
-        bottomBar = { Footer(navController, 0) }
+        bottomBar = { Footer(navController, 0) },
+        floatingActionButton = {
+            ButtonChatBot(navController = navController)
+        }
 
     ) {innerPadding ->
         Box(
             modifier = Modifier
                 .background(White)
                 .fillMaxSize()
-                .padding(innerPadding).padding(20.dp)
+                .padding(innerPadding)
+                .padding(20.dp)
         ) {
             Column(
                 modifier = Modifier
@@ -71,23 +76,8 @@ fun HomeScreen(navController: NavController) {
                 )
 
             }
-
-            Box(modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(bottom = 120.dp, end = 15.dp)
-            ) {
-                ButtonWithIcon(
-                    iconId = R.drawable.round_chat_bubble_24,
-                    backgroundcolor = PrimaryDarkBlue,
-                    color = White,
-                    text = "ChatBot",
-                    destinationRoute = Routes.chatBot,
-                    navController = navController
-                )
-            }
         }
     }
-
 }
 
 
@@ -133,7 +123,7 @@ fun ModuleItem (
         modifier = Modifier
             .padding(7.5.dp)
             .aspectRatio(2f)
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(5.dp))
             .background(module.moduleColor)
     ) {
         Box(
@@ -163,7 +153,7 @@ fun ModuleItem (
                         navController.navigate(oop1home)
                     }
                     .align(Alignment.BottomEnd)
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(5.dp))
                     .background(PrimaryDarkBlue)
                     .padding(vertical = 6.dp, horizontal = 15.dp)
             )

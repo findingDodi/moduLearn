@@ -13,16 +13,12 @@ import de.hsd.modulearn.theme.*
 
 @Composable
 fun ButtonChatBot(navController: NavController) {
-    Box(
-        modifier = Modifier.padding(bottom = 120.dp, end = 15.dp),
-    ){
-        ButtonWithIcon(
-            iconId = R.drawable.round_chat_bubble_24,
-            backgroundcolor = PrimaryDarkBlue,
-            color = White,
-            text = "ChatBot",
-            destinationRoute = Routes.chatBot,
-            navController = navController
-        )
-    }
+    ButtonWithIcon(
+        iconId = R.drawable.round_chat_bubble_24,
+        backgroundcolor = PrimaryDarkBlue,
+        color = White,
+        text = "ChatBot",
+        destinationRoute = Routes.chatBot,
+        navController = navController
+    )
 }
