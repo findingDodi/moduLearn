@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 data class Question(
     val questionText: String?,
     val answerOptions: List<String>?,
+    val type: String?,
     val answer: List<Int>?,
     val explanation: String?,
 )
