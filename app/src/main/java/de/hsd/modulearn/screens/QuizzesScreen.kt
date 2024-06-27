@@ -30,7 +30,11 @@ import de.hsd.modulearn.components.*
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.Routes.oop1home
+import de.hsd.modulearn.data.Routes.oop1quiz
+import de.hsd.modulearn.data.oop1.Lecture
+import de.hsd.modulearn.data.oop1.Quiz
 import de.hsd.modulearn.theme.*
+import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
 fun QuizzesScreen(navController: NavController) {
@@ -54,19 +58,8 @@ fun QuizzesScreen(navController: NavController) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-
-                QuizzesOverview(
-                    modules = listOf(
-                        Module(
-                            title = "Quiz 1",
-                            moduleColor = PrimaryMidBlue
-                        ),
-                        Module(
-                            title = "Quiz 2",
-                            moduleColor = PrimaryMidBlue
-                        ),
-                    ), navController
-                )
+                val lectureList = AssetLoader().fullLectureList
+                QuizzesOverview(lectureList, navController)
 
             }
         }
@@ -74,7 +67,7 @@ fun QuizzesScreen(navController: NavController) {
 }
 
 @Composable
-fun QuizzesOverview(modules: List<Module>, navController:NavController) {
+fun QuizzesOverview(lectures: List<Lecture>, navController:NavController) {
     Column (modifier = Modifier
         .fillMaxWidth()
     ){
@@ -92,8 +85,8 @@ fun QuizzesOverview(modules: List<Module>, navController:NavController) {
             modifier = Modifier
                 .fillMaxHeight()
         ) {
-            items(modules.size){
-                QuizzesItem(module = modules[it], navController)
+            items(lectures.size){
+                QuizzesItem(lecture = lectures[it], navController)
             }
         }
 
@@ -103,7 +96,7 @@ fun QuizzesOverview(modules: List<Module>, navController:NavController) {
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun QuizzesItem (
-    module: Module,
+    lecture: Lecture,
     navController:NavController
 ){
 
@@ -116,19 +109,27 @@ fun QuizzesItem (
             .padding(7.5.dp)
             .aspectRatio(2f)
             .clip(RoundedCornerShape(10.dp))
-            .background(module.moduleColor)
+            .background(PrimaryMidBlue)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(15.dp)
         ) {
-            Text(
-                text = module.title,
-                style = Typography.headlineSmall,
-                color = White,
+            Column(
                 modifier = Modifier.align(Alignment.TopStart)
-            )
+            ) {
+                Text(
+                    text = "Quiz 0" + lecture.id,
+                    style = Typography.displayMedium,
+                    color = White
+                )
+                Text(
+                    text = lecture.title,
+                    style = Typography.headlineSmall,
+                    color = White
+                )
+            }
             // Start Button
             Text(
                 text = "Start",
@@ -137,12 +138,12 @@ fun QuizzesItem (
                 modifier = Modifier
                     .clickable {
                         //Für die Punkte: Punkte basierend auf dem Modultitel erhöhen
-                        when (module.title) {
+                        when (lecture.title) {
                             "OOP1" -> mainActivity.setPoints(mainActivity.getPoints() + 20)
                             "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
                             // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
                         }
-                        navController.navigate(oop1home)
+                        navController.navigate(oop1quiz + "/" + lecture.id)
                     }
                     .align(Alignment.BottomEnd)
                     .clip(RoundedCornerShape(10.dp))

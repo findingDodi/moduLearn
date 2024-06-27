@@ -44,7 +44,7 @@ fun Oop1Quiz(
     var feedbackMessage by remember { mutableStateOf("") }
     var showNextButton by remember { mutableStateOf(false) }
     var answerColors by remember { mutableStateOf<List<Color>>(emptyList()) }
-    var correctAnswers by remember { mutableStateOf(0) } // Zustand für korrekt beantwortete Fragen
+    var correctAnswers by remember { mutableStateOf(0) }
 
     Scaffold(
         topBar = { Header(title = "Quiz", backButton = true, navController = navController) },
@@ -168,8 +168,6 @@ fun Oop1Quiz(
                                         showNextButton = false
                                         answerColors = List(quiz.questions[currentQuestionIndex].answerOptions!!.size) { LightGrey }
                                     } else {
-                                        // Quiz ist abgeschlossen, navigiere zu Ergebnisseite
-                                        correctAnswers = calculateCorrectAnswers(quiz.questions, selectedAnswers, quizLogic)
                                         navController.navigate(Routes.oop1quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size)
                                     }
                                 }
@@ -190,7 +188,12 @@ fun Oop1Quiz(
                                 if (selectedAnswers.isNotEmpty()) {
                                     if (question != null) {
                                         val isCorrect = quizLogic.areMultipleChoiceAnswersCorrect(selectedAnswers, question.answer)
-                                        feedbackMessage = if (isCorrect) "Richtig!" else "Falsch. ${question.explanation ?: ""}"
+                                        feedbackMessage = if (isCorrect) {
+                                            correctAnswers++ // Erhöhe den Zähler für korrekte Antworten
+                                            "Richtig!"
+                                        } else {
+                                            "Falsch. ${question.explanation ?: ""}"
+                                        }
                                         showNextButton = true
                                         answerColors = question.answerOptions!!.mapIndexed { index, _ ->
                                             when {
@@ -254,21 +257,4 @@ fun AnswerOption(
     ) {
         Text(text = answer)
     }
-}
-
-// Hilfsfunktion zum Berechnen der korrekt beantworteten Fragen
-private fun calculateCorrectAnswers(
-    questions: List<Question>,
-    selectedAnswers: List<Int>,
-    quizLogic: QuizLogic
-): Int {
-    var correctCount = 0
-    questions.forEachIndexed { index, question ->
-        val correctAnswers = question.answer ?: emptyList()
-        val selectedAnswer = selectedAnswers.getOrNull(index)
-        if (selectedAnswer != null && quizLogic.isAnswerCorrect(selectedAnswer, correctAnswers)) {
-            correctCount++
-        }
-    }
-    return correctCount
 }
