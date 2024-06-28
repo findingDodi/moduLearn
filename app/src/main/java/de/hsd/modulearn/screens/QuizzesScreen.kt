@@ -131,13 +131,21 @@ fun QuizzesItem (
                 color = White,
                 style = Typography.bodyMedium,
                 modifier = Modifier
+
                     .clickable {
+                        /*
                         //Für die Punkte: Punkte basierend auf dem Modultitel erhöhen
                         when (lecture.title) {
                             "OOP1" -> mainActivity.setPoints(mainActivity.getPoints() + 20)
                             "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
-                            // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
+                            // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn
+
+
                         }
+
+                         */
+
+
                         navController.navigate(oop1quiz + "/" + lecture.id)
                     }
                     .align(Alignment.BottomEnd)

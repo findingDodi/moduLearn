@@ -61,7 +61,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
                     .padding(15.dp)
             ) {
                 // Fortschrittskreis und Prozentanzeige
-                val progress = points / 100f // assuming max points is 100
+                val progress = points / 1000f // assuming max points is 100
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
