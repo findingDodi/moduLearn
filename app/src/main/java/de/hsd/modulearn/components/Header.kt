@@ -5,11 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+
 import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
 import de.hsd.modulearn.theme.*
@@ -41,7 +39,6 @@ fun Header(
     val mainActivity = context as MainActivity
     val points = mainActivity.getPoints() // Für die Punkte: Abrufen der aktuellen Punkte
 
-
     Row (
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -49,9 +46,14 @@ fun Header(
             .shadow(10.dp)
             .background(White)
             .fillMaxWidth()
-            .padding(PaddingValues(top = 40.dp, start = 15.dp, end = 15.dp, bottom = 15.dp))
+            .padding(
+                top = 40.dp,
+                start = 15.dp,
+                end = 15.dp,
+                bottom = 15.dp
+            )
     ) {
-        if(backButton){
+        if (backButton) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
@@ -74,18 +76,20 @@ fun Header(
                 )
             }
         }
+
         Column {
-            Text(text = "$title",
+            Text(
+                text = title,
                 style = Typography.headlineLarge,
                 color = PrimaryDarkBlue
             )
         }
+
         // Für die Punkte: Anzeige der aktuellen Punkte im Header
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .shadow(10.dp, RoundedCornerShape(10.dp))
-                .clip(RoundedCornerShape(10.dp))
+                .clip(RoundedCornerShape(20.dp))
                 .background(PrimaryDarkLilac)
                 .padding(horizontal = 15.dp, vertical = 5.dp)
         ) {
@@ -95,7 +99,5 @@ fun Header(
                 color = White
             )
         }
-
-
     }
 }

@@ -11,8 +11,11 @@ val PrimaryMidLilac = Color(0xFFCBBBD6)
 val PrimaryDarkLilac = Color(0xFF9A9CC2)
 
 val SecondaryGreen = Color(0xFFA8EDAB)
+val SecondaryGreenLight = Color(0xFFD8F2D9)
 val SecondaryYellow = Color(0xFFF7DE97)
+val SecondaryYellowLight = Color(0xFFF7EDD1)
 val SecondaryRed = Color(0xFFEDB8A8)
+val SecondaryRedLight = Color(0xFFF0DFDA)
 
 val White = Color(0xFFF6F6F6)
 val Black = Color(0xFF2A2A2A)

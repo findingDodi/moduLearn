@@ -43,7 +43,6 @@ fun ButtonWithIcon(
             .background(backgroundcolor)
             .padding(10.dp)
             .clickable {
-                // zurück navigieren
                 navController.navigate(destinationRoute)
             }
         ) {

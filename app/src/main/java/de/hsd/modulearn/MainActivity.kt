@@ -58,19 +58,19 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(moduleview) {
-                    Oop1Home(navController)
+                    ModuleView(navController)
                 }
 
                 composable("$lectureview/{id}/{title}") {
                     val id = it.arguments?.getString("id")?.toIntOrNull()
                     val title = it.arguments?.getString("title")
-                    Oop1LektionView(navController, id?:1,title?:"Kein Titel")
+                    LectureView(navController, id?:1,title?:"Kein Titel")
                 }
 
                 composable("$chapterview/{title}/{content}") {
                     val title = it.arguments?.getString("title")
                     val content = it.arguments?.getString("content")
-                    Oop1ChapterView(navController, title?:"Kein Titel", content?:"kein Inhalt")
+                    ChapterView(navController, title?:"Kein Titel", content?:"kein Inhalt")
                 }
 
                 composable("$quizview/{id}") {
@@ -83,13 +83,13 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(roadmapview){
-                    Oop1RoadmapView(navController)
+                    RoadmapView(navController)
                 }
 
                 composable("$quizresultview/{correctAnswers}/{quizQuestionsSize}") {
                     val correctAnswers = it.arguments?.getString("correctAnswers")?.toIntOrNull()
                     val quizQuestionsSize = it.arguments?.getString("quizQuestionsSize")?.toIntOrNull()
-                    QuizResultScreen(navController, correctAnswers?:1,quizQuestionsSize?:1 )
+                    QuizResultView(navController, correctAnswers?:1,quizQuestionsSize?:1 )
                 }
             })
         }

@@ -11,8 +11,8 @@ import de.hsd.modulearn.theme.*
 fun ButtonChatBot(navController: NavController) {
     ButtonWithIcon(
         iconId = R.drawable.round_chat_bubble_24,
-        backgroundcolor = PrimaryDarkBlue,
-        color = White,
+        backgroundcolor = White,
+        color = DarkGrey,
         text = "ChatBot",
         destinationRoute = Routes.chatbotview,
         navController = navController,

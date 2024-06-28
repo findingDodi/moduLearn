@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+
 import de.hsd.modulearn.R
 import de.hsd.modulearn.data.BottomMenuContent
 import de.hsd.modulearn.data.Routes.homescreen
@@ -23,6 +24,7 @@ fun Footer(
     navController: NavController,
     selectedItemIndex: Int
 ) {
+
     val items = listOf(
         BottomMenuContent("Home", homescreen, R.drawable.round_home_24),
         BottomMenuContent("Lektionen", roadmapview, R.drawable.round_bookmarks_24),

@@ -18,7 +18,7 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 
 @Composable
-fun Oop1ChapterView(navController: NavController, title :String, content: String) {
+fun ChapterView(navController: NavController, title :String, content: String) {
     Scaffold (
 
         topBar = { Header("OOP1", true, navController) },

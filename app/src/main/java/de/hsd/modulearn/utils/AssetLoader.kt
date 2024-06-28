@@ -2,14 +2,15 @@ package de.hsd.modulearn.utils
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.module.Chapter
 import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.data.module.Quiz
 import java.io.InputStreamReader
 
 class AssetLoader {
-    val fullLectureList: List<Lecture> = loadBundledLectureFromJson()
 
+    val fullLectureList: List<Lecture> = loadBundledLectureFromJson()
     val fullQuizList : List <Quiz> = getAllQuizzes()
 
     fun getChaptersFromLectureById(id: Int): List<Chapter>? {
@@ -44,7 +45,7 @@ class AssetLoader {
         return gson.fromJson(reader, type)
     }
 
-    fun loadBundledLectureFromJson(): List <Lecture>  {
+    fun loadBundledLectureFromJson(): List<Lecture>  {
         val fileName = "lectures/bundled_lectures.json"
 
         val context = AppContext.getContext()
@@ -52,10 +53,9 @@ class AssetLoader {
         val gson = Gson()
         val jsonFile = context.assets.open(fileName)
         val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<List<Lecture>>() {}.type
+        val type = object : TypeToken<List<Lecture>>(){}.type
         return gson.fromJson(reader, type)
     }
-
 }
 
 

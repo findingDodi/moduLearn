@@ -45,8 +45,10 @@ fun Oop1Quiz(
     var correctAnswers by remember { mutableStateOf(0) }
 
     Scaffold(
+
         topBar = { Header(title = "Quiz", backButton = true, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
+
     ) { innerPadding ->
         Box(
             modifier = Modifier
