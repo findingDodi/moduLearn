@@ -4,12 +4,11 @@ package de.hsd.modulearn.screens.module
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,16 +29,16 @@ import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.module.*
+import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
-fun Oop1LektionView(navController: NavController, id : Int, title :String) {
+fun Oop1Home(navController: NavController) {
     Scaffold (
 
         topBar = { Header("OOP1", true, navController) },
-        bottomBar = { Footer(navController, 1) },
+        bottomBar = { Footer(navController,1) },
         floatingActionButton = {
             ButtonChatBot(navController = navController)
         }
@@ -51,53 +50,35 @@ fun Oop1LektionView(navController: NavController, id : Int, title :String) {
             .padding(innerPadding)
             .padding(20.dp)
         ){
-            Column (
-                verticalArrangement = Arrangement.spacedBy(15.dp),
+            val lectureList = AssetLoader().fullLectureList
+
+            Column (modifier = Modifier
+                .fillMaxWidth()
             ) {
                 Text(
-                    text = title,
-                    style = Typography.headlineSmall
+                    text = "Lektionenübersicht",
+                    style = Typography.headlineSmall,
+                    modifier = Modifier.padding(PaddingValues(bottom= 15.dp))
                 )
 
-                Box(
-                    contentAlignment = Alignment.Center,
+                ButtonWithIcon(
+                    iconId = R.drawable.round_alt_route_24,
+                    backgroundcolor = LightGrey,
+                    color = Black,
+                    text = "Roadmap" ,
+                    destinationRoute = Routes.roadmapview,
+                    navController = navController,
+                    modifier = Modifier
+                )
+
+
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
                 ) {
-                    ButtonWithIcon(
-                        iconId = R.drawable.round_arrow_forward_24,
-                        backgroundcolor = PrimaryDarkLilac,
-                        color = White,
-                        text = "Quiz starten",
-                        destinationRoute = Routes.oop1quiz + "/" + id,
-                        navController = navController,
-                        modifier = Modifier
-                    )
+                    items(lectureList.size){
+                        LectureItem(lecture = lectureList[it], navController)
+                    }
                 }
-
-                val chapterList = AssetLoader().getChaptersFromLectureById(id)
-
-                if (chapterList != null) {
-                    ChaptersOverview(chapterList, navController)
-                }
-
-            }
-        }
-    }
-
-}
-
-@Composable
-fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
-    Column (modifier = Modifier
-        .fillMaxWidth()
-    ) {
-
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxHeight()
-        ) {
-            items(chapter.size){
-                ChapterItem(chapter = chapter[it], navController)
             }
         }
     }
@@ -105,40 +86,42 @@ fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun ChapterItem(
-    chapter: Chapter,
-    navController: NavController) {
+fun LectureItem (
+    lecture: Lecture,
+    navController:NavController
+){
     BoxWithConstraints(
         modifier = Modifier
-            .padding(5.dp)
+            .padding(7.5.dp)
             .aspectRatio(1.25f)
             .clip(RoundedCornerShape(5.dp))
-            .background(PrimaryMidLilac)
+            .background(PrimaryMidBlue)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(10.dp)
+                .padding(15.dp)
         ) {
             Text(
-                text = chapter.title,
+                text = lecture.title,
                 style = Typography.titleSmall,
                 color = White,
                 modifier = Modifier.align(Alignment.TopStart)
             )
+
             // Start Button
             Text(
-                text = "Kapitel starten",
+                text = "Lektion starten",
                 color = White,
                 style = Typography.labelLarge,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Routes.oop1kapitel + "/" + chapter.title + "/" + chapter.content)
+                        navController.navigate(Routes.lectureview + "/" + lecture.id + "/" + lecture.title)
                     }
                     .align(Alignment.BottomCenter)
                     .clip(RoundedCornerShape(5.dp))
-                    .background(PrimaryDarkLilac)
-                    .padding(vertical = 6.dp, horizontal = 26.dp)
+                    .background(PrimaryDarkBlue)
+                    .padding(vertical = 6.dp, horizontal = 15.dp)
             )
         }
     }

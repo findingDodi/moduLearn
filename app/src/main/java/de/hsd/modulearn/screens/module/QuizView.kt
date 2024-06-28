@@ -166,7 +166,7 @@ fun Oop1Quiz(
                                         showNextButton = false
                                         answerColors = List(quiz.questions[currentQuestionIndex].answerOptions!!.size) { LightGrey }
                                     } else {
-                                        navController.navigate(Routes.oop1quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size)
+                                        navController.navigate(Routes.quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size)
                                     }
                                 }
                             },

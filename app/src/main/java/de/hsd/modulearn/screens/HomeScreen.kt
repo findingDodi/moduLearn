@@ -25,14 +25,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
-import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
-import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Module
-import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.Routes.oop1home
+import de.hsd.modulearn.data.Routes.moduleview
 import de.hsd.modulearn.theme.PrimaryDarkBlue
 import de.hsd.modulearn.theme.PrimaryMidBlue
 import de.hsd.modulearn.theme.PrimaryMidLilac
@@ -150,7 +147,7 @@ fun ModuleItem (
                             "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
                             // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
                         }
-                        navController.navigate(oop1home)
+                        navController.navigate(moduleview)
                     }
                     .align(Alignment.BottomEnd)
                     .clip(RoundedCornerShape(5.dp))

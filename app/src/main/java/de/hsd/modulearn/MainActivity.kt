@@ -12,15 +12,15 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.hsd.modulearn.data.Routes.chatBot
+import de.hsd.modulearn.data.Routes.chatbotview
 import de.hsd.modulearn.data.Routes.homescreen
-import de.hsd.modulearn.data.Routes.oop1home
-import de.hsd.modulearn.data.Routes.oop1lektion
-import de.hsd.modulearn.data.Routes.oop1kapitel
+import de.hsd.modulearn.data.Routes.moduleview
+import de.hsd.modulearn.data.Routes.lectureview
+import de.hsd.modulearn.data.Routes.chapterview
 import de.hsd.modulearn.data.Routes.progressscreen
-import de.hsd.modulearn.data.Routes.oop1quiz
-import de.hsd.modulearn.data.Routes.oop1quizresultview
-import de.hsd.modulearn.data.Routes.oop1roadmap
+import de.hsd.modulearn.data.Routes.quizview
+import de.hsd.modulearn.data.Routes.quizresultview
+import de.hsd.modulearn.data.Routes.roadmapview
 import de.hsd.modulearn.data.Routes.quizzesscreen
 import de.hsd.modulearn.screens.*
 import de.hsd.modulearn.screens.module.*
@@ -57,36 +57,36 @@ class MainActivity : ComponentActivity() {
                     QuizzesScreen(navController)
                 }
 
-                composable(oop1home) {
+                composable(moduleview) {
                     Oop1Home(navController)
                 }
 
-                composable("$oop1lektion/{id}/{title}") {
+                composable("$lectureview/{id}/{title}") {
                     val id = it.arguments?.getString("id")?.toIntOrNull()
                     val title = it.arguments?.getString("title")
                     Oop1LektionView(navController, id?:1,title?:"Kein Titel")
                 }
 
-                composable("$oop1kapitel/{title}/{content}") {
+                composable("$chapterview/{title}/{content}") {
                     val title = it.arguments?.getString("title")
                     val content = it.arguments?.getString("content")
                     Oop1ChapterView(navController, title?:"Kein Titel", content?:"kein Inhalt")
                 }
 
-                composable("$oop1quiz/{id}") {
+                composable("$quizview/{id}") {
                     val id = it.arguments?.getString("id")?.toIntOrNull()
                     Oop1Quiz(navController, id?:1)
                 }
 
-                composable(chatBot) {
+                composable(chatbotview) {
                     ChatBotView(navController)
                 }
 
-                composable(oop1roadmap){
+                composable(roadmapview){
                     Oop1RoadmapView(navController)
                 }
 
-                composable("$oop1quizresultview/{correctAnswers}/{quizQuestionsSize}") {
+                composable("$quizresultview/{correctAnswers}/{quizQuestionsSize}") {
                     val correctAnswers = it.arguments?.getString("correctAnswers")?.toIntOrNull()
                     val quizQuestionsSize = it.arguments?.getString("quizQuestionsSize")?.toIntOrNull()
                     QuizResultScreen(navController, correctAnswers?:1,quizQuestionsSize?:1 )

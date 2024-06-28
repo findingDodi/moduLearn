@@ -3,18 +3,13 @@ package de.hsd.modulearn.screens.module
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.DpOffset
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.ImageLoader
@@ -68,7 +63,7 @@ fun Oop1RoadmapView(navController: NavController) {
                         backgroundcolor = LightGrey ,
                         color = Black,
                         text = "Liste" ,
-                        destinationRoute = Routes.oop1home,
+                        destinationRoute = Routes.moduleview,
                         navController = navController,
                         modifier = Modifier
                     )
@@ -88,7 +83,7 @@ fun Oop1RoadmapView(navController: NavController) {
                     lectureList.forEach { lecture ->
                         RoadmapButton(
                             text = lecture.id.toString(),
-                            destinationRoute = Routes.oop1lektion + "/" + lecture.id + "/" + lecture.title,
+                            destinationRoute = Routes.lectureview + "/" + lecture.id + "/" + lecture.title,
                             navController = navController,
                             modifier = Modifier
                                 .absoluteOffset(x = lecture.xPosition.dp, y = lecture.yPosition.dp)

@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.components.*
-import de.hsd.modulearn.data.Routes.oop1quiz
+import de.hsd.modulearn.data.Routes.quizview
 import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
@@ -138,7 +138,7 @@ fun QuizzesItem (
                             "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
                             // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
                         }
-                        navController.navigate(oop1quiz + "/" + lecture.id)
+                        navController.navigate(quizview + "/" + lecture.id)
                     }
                     .align(Alignment.BottomEnd)
                     .clip(RoundedCornerShape(10.dp))
