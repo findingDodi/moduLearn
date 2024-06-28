@@ -1,4 +1,4 @@
-package de.hsd.modulearn.data
+package de.hsd.modulearn.utils
 
 class QuizLogic {
 

@@ -29,7 +29,7 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.theme.*
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.ui.Alignment
-import de.hsd.modulearn.data.QuizLogic
+import de.hsd.modulearn.utils.QuizLogic
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.utils.AssetLoader
 @Composable
