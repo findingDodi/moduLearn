@@ -25,14 +25,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
-import de.hsd.modulearn.R
 import de.hsd.modulearn.components.*
-import de.hsd.modulearn.data.Module
-import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.Routes.oop1home
 import de.hsd.modulearn.data.Routes.oop1quiz
-import de.hsd.modulearn.data.oop1.Lecture
-import de.hsd.modulearn.data.oop1.Quiz
+import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 

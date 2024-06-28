@@ -1,4 +1,4 @@
-package de.hsd.modulearn.screens.oop1screens
+package de.hsd.modulearn.screens.module
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

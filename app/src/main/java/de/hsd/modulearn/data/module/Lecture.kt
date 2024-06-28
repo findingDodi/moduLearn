@@ -1,4 +1,4 @@
-package de.hsd.modulearn.data.oop1
+package de.hsd.modulearn.data.module
 
 data class Lecture(
     val id : Int,

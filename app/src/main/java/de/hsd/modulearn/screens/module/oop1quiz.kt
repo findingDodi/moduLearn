@@ -1,4 +1,4 @@
-package de.hsd.modulearn.screens.oop1screens
+package de.hsd.modulearn.screens.module
 import androidx.compose.material3.Text
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.background
@@ -22,7 +22,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import de.hsd.modulearn.components.Footer
@@ -32,7 +31,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.ui.Alignment
 import de.hsd.modulearn.data.QuizLogic
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.oop1.Question
 import de.hsd.modulearn.utils.AssetLoader
 @Composable
 fun Oop1Quiz(

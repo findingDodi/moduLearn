@@ -1,5 +1,4 @@
-package de.hsd.modulearn.data.oop1
-import kotlinx.serialization.Serializable
+package de.hsd.modulearn.data.module
 
 data class Quiz(
     val id : Int,

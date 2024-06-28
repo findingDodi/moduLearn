@@ -9,7 +9,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -22,12 +21,9 @@ import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.data.Routes.oop1quiz
 import de.hsd.modulearn.data.Routes.oop1quizresultview
 import de.hsd.modulearn.data.Routes.quizzesscreen
-import de.hsd.modulearn.data.oop1.Lecture
 import de.hsd.modulearn.screens.*
-import de.hsd.modulearn.screens.oop1screens.*
+import de.hsd.modulearn.screens.module.*
 import de.hsd.modulearn.utils.AppContext
-import de.hsd.modulearn.utils.AssetLoader
-import de.hsd.modulearn.utils.JsonReader
 
 
 class MainActivity : ComponentActivity() {
