@@ -28,13 +28,14 @@ import de.hsd.modulearn.utils.AppContext
 
 
 class MainActivity : ComponentActivity() {
+
     private lateinit var sharedPreferences: SharedPreferences
+
     @SuppressLint("RememberReturnType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppContext.initialize(this)
 
-        // print(AssetLoader().fullLectureList)
+        AppContext.initialize(this)
         enableEdgeToEdge()
 
         sharedPreferences = getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
@@ -44,34 +45,40 @@ class MainActivity : ComponentActivity() {
             val points = remember { mutableStateOf(getPoints()) }
 
             NavHost(navController = navController, startDestination = homescreen, builder = {
-                composable(homescreen){
+                composable(homescreen) {
                     HomeScreen(navController)
                 }
+
                 composable(progressscreen) {
                     ProgressScreen(navController, points.value)
                 }
+
                 composable(quizzesscreen) {
                     QuizzesScreen(navController)
                 }
-                composable(oop1home){
+
+                composable(oop1home) {
                     Oop1Home(navController)
                 }
-                composable(oop1lektion+"/{id}/{title}"){
+
+                composable("$oop1lektion/{id}/{title}") {
                     val id = it.arguments?.getString("id")?.toIntOrNull()
                     val title = it.arguments?.getString("title")
                     Oop1LektionView(navController, id?:1,title?:"Kein Titel")
                 }
-                composable(oop1kapitel+"/{title}/{content}"){
+
+                composable("$oop1kapitel/{title}/{content}") {
                     val title = it.arguments?.getString("title")
                     val content = it.arguments?.getString("content")
                     Oop1ChapterView(navController, title?:"Kein Titel", content?:"kein Inhalt")
                 }
-                composable(oop1quiz+"/{id}"){
+
+                composable("$oop1quiz/{id}") {
                     val id = it.arguments?.getString("id")?.toIntOrNull()
                     Oop1Quiz(navController, id?:1)
                 }
 
-                composable(chatBot){
+                composable(chatBot) {
                     ChatBotView(navController)
                 }
 
@@ -79,12 +86,12 @@ class MainActivity : ComponentActivity() {
                     Oop1RoadmapView(navController)
                 }
 
-                composable(oop1quizresultview+"/{correctAnswers}/{quizQuestionsSize}"){
+                composable("$oop1quizresultview/{correctAnswers}/{quizQuestionsSize}") {
                     val correctAnswers = it.arguments?.getString("correctAnswers")?.toIntOrNull()
                     val quizQuestionsSize = it.arguments?.getString("quizQuestionsSize")?.toIntOrNull()
                     QuizResultScreen(navController, correctAnswers?:1,quizQuestionsSize?:1 )
                 }
-            } )
+            })
         }
     }
 
@@ -100,5 +107,4 @@ class MainActivity : ComponentActivity() {
             apply()
         }
     }
-
 }
