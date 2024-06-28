@@ -68,7 +68,7 @@ fun QuizzesOverview(lectures: List<Lecture>, navController:NavController) {
     ){
 
         Text(
-            text = "Quizzesübersicht",
+            text = "Quizübersicht",
             style = Typography.headlineSmall,
             modifier = Modifier
                 .padding(PaddingValues(bottom= 15.dp))

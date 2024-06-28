@@ -20,6 +20,7 @@ import de.hsd.modulearn.data.Routes.oop1kapitel
 import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.data.Routes.oop1quiz
 import de.hsd.modulearn.data.Routes.oop1quizresultview
+import de.hsd.modulearn.data.Routes.oop1roadmap
 import de.hsd.modulearn.data.Routes.quizzesscreen
 import de.hsd.modulearn.screens.*
 import de.hsd.modulearn.screens.module.*
@@ -72,6 +73,10 @@ class MainActivity : ComponentActivity() {
 
                 composable(chatBot){
                     ChatBotView(navController)
+                }
+
+                composable(oop1roadmap){
+                    Oop1RoadmapView(navController)
                 }
 
                 composable(oop1quizresultview+"/{correctAnswers}/{quizQuestionsSize}"){

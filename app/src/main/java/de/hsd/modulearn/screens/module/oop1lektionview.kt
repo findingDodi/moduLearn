@@ -69,6 +69,7 @@ fun Oop1LektionView(navController: NavController, id : Int, title :String) {
                         text = "Quiz starten",
                         destinationRoute = Routes.oop1quiz + "/" + id,
                         navController = navController,
+                        modifier = Modifier
                     )
                 }
 

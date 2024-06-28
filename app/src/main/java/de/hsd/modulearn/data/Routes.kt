@@ -10,4 +10,5 @@ object Routes {
     var oop1quiz = "oop1quiz"
     var chatBot = "chatBot"
     var oop1quizresultview = "oop1quizresultview"
+    var oop1roadmap = "oop1roadmap"
 }

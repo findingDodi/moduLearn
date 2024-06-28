@@ -14,7 +14,9 @@
         "description": "Beschreibung",
         "content": "jjj"
       }
-    ]
+    ],
+    "xPosition": 250,
+    "yPosition": 488
   },
   {
     "id": 2,
@@ -31,7 +33,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 120,
+    "yPosition": 505
   },
   {
     "id": 3,
@@ -48,7 +52,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 45,
+    "yPosition": 440
   },
   {
     "id": 4,
@@ -65,7 +71,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 110,
+    "yPosition": 370
   },
   {
     "id": 5,
@@ -82,7 +90,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 200,
+    "yPosition": 345
   },
   {
     "id": 6,
@@ -99,7 +109,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 225,
+    "yPosition": 250
   },
   {
     "id": 7,
@@ -116,7 +128,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 160,
+    "yPosition": 185
   },
   {
     "id": 8,
@@ -133,7 +147,9 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 72,
+    "yPosition": 120
   },
   {
     "id": 9,
@@ -150,6 +166,8 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 180,
+    "yPosition": 9
   }
 ]

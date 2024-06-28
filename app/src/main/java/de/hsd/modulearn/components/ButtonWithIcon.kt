@@ -31,7 +31,9 @@ fun ButtonWithIcon(
     color: Color,
     text : String,
     destinationRoute : String,
-    navController:NavController) {
+    navController:NavController,
+    modifier: Modifier
+) {
 
     Box(
         contentAlignment = Alignment.Center,

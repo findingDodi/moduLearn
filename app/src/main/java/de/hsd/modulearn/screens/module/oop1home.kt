@@ -23,7 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
+import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
@@ -58,6 +60,17 @@ fun Oop1Home(navController: NavController) {
                     style = Typography.headlineSmall,
                     modifier = Modifier.padding(PaddingValues(bottom= 15.dp))
                 )
+
+                ButtonWithIcon(
+                    iconId = R.drawable.round_alt_route_24,
+                    backgroundcolor = LightGrey,
+                    color = Black,
+                    text = "Roadmap" ,
+                    destinationRoute = Routes.oop1roadmap,
+                    navController = navController,
+                    modifier = Modifier
+                )
+
 
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),

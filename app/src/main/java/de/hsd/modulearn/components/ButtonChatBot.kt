@@ -19,6 +19,7 @@ fun ButtonChatBot(navController: NavController) {
         color = White,
         text = "ChatBot",
         destinationRoute = Routes.chatBot,
-        navController = navController
+        navController = navController,
+        modifier = Modifier
     )
 }
