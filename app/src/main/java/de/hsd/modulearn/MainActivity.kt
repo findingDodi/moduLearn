@@ -1,11 +1,14 @@
 package de.hsd.modulearn
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,6 +32,7 @@ import de.hsd.modulearn.utils.JsonReader
 
 class MainActivity : ComponentActivity() {
     private lateinit var sharedPreferences: SharedPreferences
+    @SuppressLint("RememberReturnType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppContext.initialize(this)
@@ -40,12 +44,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val navController = rememberNavController()
+            val points = remember { mutableStateOf(getPoints()) }
+
             NavHost(navController = navController, startDestination = homescreen, builder = {
                 composable(homescreen){
                     HomeScreen(navController)
                 }
                 composable(progressscreen) {
-                    ProgressScreen(navController)
+                    ProgressScreen(navController, points.value)
                 }
                 composable(quizzesscreen) {
                     QuizzesScreen(navController)
