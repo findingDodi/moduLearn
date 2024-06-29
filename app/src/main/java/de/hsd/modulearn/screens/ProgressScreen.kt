@@ -30,72 +30,74 @@ import de.hsd.modulearn.theme.White
 @Composable
 fun ProgressScreen(navController: NavController, points: Int) {
     Scaffold(
-        topBar = { Header("Fortschritt", false, navController) },
+        topBar = { Header("Erfolge", false, navController) },
         bottomBar = { Footer(navController, 3) },
-        floatingActionButton = {
-            ButtonChatBot(navController = navController)
-        }
+        floatingActionButton = { ButtonChatBot(navController = navController) }
+
     ) { innerPadding ->
-        Column(
+        Box(
             modifier = Modifier
+                .background(White)
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(20.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(start = 30.dp, top = 30.dp, end = 30.dp)
         ) {
-
-            Text(
-                text = "Mein Fortschritt",
-                style = Typography.headlineSmall,
-                modifier = Modifier
-                    .padding(PaddingValues(bottom= 15.dp))
-            )
-            // Box im selben Stil wie Module in der HomeScreen
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(7.5.dp)
-                    .clip(RoundedCornerShape(5.dp))
-                    .background(PrimaryMidBlue) // Verwenden der gleichen Farbe wie im OOP1 Modul
-                    .padding(15.dp)
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
-                // Fortschrittskreis und Prozentanzeige
-                val progress = points / 1000f // assuming max points is 100
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .size(150.dp) // Größe des Fortschrittskreises anpassen
-                        .clip(RoundedCornerShape(5.dp))
-                        .padding(8.dp)
-                ) {
-                    CircularProgressIndicator(
-                        progress = progress,
-                        color = PrimaryDarkBlue,
-                        strokeWidth = 8.dp,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(8.dp)
-                    )
-                    Text(
-                        text = "${(progress * 100).toInt()}%",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black
-                    )
-                }
 
-                // Text rechts neben dem Fortschrittskreis
-                Box(
+                Text(
+                    text = "Mein Fortschritt",
+                    style = Typography.headlineMedium,
+                )
+
+                // Box im selben Stil wie Module in der HomeScreen
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .padding(start = 16.dp)
+                        .padding(7.5.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(PrimaryMidBlue) // Verwenden der gleichen Farbe wie im OOP1 Modul
+                        .padding(15.dp)
                 ) {
-                    Text(
-                        text = "Du hast dieses Modul zu ${(progress * 100).toInt()}% abgeschlossen.",
-                        fontSize = 16.sp,
-                        color = Color.Black,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
+                    // Fortschrittskreis und Prozentanzeige
+                    val progress = points / 100f // assuming max points is 100
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .size(150.dp) // Größe des Fortschrittskreises anpassen
+                            .clip(RoundedCornerShape(5.dp))
+                            .padding(8.dp)
+                    ) {
+                        CircularProgressIndicator(
+                            progress = progress,
+                            color = PrimaryDarkBlue,
+                            strokeWidth = 8.dp,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(8.dp)
+                        )
+                        Text(
+                            text = "${(progress * 100).toInt()}%",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                    }
+
+                    // Text rechts neben dem Fortschrittskreis
+                    Box(
+                        modifier = Modifier
+                            .padding(start = 16.dp)
+                    ) {
+                        Text(
+                            text = "Du hast dieses Modul zu ${(progress * 100).toInt()}% abgeschlossen.",
+                            fontSize = 16.sp,
+                            color = Color.Black,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                    }
                 }
             }
         }

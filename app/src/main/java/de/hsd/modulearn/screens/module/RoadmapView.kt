@@ -3,36 +3,31 @@ package de.hsd.modulearn.screens.module
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.DpOffset
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.ImageLoader
 import coil.decode.SvgDecoder
+
 import de.hsd.modulearn.R
+import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.components.RoadmapButton
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.theme.Black
-import de.hsd.modulearn.theme.LightGrey
-import de.hsd.modulearn.theme.SecondaryGreen
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
-fun Oop1RoadmapView(navController: NavController) {
+fun RoadmapView(navController: NavController) {
+
     val imageLoader = ImageLoader.Builder(LocalContext.current)
         .components {
             add(SvgDecoder.Factory())
@@ -40,8 +35,10 @@ fun Oop1RoadmapView(navController: NavController) {
         .build()
 
     Scaffold(
+
         topBar = { Header("OOP1", false, navController) },
-        bottomBar = { Footer(navController, 1) },
+        bottomBar = { Footer(navController, 1) }
+
     ) { innerPadding ->
         Box(
             modifier = Modifier
@@ -54,7 +51,7 @@ fun Oop1RoadmapView(navController: NavController) {
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(10.dp))
-                    .background(SecondaryGreen)
+                    .background(SecondaryGreenLight)
                     .fillMaxSize()
             ) {
                 Box(
@@ -65,10 +62,10 @@ fun Oop1RoadmapView(navController: NavController) {
                 ) {
                     ButtonWithIcon(
                         iconId = R.drawable.round_format_list_bulleted_24,
-                        backgroundcolor = LightGrey ,
+                        backgroundcolor = White,
                         color = Black,
                         text = "Liste" ,
-                        destinationRoute = Routes.oop1home,
+                        destinationRoute = Routes.moduleview,
                         navController = navController,
                         modifier = Modifier
                     )
@@ -88,7 +85,7 @@ fun Oop1RoadmapView(navController: NavController) {
                     lectureList.forEach { lecture ->
                         RoadmapButton(
                             text = lecture.id.toString(),
-                            destinationRoute = Routes.oop1lektion + "/" + lecture.id + "/" + lecture.title,
+                            destinationRoute = Routes.lectureview + "/" + lecture.id + "/" + lecture.title,
                             navController = navController,
                             modifier = Modifier
                                 .absoluteOffset(x = lecture.xPosition.dp, y = lecture.yPosition.dp)

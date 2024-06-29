@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -24,18 +23,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.module.*
+import de.hsd.modulearn.data.module.Chapter
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
-fun Oop1LektionView(navController: NavController, id : Int, title :String) {
+fun LectureView(navController: NavController, id : Int, title :String) {
     Scaffold (
 
         topBar = { Header("OOP1", true, navController) },
@@ -44,7 +44,7 @@ fun Oop1LektionView(navController: NavController, id : Int, title :String) {
             ButtonChatBot(navController = navController)
         }
 
-    ) {innerPadding ->
+    ) { innerPadding ->
         Box(modifier = Modifier
             .background(White)
             .fillMaxSize()
@@ -52,52 +52,37 @@ fun Oop1LektionView(navController: NavController, id : Int, title :String) {
             .padding(20.dp)
         ){
             Column (
+                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(15.dp),
             ) {
                 Text(
                     text = title,
-                    style = Typography.headlineSmall
+                    style = Typography.headlineMedium
                 )
 
-                Box(
-                    contentAlignment = Alignment.Center,
-                ) {
-                    ButtonWithIcon(
-                        iconId = R.drawable.round_arrow_forward_24,
-                        backgroundcolor = PrimaryDarkLilac,
-                        color = White,
-                        text = "Quiz starten",
-                        destinationRoute = Routes.oop1quiz + "/" + id,
-                        navController = navController,
-                        modifier = Modifier
-                    )
-                }
+                ButtonWithIcon(
+                    iconId = R.drawable.round_arrow_forward_24,
+                    backgroundcolor = PrimaryDarkLilac,
+                    color = White,
+                    text = "Quiz starten",
+                    destinationRoute = Routes.quizview + "/" + id,
+                    navController = navController,
+                    modifier = Modifier
+                )
 
                 val chapterList = AssetLoader().getChaptersFromLectureById(id)
 
                 if (chapterList != null) {
-                    ChaptersOverview(chapterList, navController)
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        modifier = Modifier
+                            .fillMaxHeight(),
+                    ) {
+                        items(chapterList.size){
+                            ChapterItem(chapter = chapterList[it], navController)
+                        }
+                    }
                 }
-
-            }
-        }
-    }
-
-}
-
-@Composable
-fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
-    Column (modifier = Modifier
-        .fillMaxWidth()
-    ) {
-
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxHeight()
-        ) {
-            items(chapter.size){
-                ChapterItem(chapter = chapter[it], navController)
             }
         }
     }
@@ -107,12 +92,13 @@ fun ChaptersOverview(chapter: List<Chapter>, navController:NavController) {
 @Composable
 fun ChapterItem(
     chapter: Chapter,
-    navController: NavController) {
+    navController: NavController
+) {
     BoxWithConstraints(
         modifier = Modifier
             .padding(5.dp)
             .aspectRatio(1.25f)
-            .clip(RoundedCornerShape(5.dp))
+            .clip(RoundedCornerShape(10.dp))
             .background(PrimaryMidLilac)
     ) {
         Box(
@@ -122,23 +108,13 @@ fun ChapterItem(
         ) {
             Text(
                 text = chapter.title,
-                style = Typography.titleSmall,
+                style = Typography.titleMedium,
                 color = White,
-                modifier = Modifier.align(Alignment.TopStart)
-            )
-            // Start Button
-            Text(
-                text = "Kapitel starten",
-                color = White,
-                style = Typography.labelLarge,
                 modifier = Modifier
+                    .align(Alignment.Center)
                     .clickable {
-                        navController.navigate(Routes.oop1kapitel + "/" + chapter.title + "/" + chapter.content)
+                        navController.navigate(Routes.chapterview + "/" + chapter.title + "/" + chapter.content)
                     }
-                    .align(Alignment.BottomCenter)
-                    .clip(RoundedCornerShape(5.dp))
-                    .background(PrimaryDarkLilac)
-                    .padding(vertical = 6.dp, horizontal = 26.dp)
             )
         }
     }

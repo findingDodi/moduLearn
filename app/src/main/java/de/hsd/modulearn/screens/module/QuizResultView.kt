@@ -18,19 +18,22 @@ import androidx.compose.ui.Modifier
 import de.hsd.modulearn.theme.*
 
 @Composable
-fun QuizResultScreen(
+fun QuizResultView(
     navController: NavController,
     correctAnswers: Int,
     totalQuestions: Int,
 ) {
     Scaffold(
+
         topBar = { Header(title = "Ergebnis", backButton = true, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
-    ) {
+
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .background(White)
                 .fillMaxSize()
+                .padding(innerPadding)
                 .padding(20.dp),
             contentAlignment = Alignment.Center
         ) {

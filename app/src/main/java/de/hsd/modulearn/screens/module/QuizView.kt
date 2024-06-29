@@ -29,7 +29,7 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.theme.*
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.ui.Alignment
-import de.hsd.modulearn.utils.QuizLogic
+import de.hsd.modulearn.logic.QuizLogic
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.utils.AssetLoader
 @Composable
@@ -45,8 +45,10 @@ fun Oop1Quiz(
     var correctAnswers by remember { mutableStateOf(0) }
 
     Scaffold(
+
         topBar = { Header(title = "Quiz", backButton = true, navController = navController) },
         bottomBar = { Footer(navController = navController, selectedItemIndex = 2) }
+
     ) { innerPadding ->
         Box(
             modifier = Modifier
@@ -166,7 +168,7 @@ fun Oop1Quiz(
                                         showNextButton = false
                                         answerColors = List(quiz.questions[currentQuestionIndex].answerOptions!!.size) { LightGrey }
                                     } else {
-                                        navController.navigate(Routes.oop1quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size)
+                                        navController.navigate(Routes.quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size)
                                     }
                                 }
                             },
