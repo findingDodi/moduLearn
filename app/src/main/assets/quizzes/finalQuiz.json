@@ -1,0 +1,20 @@
+{
+  "moduleTitle": "OOP1",
+  "questions": [
+    {
+      "questionText": "Was ist der Unterschied zwischen einer Klasse und einem Objekt in der objektorientierten Programmierung?"
+    },
+    {
+      "questionText": "Erklären Sie das Prinzip der Vererbung und geben Sie ein Beispiel."
+    },
+    {
+      "questionText": "Was versteht man unter Polymorphismus in der objektorientierten Programmierung?"
+    },
+    {
+      "questionText": "Wie unterscheiden sich private, geschützte und öffentliche Mitglieder einer Klasse?"
+    },
+    {
+      "questionText": "Was ist eine Schnittstelle (Interface) und wie wird sie in der objektorientierten Programmierung verwendet?"
+    }
+  ]
+}

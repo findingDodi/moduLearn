@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.module.Chapter
+import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.data.module.Quiz
 import java.io.InputStreamReader
@@ -12,6 +13,7 @@ class AssetLoader {
 
     val fullLectureList: List<Lecture> = loadBundledLectureFromJson()
     val fullQuizList : List <Quiz> = getAllQuizzes()
+    val finalQuiz : FinalQuiz = loadFinalQuizFromJson()
 
     fun getChaptersFromLectureById(id: Int): List<Chapter>? {
         val lecture = fullLectureList.find { it.id == id }
@@ -56,6 +58,20 @@ class AssetLoader {
         val type = object : TypeToken<List<Lecture>>(){}.type
         return gson.fromJson(reader, type)
     }
+
+    fun loadFinalQuizFromJson(): FinalQuiz {
+        val fileName = "quizzes/finalQuiz.json"
+
+        val context = AppContext.getContext()
+
+        val gson = Gson()
+        val jsonFile = context.assets.open(fileName)
+        val reader = InputStreamReader(jsonFile)
+        val type = object : TypeToken<FinalQuiz>(){}.type
+        return gson.fromJson(reader, type)
+    }
+
+
 }
 
 

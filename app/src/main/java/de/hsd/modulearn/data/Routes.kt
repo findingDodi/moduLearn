@@ -11,4 +11,6 @@ object Routes {
     var chatbotview = "chatbot"
     var quizresultview = "quizresult"
     var roadmapview = "roadmap"
+    var finalQuizViewIntro = "finalQuizViewIntro"
+    var finalQuizViewStart = "finalQuizViewStart"
 }

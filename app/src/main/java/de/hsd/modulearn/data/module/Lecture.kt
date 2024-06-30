@@ -7,6 +7,4 @@ data class Lecture(
     val title: String,
     val description: String,
     val chapters: List<Chapter>,
-    val xPosition: Int,
-    val yPosition: Int,
 )

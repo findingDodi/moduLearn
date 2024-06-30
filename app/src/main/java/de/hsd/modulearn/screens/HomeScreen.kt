@@ -30,6 +30,7 @@ import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes.moduleview
+import de.hsd.modulearn.data.Routes.roadmapview
 import de.hsd.modulearn.theme.*
 
 @Composable
@@ -97,9 +98,8 @@ fun ModuleItem (
                     when (module.title) {
                         "OOP1" -> mainActivity.setPoints(mainActivity.getPoints() + 20)
                         "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
-                        // Fügen Sie hier weitere Module und entsprechende Punkte hinzu, wenn nötig
                     }
-                    navController.navigate(moduleview)
+                    navController.navigate(roadmapview)
                 }
         ) {
             Row {

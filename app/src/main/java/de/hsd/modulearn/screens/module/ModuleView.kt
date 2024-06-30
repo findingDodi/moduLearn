@@ -34,9 +34,12 @@ import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
+import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture
+import de.hsd.modulearn.data.module.Quiz
 import de.hsd.modulearn.theme.Black
 import de.hsd.modulearn.theme.PrimaryMidBlue
+import de.hsd.modulearn.theme.PrimaryMidLilac
 import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 import de.hsd.modulearn.utils.AssetLoader
@@ -81,6 +84,8 @@ fun ModuleView(navController: NavController) {
                 lectureList.forEach { lecture ->
                     LectureItem(lecture, navController)
                 }
+
+                FinalQuizItem (navController)
             }
         }
     }
@@ -120,6 +125,46 @@ fun LectureItem (
 
                 Text(
                     text = lecture.title,
+                    style = Typography.titleLarge,
+                    color = White
+                )
+            }
+        }
+    }
+}
+@SuppressLint("UnusedBoxWithConstraintsScope")
+@Composable
+fun FinalQuizItem (
+    navController:NavController
+) {
+    BoxWithConstraints(
+        modifier = Modifier
+            .aspectRatio(3.25f)
+            .clip(RoundedCornerShape(10.dp))
+            .background(PrimaryMidLilac)
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(20.dp)
+                .align(Alignment.CenterStart)
+                .clickable {
+                    navController.navigate(Routes.finalQuizViewIntro)
+                }
+        ) {
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.round_lightbulb_24),
+                    contentDescription = "Lecture",
+                    tint = White,
+                    modifier = Modifier.size(35.dp)
+                )
+
+                Text(
+                    text = "Abschlussprüfung",
                     style = Typography.titleLarge,
                     color = White
                 )
