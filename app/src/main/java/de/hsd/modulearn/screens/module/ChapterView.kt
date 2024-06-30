@@ -1,4 +1,4 @@
-package de.hsd.modulearn.screens.oop1screens
+package de.hsd.modulearn.screens.module
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 
 @Composable
-fun Oop1ChapterView(navController: NavController, title :String, content: String) {
+fun ChapterView(navController: NavController, title :String, content: String) {
     Scaffold (
 
         topBar = { Header("OOP1", true, navController) },
@@ -42,7 +42,8 @@ fun Oop1ChapterView(navController: NavController, title :String, content: String
                         .padding(15.dp)
                 )
 
-                Text(text = content,
+                Text(
+                    text = content,
                     style = Typography.bodyLarge,
                     modifier = Modifier
                         .padding(15.dp))

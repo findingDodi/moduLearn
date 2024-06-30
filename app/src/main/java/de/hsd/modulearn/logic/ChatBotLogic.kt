@@ -1,4 +1,4 @@
-package de.hsd.modulearn.data
+package de.hsd.modulearn.logic
 
 import com.aallam.openai.api.chat.ChatCompletion
 import com.aallam.openai.api.chat.ChatCompletionRequest

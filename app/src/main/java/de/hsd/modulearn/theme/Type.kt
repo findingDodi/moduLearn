@@ -53,16 +53,16 @@ val Typography = Typography(
     ),
 
     headlineMedium = TextStyle(
-        fontFamily = RalewayFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontFamily = RobotoFontFamily,
+        fontWeight = FontWeight.W400,
         fontSize = 30.sp,
         lineHeight = 40.sp,
         letterSpacing = 0.sp,
     ),
 
     headlineSmall = TextStyle(
-        fontFamily = RalewayFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontFamily = RobotoFontFamily,
+        fontWeight = FontWeight.W400,
         fontSize = 20.sp,
         lineHeight = 27.sp,
         letterSpacing = 0.sp,
@@ -70,7 +70,7 @@ val Typography = Typography(
 
     titleLarge = TextStyle(
         fontFamily = RalewayFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.W400,
         fontSize = 25.sp,
         lineHeight = 25.sp,
         letterSpacing = 0.sp,

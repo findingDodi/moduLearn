@@ -1,4 +1,5 @@
 {
+  "id": 1,
   "title": "Grundlagen der Programmierung",
   "questions": [
     {
@@ -51,7 +52,7 @@
       ],
       "type": "SINGLE_CHOICE",
       "answer": [
-        2
+        0
       ],
       "explanation": "Ein Byte besitzt den Wertebereich von -128 bis 127. Der zweite Wertebereich gehört zu keinen Datentypen, da immer positive und negative Werte abgedeckt werden."
     },

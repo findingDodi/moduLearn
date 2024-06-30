@@ -1,21 +1,25 @@
 [
   {
+    "id": 1,
     "title": "Grundlagen der Programmierung",
     "description": "Beschreibung",
     "chapters": [
       {
         "title": "Kapitel 01",
         "description": "Beschreibung",
-        "content": ""
+        "content": "Hallo Kapitel 01 aus Grundlagen der Programmierung"
       },
       {
         "title": "Kapitel 02",
         "description": "Beschreibung",
-        "content": ""
+        "content": "jjj"
       }
-    ]
+    ],
+    "xPosition": 250,
+    "yPosition": 488
   },
   {
+    "id": 2,
     "title": "Variablen",
     "description": "Beschreibung",
     "chapters": [
@@ -29,9 +33,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 120,
+    "yPosition": 505
   },
   {
+    "id": 3,
     "title": "Prozeduren und Funktionen",
     "description": "Beschreibung",
     "chapters": [
@@ -45,9 +52,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 45,
+    "yPosition": 440
   },
   {
+    "id": 4,
     "title": "Konzept der Objektorientierung",
     "description": "Beschreibung",
     "chapters": [
@@ -61,9 +71,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 110,
+    "yPosition": 370
   },
   {
+    "id": 5,
     "title": "Klassen und Objekte",
     "description": "Beschreibung",
     "chapters": [
@@ -77,9 +90,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 200,
+    "yPosition": 345
   },
   {
+    "id": 6,
     "title": "Vererbung",
     "description": "Beschreibung",
     "chapters": [
@@ -93,9 +109,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 225,
+    "yPosition": 250
   },
   {
+    "id": 7,
     "title": "Interfaces",
     "description": "Beschreibung",
     "chapters": [
@@ -109,9 +128,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 160,
+    "yPosition": 185
   },
   {
+    "id": 8,
     "title": "Abstrakte Klassen",
     "description": "Beschreibung",
     "chapters": [
@@ -125,9 +147,12 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 72,
+    "yPosition": 120
   },
   {
+    "id": 9,
     "title": "Zugriffssteuerung",
     "description": "Beschreibung",
     "chapters": [
@@ -141,6 +166,8 @@
         "description": "Beschreibung",
         "content": ""
       }
-    ]
+    ],
+    "xPosition": 180,
+    "yPosition": 9
   }
 ]

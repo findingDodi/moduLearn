@@ -31,7 +31,9 @@ fun ButtonWithIcon(
     color: Color,
     text : String,
     destinationRoute : String,
-    navController:NavController) {
+    navController:NavController,
+    modifier: Modifier
+) {
 
     Box(
         contentAlignment = Alignment.Center,
@@ -41,7 +43,6 @@ fun ButtonWithIcon(
             .background(backgroundcolor)
             .padding(10.dp)
             .clickable {
-                // zurück navigieren
                 navController.navigate(destinationRoute)
             }
         ) {
