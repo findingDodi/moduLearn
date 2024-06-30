@@ -1,5 +1,6 @@
 package de.hsd.modulearn.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,12 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import de.hsd.modulearn.MainActivity
+import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
@@ -33,7 +35,6 @@ fun ProgressScreen(navController: NavController, points: Int) {
         topBar = { Header("Erfolge", false, navController) },
         bottomBar = { Footer(navController, 3) },
         floatingActionButton = { ButtonChatBot(navController = navController) }
-
     ) { innerPadding ->
         Box(
             modifier = Modifier
@@ -46,7 +47,6 @@ fun ProgressScreen(navController: NavController, points: Int) {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
-
                 Text(
                     text = "Mein Fortschritt",
                     style = Typography.headlineMedium,
@@ -62,7 +62,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
                         .padding(15.dp)
                 ) {
                     // Fortschrittskreis und Prozentanzeige
-                    val progress = points / 1000f // assuming max points is 100
+                    val progress = points / 1000f // assuming max points is 1000
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
@@ -99,9 +99,47 @@ fun ProgressScreen(navController: NavController, points: Int) {
                         )
                     }
                 }
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 20.dp)
+                ) {
+                    val badge1 = if (points >= 250) R.drawable.modul_finished_badge_foreground else R.drawable.locked_badge_foreground
+                    Image(
+                        painter = painterResource(id = badge1),
+                        contentDescription = "Bild 1",
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp) // optional: fügt etwas Abstand zwischen den Bildern hinzu
+                            .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
+                    )
+                    Image(
+                        painter = painterResource(id = R.drawable.locked_badge_foreground), // Ersetze image2 mit deiner Drawable-Ressource
+                        contentDescription = "Bild 2",
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp) // optional: fügt etwas Abstand zwischen den Bildern hinzu
+                            .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
+                    )
+                    Image(
+                        painter = painterResource(id = R.drawable.locked_badge_foreground), // Ersetze image3 mit deiner Drawable-Ressource
+                        contentDescription = "Bild 3",
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp) // optional: fügt etwas Abstand zwischen den Bildern hinzu
+                            .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
+                    )
+                }
+
             }
         }
     }
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun ProgressScreenPreview() {
+    ProgressScreen(navController = NavController(LocalContext.current), points = 700)
+}
