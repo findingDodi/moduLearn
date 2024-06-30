@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -51,7 +52,20 @@ fun QuizResultView(
                     text = "Du hast $correctAnswers von $totalQuestions Fragen richtig beantwortet.",
                     style = Typography.bodyLarge
                 )
+                Button(
+                    onClick = {
+                        // Hier fügst du die Aktion hinzu, die du beim Klick auf den Button ausführen möchtest
+                        // Beispiel: Navigation zu einer anderen Seite
+                        navController.navigate("nextScreenRoute")
+                    },
+                    modifier = Modifier.padding(top = 16.dp)
+                ) {
+                    Text(text = "Weiter")
+
+
+
             }
         }
     }
+}
 }

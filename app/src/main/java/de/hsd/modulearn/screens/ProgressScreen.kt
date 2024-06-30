@@ -1,5 +1,7 @@
 package de.hsd.modulearn.screens
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -23,7 +24,6 @@ import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
-import de.hsd.modulearn.theme.DarkMidGrey
 import de.hsd.modulearn.theme.PrimaryDarkBlue
 import de.hsd.modulearn.theme.PrimaryMidBlue
 import de.hsd.modulearn.theme.Typography
@@ -31,6 +31,14 @@ import de.hsd.modulearn.theme.White
 
 @Composable
 fun ProgressScreen(navController: NavController, points: Int) {
+    val context = LocalContext.current
+
+    val sharedPreferences = context.getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
+
+    val streak = getStreak(sharedPreferences)
+    val badgeImage1 = if (points >= 300) R.drawable.punkt_badge_foreground else R.drawable.locked_badge_foreground
+    val badgeImage2 = if (streak >= 1) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
+
     Scaffold(
         topBar = { Header("Erfolge", false, navController) },
         bottomBar = { Footer(navController, 3) },
@@ -100,15 +108,22 @@ fun ProgressScreen(navController: NavController, points: Int) {
                     }
                 }
 
+                // Anzeige der Streak-Informationen
+                Text(
+                    text = "Streak: $streak",
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    modifier = Modifier.padding(top = 16.dp, start = 16.dp)
+                )
+
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 20.dp)
                 ) {
-                    val badge1 = if (points >= 200) R.drawable.punkte_badge_foreground else R.drawable.locked_badge_foreground
                     Image(
-                        painter = painterResource(id = badge1),
+                        painter = painterResource(id = badgeImage1),
                         contentDescription = "Bild 1",
                         modifier = Modifier
                             .weight(1f)
@@ -116,7 +131,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
                             .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.locked_badge_foreground), // Ersetze image2 mit deiner Drawable-Ressource
+                        painter = painterResource(id = badgeImage2),
                         contentDescription = "Bild 2",
                         modifier = Modifier
                             .weight(1f)
@@ -124,7 +139,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
                             .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.locked_badge_foreground), // Ersetze image3 mit deiner Drawable-Ressource
+                        painter = painterResource(id = R.drawable.locked_badge_foreground),
                         contentDescription = "Bild 3",
                         modifier = Modifier
                             .weight(1f)
@@ -132,14 +147,12 @@ fun ProgressScreen(navController: NavController, points: Int) {
                             .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
                     )
                 }
-
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ProgressScreenPreview() {
-    ProgressScreen(navController = NavController(LocalContext.current), points = 700)
+// Funktion zur Abfrage der Streak aus den SharedPreferences
+fun getStreak(sharedPreferences: SharedPreferences): Int {
+    return sharedPreferences.getInt("streak", 0)
 }
