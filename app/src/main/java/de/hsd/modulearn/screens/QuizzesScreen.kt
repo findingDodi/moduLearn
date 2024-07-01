@@ -90,7 +90,7 @@ fun QuizzesItem (
         modifier = Modifier
             .aspectRatio(3.25f)
             .clip(RoundedCornerShape(10.dp))
-            .background(PrimaryMidBlue)
+            .background(PrimaryDarkLilac)
     ) {
         Box(
             modifier = Modifier

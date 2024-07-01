@@ -10,7 +10,7 @@ import com.aallam.openai.client.OpenAI
 suspend fun getChat(question: String): String? {
     try {
 
-        val apiKey = "sk-proj-GhxeqdvDTIP8ncV3hvdpT3BlbkFJTVEocu1JfdDeqAcZKg4K"
+        val apiKey = "sk-proj-QDQJklP5sWreTQl3PcqQT3BlbkFJmLw3YI9axNGbeXI0SzPd"
         val openAI = OpenAI(apiKey)
 
         val chatCompletionRequest = ChatCompletionRequest(
@@ -19,7 +19,7 @@ suspend fun getChat(question: String): String? {
                 ChatMessage(
                     role = ChatRole.System,
                     content = "Du bist ein hilfreicher Chatbot, " +
-                            "der Studenten aus dem ersten Semester " +
+                            "der Studierende aus dem ersten Semester " +
                             "hilft das Modul Objektorientierte Programmierung zu erlernen"
                 ),
                 ChatMessage(

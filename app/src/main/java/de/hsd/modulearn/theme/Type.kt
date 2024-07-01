@@ -78,7 +78,7 @@ val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = RalewayFontFamily,
         fontWeight = FontWeight.W400,
-        fontSize = 25.sp,
+        fontSize = 22.sp,
         lineHeight = 25.sp,
         letterSpacing = 0.sp,
     ),

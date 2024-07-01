@@ -38,6 +38,7 @@ import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.data.module.Quiz
 import de.hsd.modulearn.theme.Black
+import de.hsd.modulearn.theme.PrimaryDarkLilac
 import de.hsd.modulearn.theme.PrimaryMidBlue
 import de.hsd.modulearn.theme.PrimaryMidLilac
 import de.hsd.modulearn.theme.Typography
@@ -141,7 +142,7 @@ fun FinalQuizItem (
         modifier = Modifier
             .aspectRatio(3.25f)
             .clip(RoundedCornerShape(10.dp))
-            .background(PrimaryMidLilac)
+            .background(PrimaryDarkLilac)
     ) {
         Box(
             modifier = Modifier
