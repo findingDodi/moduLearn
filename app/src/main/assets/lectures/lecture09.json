@@ -3,11 +3,15 @@
   "title": "Zugriffssteuerung",
   "chapters": [
     {
-      "title": "Kapitel 01",
+      "title": "Konstruktoren",
       "content": ""
     },
     {
-      "title": "Kapitel 02",
+      "title": "Packages",
+      "content": ""
+    },
+    {
+      "title": "OOP-Weg und Zugriffssteuerung",
       "content": ""
     }
   ],

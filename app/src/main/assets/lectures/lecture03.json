@@ -3,11 +3,15 @@
   "title": "Prozeduren und Funktionen",
   "chapters": [
     {
-      "title": "Kapitel 01",
+      "title": "Kontrollstrukturen",
       "content": ""
     },
     {
-      "title": "Kapitel 02",
+      "title": "Prozeduren",
+      "content": ""
+    },
+    {
+      "title": "Funktionen",
       "content": ""
     }
   ],
