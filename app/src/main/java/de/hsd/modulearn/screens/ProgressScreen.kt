@@ -30,7 +30,7 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 
 @Composable
-fun ProgressScreen(navController: NavController, points: Int) {
+fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Boolean) {
     val context = LocalContext.current
 
     val sharedPreferences = context.getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
@@ -38,7 +38,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
     val streak = getStreak(sharedPreferences)
     val badgeImage1 = if (points >= 300) R.drawable.punkte_finished_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage2 = if (streak >= 1) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
-
+    val badgeImage3 = if (showThirdBadge) R.drawable.modul_finished_foreground else R.drawable.locked_badge_foreground
     Scaffold(
         topBar = { Header("Erfolge", false, navController) },
         bottomBar = { Footer(navController, 3) },
@@ -139,7 +139,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
                             .aspectRatio(1f) // stellt sicher, dass das Bild quadratisch bleibt
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.locked_badge_foreground),
+                        painter = painterResource(id = badgeImage3),
                         contentDescription = "Bild 3",
                         modifier = Modifier
                             .weight(1f)

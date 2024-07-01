@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             val points = remember { mutableStateOf(getPoints()) }
+            val showThirdBadge = remember { mutableStateOf(getShowThirdBadge()) }
 
             NavHost(navController = navController, startDestination = homescreen, builder = {
                 composable(homescreen) {
@@ -52,7 +53,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(progressscreen) {
-                    ProgressScreen(navController, points.value)
+                    ProgressScreen(navController, points.value, showThirdBadge.value)
                 }
 
                 composable(quizzesscreen) {
@@ -89,7 +90,10 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(finalQuizViewStart) {
-                    FinalQuizViewStart(navController)
+                    FinalQuizViewStart(navController, showThirdBadge.value) { newValue ->
+                        showThirdBadge.value = newValue
+                        setShowThirdBadge(newValue)
+                    }
                 }
 
                 composable(finalQuizViewIntro) {
@@ -166,4 +170,19 @@ class MainActivity : ComponentActivity() {
             apply()
         }
     }
+
+
+//Für die Aktuallisierung des 3. Badges
+    fun getShowThirdBadge(): Boolean {
+        return sharedPreferences.getBoolean("show_third_badge", false)
+    }
+
+    fun setShowThirdBadge(show: Boolean) {
+        with(sharedPreferences.edit()) {
+            putBoolean("show_third_badge", show)
+            apply()
+        }
+    }
+
+
 }

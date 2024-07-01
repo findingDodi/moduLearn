@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FinalQuizViewStart(navController: NavController) {
+fun FinalQuizViewStart(navController: NavController, showThirdBadge: Boolean, setShowThirdBadge: (Boolean) -> Unit) {
     Scaffold(
         topBar = { Header("OOP1", true, navController) },
         bottomBar = { Footer(navController, 1) },
@@ -125,6 +125,7 @@ fun FinalQuizViewStart(navController: NavController) {
                                     contentColor = White,
                                 ),
                                 onClick = {
+                                    setShowThirdBadge(true) // Aktualisieren von showThirdBadge
                                     navController.navigate(Routes.moduleview)
                                 },
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
