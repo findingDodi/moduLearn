@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
                 composable("$lectureview/{id}/{title}") {
                     val id = it.arguments?.getString("id")?.toIntOrNull()
                     val title = it.arguments?.getString("title")
-                    LectureView(navController, id ?: 1, title ?: "Kein Titel")
+                    LectureView(navController, id ?: 1, title ?: "")
                 }
 
                 composable("$chapterview/{title}/{content}") {
@@ -96,10 +96,11 @@ class MainActivity : ComponentActivity() {
                     FinalQuizViewIntro(navController)
                 }
 
-                composable("$quizresultview/{correctAnswers}/{quizQuestionsSize}") {
+                composable("$quizresultview/{correctAnswers}/{quizQuestionsSize}/{id}") {
                     val correctAnswers = it.arguments?.getString("correctAnswers")?.toIntOrNull()
                     val quizQuestionsSize = it.arguments?.getString("quizQuestionsSize")?.toIntOrNull()
-                    QuizResultView(navController, correctAnswers ?: 1, quizQuestionsSize ?: 1)
+                    val id = it.arguments?.getString("id")?.toIntOrNull()
+                    QuizResultView(navController, correctAnswers ?: 1, quizQuestionsSize ?: 1, id ?: 1)
                 }
             })
         }

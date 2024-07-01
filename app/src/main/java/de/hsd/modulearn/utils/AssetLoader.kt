@@ -20,6 +20,11 @@ class AssetLoader {
         return lecture?.chapters
     }
 
+    fun getTitleFromLectureById(id: Int): String? {
+        val lecture = fullLectureList.find { it.id == id }
+        return lecture?.title
+    }
+
     fun getAllQuizzes() : List <Quiz> {
         val quizList: MutableList<Quiz> = mutableListOf()
 

@@ -51,6 +51,8 @@ fun LectureView(navController: NavController, id : Int, title :String) {
         }
 
     ) { innerPadding ->
+
+
         Box(modifier = Modifier
             .background(White)
             .fillMaxSize()
@@ -65,10 +67,24 @@ fun LectureView(navController: NavController, id : Int, title :String) {
             ) {
                 val chapterList = AssetLoader().getChaptersFromLectureById(id)
 
-                Text(
-                    text = title,
-                    style = Typography.headlineMedium
-                )
+                if (title == ""){
+
+                    val lecturetitle = AssetLoader().getTitleFromLectureById(id).toString()
+                    Text(
+                        text = lecturetitle,
+                        style = Typography.headlineMedium
+                    )
+
+                } else{
+
+                    Text(
+                        text = title,
+                        style = Typography.headlineMedium
+                    )
+
+                }
+
+
 
                 ButtonWithIcon(
                     iconId = R.drawable.round_lightbulb_24,
