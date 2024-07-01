@@ -4,9 +4,7 @@
   "chapters": [
     {
       "title": "Abstrakte Klassen",
-      "content": ""
+      "content": "Abstrakte Klassen sind eine wichtige Konzeptualisierung in der objektorientierten Programmierung (OOP), die es ermöglicht, Klassen zu definieren, von denen andere Klassen erben können, die aber selbst nicht instanziiert werden können.\n\nIn Java werden abstrakte Klassen mit dem Schlüsselwort abstract deklariert. Eine abstrakte Klasse kann sowohl abstrakte Methoden (Methoden ohne Implementierung) als auch konkrete Methoden (Methoden mit Implementierung) enthalten. Klassen, die von einer abstrakten Klasse erben, müssen alle abstrakten Methoden implementieren, es sei denn, sie sind selbst abstrakt.\n\nEin einfaches Beispiel für eine abstrakte Klasse in Java könnte so aussehen:\n\njava\npublic abstract class Tier {\n private String name;\n \n public Tier(String name) {\n this.name = name;\n }\n \n public abstract void machenSound();\n \n public void zeigeInfo() {\n System.out.println(\"Name des Tiers: \" + name);\n }\n}\n\n\nIn diesem Beispiel ist Tier eine abstrakte Klasse mit einem abstrakten Methodenprototyp machenSound(). Abstrakte Methoden haben keine Implementierung in der abstrakten Klasse selbst, sondern müssen in konkreten Subklassen implementiert werden, die von Tier erben.\n\nEine Subklasse einer abstrakten Klasse muss alle abstrakten Methoden der Superklasse implementieren, bevor sie instanziiert werden kann. Dies stellt sicher, dass alle Unterklassen eine bestimmte Funktionalität bereitstellen, die in der abstrakten Klasse definiert wurde.\n\nAbstrakte Klassen bieten eine strukturierte Möglichkeit, um gemeinsame Verhaltensweisen und Merkmale zu definieren, die von mehreren Klassen geteilt werden können, ohne dass jede Klasse die gleichen Methoden implementieren muss. Sie fördern die Wiederverwendbarkeit von Code und erleichtern die Pflege und Erweiterung von Softwareprojekten.\n\nInsgesamt spielen abstrakte Klassen eine zentrale Rolle in der OOP in Java und anderen objektorientierten Sprachen, indem sie eine Basis für die Erstellung und Organisation von Klassenhierarchien bieten und eine klare Trennung zwischen der allgemeinen Struktur und spezifischen Implementierungen ermöglichen.\n\n\n"
     }
-  ],
-  "xPosition": 160,
-  "yPosition": 185
+  ]
 }

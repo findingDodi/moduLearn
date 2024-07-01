@@ -114,7 +114,7 @@ fun ChapterItem(
         modifier = Modifier
             .aspectRatio(3.25f)
             .clip(RoundedCornerShape(10.dp))
-            .background(PrimaryMidLilac)
+            .background(PrimaryLightBlue)
     ) {
         Box(
             modifier = Modifier
@@ -132,14 +132,14 @@ fun ChapterItem(
                 Icon(
                     painter = painterResource(R.drawable.round_library_books_24),
                     contentDescription = "Lecture",
-                    tint = White,
+                    tint = PrimaryDarkBlue,
                     modifier = Modifier.size(35.dp)
                 )
 
                 Text(
                     text = chapter.title,
                     style = Typography.titleLarge,
-                    color = White
+                    color = PrimaryDarkBlue
                 )
             }
         }

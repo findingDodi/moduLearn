@@ -3,14 +3,8 @@
   "title": "Konzept der Objektorientierung",
   "chapters": [
     {
-      "title": "Machen mit Sachen",
-      "content": ""
-    },
-    {
       "title": "DOOM-Konzept",
-      "content": ""
+      "content": "Wenn jede Prozedur oder Funktion auf alle Daten zugreifen und diese verändern kann wird die Konsistenz der Daten gefährdet. Zusammengehörige Daten, Funktionen und Prozeduren müssen gegen die Außenwelt abgekapselt werden. \n\nDie Zusammenfassung von Daten und Methoden wird als Objekt bezeichnet. Ein Objekt ist in sich gekapselt, das heißt der Zugriff auf seine Inhalte ist streng\ngeregelt. Von außen können Methoden des Objekt aufgerufen werden. Methoden des Objekts dürfen auf die eigenen Daten des Objekts zugreifen. Von außen besteht kein Zugriff auf die Daten des Objekts. Die Verantwortung für die Konsistenz einer Daten kann vom Objekt selber übernommen werden.\n\n\n\n\n\n"
     }
-  ],
-  "xPosition": 110,
-  "yPosition": 370
+  ]
 }

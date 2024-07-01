@@ -4,17 +4,11 @@
   "chapters": [
     {
       "title": "Konstruktoren",
-      "content": ""
+      "content": "Konstruktoren sind spezielle Methoden in Java-Klassen, die verwendet werden, um Objekte zu initialisieren. Sie haben denselben Namen wie die Klasse und haben keinen Rückgabetyp, nicht einmal void. Konstruktoren können überladen werden, was bedeutet, dass eine Klasse mehrere Konstruktoren haben kann, solange sie sich in der Anzahl oder dem Typ der Parameter unterscheiden.\n\nEin einfaches Beispiel für Konstruktoren in Java sieht folgendermaßen aus:\n\njava\npublic class Auto {\n  private String marke;\n  private int baujahr;\n \n  public Auto() {\n    this.marke = \"Unbekannt\";\n    this.baujahr = 0;\n  }\n \n  public Auto(String marke, int baujahr) {\n    this.marke = marke;\n    this.baujahr = baujahr;\n  }\n \n  public void starten() {\n   System.out.println(\"Das Auto startet.\");\n  }\n}\n\n\nIn diesem Beispiel gibt es zwei Konstruktoren: einen Standardkonstruktor ohne Parameter und einen Konstruktor mit Parametern marke und baujahr. Der Standardkonstruktor initialisiert die Attribute marke und baujahr auf Standardwerte, während der Konstruktor mit Parametern die Attribute entsprechend den übergebenen Werten setzt.\n\nKonstruktoren spielen eine wichtige Rolle in Java, da sie sicherstellen, dass jedes Objekt in einem gültigen Zustand erstellt wird. Sie werden automatisch aufgerufen, wenn ein neues Objekt erstellt wird, entweder explizit durch den Programmierer oder implizit durch den Aufruf eines new-Ausdrucks.\n\nDie Verwendung von Konstruktoren ermöglicht es, den Initialisierungsprozess von Objekten zu steuern und sicherzustellen, dass sie korrekt initialisiert werden, bevor sie verwendet werden. Sie sind ein grundlegendes Konzept der OOP, das in Java und anderen objektorientierten Sprachen eine zentrale Rolle spielt.\n\n\n"
     },
     {
       "title": "Packages",
-      "content": ""
-    },
-    {
-      "title": "OOP-Weg und Zugriffssteuerung",
-      "content": ""
+      "content": "Packages sind in Java eine Möglichkeit, Klassen und Interfaces zu organisieren und zu gruppieren. Ein Package ist eine Gruppe von verwandten Klassen und Interfaces, die gemeinsam verwendet werden können. Sie helfen, den Code zu strukturieren, zu verwalten und zu organisieren, indem sie eine Namensraum-Trennung für die Klassen bereitstellen.\n\nEin einfaches Beispiel für die Verwendung von Packages in Java sieht folgendermaßen aus:\n\njava\npackage com.meinefirma.projekt;\n\npublic class Auto {\n private String marke;\n private int baujahr;\n \n public Auto(String marke, int baujahr) {\n this.marke = marke;\n this.baujahr = baujahr;\n }\n \n public void starten() {\n System.out.println(\"Das Auto startet.\");\n }\n}\n\n\nIn diesem Beispiel gehört die Klasse Auto zum Package com.meinefirma.projekt. Ein Package wird durch den package-Befehl am Anfang der Datei definiert. Es kann auch Unterpackages enthalten, die durch Punkte getrennt sind, z.B. com.meinefirma.projekt.auto.\n\nPackages ermöglichen es, Klassen mit gleichem Namen aus unterschiedlichen Packages zu verwenden, ohne Konflikte zu verursachen. Dies wird erreicht, indem der vollqualifizierte Klassenname verwendet wird oder indem Import-Anweisungen verwendet werden, um dem Compiler zu sagen, welche Klassen verwendet werden sollen.\n\njava\npackage com.meinefirma.anwendung;\n\nimport com.meinefirma.projekt.Auto;\n\npublic class Hauptprogramm {\n public static void main(String[] args) {\n Auto meinAuto = new Auto(\"BMW\", 2023);\n meinAuto.starten();\n }\n}\n\n\nIn diesem Beispiel wird die Klasse Auto aus dem Package com.meinefirma.projekt im Package com.meinefirma.anwendung verwendet. Dies wird durch die Import-Anweisung import com.meinefirma.projekt.Auto; am Anfang der Datei erreicht.\n\nPackages bieten eine strukturierte Möglichkeit, um den Code zu organisieren und zu modularisieren, was die Wiederverwendbarkeit, Lesbarkeit und Wartbarkeit des Codes fördert. Sie sind ein grundlegendes Konzept in der Java-Programmierung, das zur effizienten Entwicklung und Verwaltung großer Projekte beiträgt.\n\n\n"
     }
-  ],
-  "xPosition": 180,
-  "yPosition": 9
+  ]
 }

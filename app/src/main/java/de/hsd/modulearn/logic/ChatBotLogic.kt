@@ -19,7 +19,7 @@ suspend fun getChat(question: String): String? {
                 ChatMessage(
                     role = ChatRole.System,
                     content = "Du bist ein hilfreicher Chatbot, " +
-                            "der Studenten aus dem ersten Semester " +
+                            "der Studierende aus dem ersten Semester " +
                             "hilft das Modul Objektorientierte Programmierung zu erlernen"
                 ),
                 ChatMessage(
