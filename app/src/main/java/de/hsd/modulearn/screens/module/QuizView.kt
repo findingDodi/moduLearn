@@ -130,11 +130,11 @@ fun Oop1Quiz(
                 if (feedbackMessage.isNotEmpty()) {
                     Text(
                         text = feedbackMessage,
-                        style = Typography.bodyLarge,
+                        style = Typography.bodySmall,
                         modifier = Modifier
                             .padding(vertical = 10.dp)
                             .background(
-                                if (quizLogic.areMultipleChoiceAnswersCorrect(
+                                if (quizLogic.isAnswerCorrect(
                                         selectedAnswers,
                                         question?.answer
                                     )
@@ -187,7 +187,7 @@ fun Oop1Quiz(
                                 // Überprüfung der Antwort
                                 if (selectedAnswers.isNotEmpty()) {
                                     if (question != null) {
-                                        val isCorrect = quizLogic.areMultipleChoiceAnswersCorrect(selectedAnswers, question.answer)
+                                        val isCorrect = quizLogic.isAnswerCorrect(selectedAnswers, question.answer)
                                         feedbackMessage = if (isCorrect) {
                                             correctAnswers++ // Erhöhe den Zähler für korrekte Antworten
                                             "Richtig!"

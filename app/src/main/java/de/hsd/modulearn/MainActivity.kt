@@ -17,6 +17,8 @@ import de.hsd.modulearn.data.Routes.homescreen
 import de.hsd.modulearn.data.Routes.moduleview
 import de.hsd.modulearn.data.Routes.lectureview
 import de.hsd.modulearn.data.Routes.chapterview
+import de.hsd.modulearn.data.Routes.finalQuizViewIntro
+import de.hsd.modulearn.data.Routes.finalQuizViewStart
 import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.data.Routes.quizview
 import de.hsd.modulearn.data.Routes.quizresultview
@@ -84,6 +86,14 @@ class MainActivity : ComponentActivity() {
 
                 composable(roadmapview) {
                     RoadmapView(navController)
+                }
+
+                composable(finalQuizViewStart) {
+                    FinalQuizViewStart(navController)
+                }
+
+                composable(finalQuizViewIntro) {
+                    FinalQuizViewIntro(navController)
                 }
 
                 composable("$quizresultview/{correctAnswers}/{quizQuestionsSize}") {

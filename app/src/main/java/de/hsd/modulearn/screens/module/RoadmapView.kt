@@ -81,14 +81,31 @@ fun RoadmapView(navController: NavController) {
                 )
                 val lectureList = AssetLoader().fullLectureList
 
+                val positions = mapOf(
+                    1 to Pair(250.dp, 488.dp),
+                    2 to Pair(120.dp, 505.dp),
+                    3 to Pair(45.dp, 440.dp),
+                    4 to Pair(110.dp, 370.dp),
+                    5 to Pair(200.dp, 345.dp),
+                    6 to Pair(225.dp, 250.dp),
+                    7 to Pair(160.dp, 185.dp),
+                    8 to Pair(72.dp, 120.dp),
+                    9 to Pair(180.dp, 9.dp)
+                )
+
+
                 Box(modifier = Modifier.fillMaxSize()) {
+
                     lectureList.forEach { lecture ->
+
+                        val position = positions[lecture.id] ?: return@forEach
+
                         RoadmapButton(
                             text = lecture.id.toString(),
                             destinationRoute = Routes.lectureview + "/" + lecture.id + "/" + lecture.title,
                             navController = navController,
                             modifier = Modifier
-                                .absoluteOffset(x = lecture.xPosition.dp, y = lecture.yPosition.dp)
+                                .absoluteOffset(x = position.first, y = position.second)
                         )
                     }
                 }

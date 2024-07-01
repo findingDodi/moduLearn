@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.logic.getChat
 import de.hsd.modulearn.theme.Black
+import de.hsd.modulearn.theme.LightGrey
 import de.hsd.modulearn.theme.PrimaryDarkBlue
 import de.hsd.modulearn.theme.PrimaryLightBlue
 import de.hsd.modulearn.theme.Typography
@@ -63,7 +64,7 @@ fun ChatBotView(navController: NavController) {
                     onValueChange = { question = it },
                     label = { Text("Frage eingeben") },
                     colors = TextFieldDefaults.textFieldColors(
-                        containerColor = PrimaryLightBlue,
+                        containerColor = LightGrey,
                         focusedLabelColor = Black,
                         cursorColor = Black,
                         focusedIndicatorColor = PrimaryDarkBlue,

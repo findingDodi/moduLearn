@@ -36,7 +36,7 @@ fun ProgressScreen(navController: NavController, points: Int) {
     val sharedPreferences = context.getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
 
     val streak = getStreak(sharedPreferences)
-    val badgeImage1 = if (points >= 300) R.drawable.punkt_badge_foreground else R.drawable.locked_badge_foreground
+    val badgeImage1 = if (points >= 300) R.drawable.punkte_finished_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage2 = if (streak >= 1) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
 
     Scaffold(

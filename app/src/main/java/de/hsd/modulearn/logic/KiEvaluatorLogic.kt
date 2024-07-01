@@ -7,10 +7,9 @@ import com.aallam.openai.api.chat.ChatRole
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.OpenAI
 
-suspend fun getChat(question: String): String? {
+suspend fun getKiEvaluation(answer: String): String? {
     try {
-
-        val apiKey = "sk-proj-GhxeqdvDTIP8ncV3hvdpT3BlbkFJTVEocu1JfdDeqAcZKg4K"
+        val apiKey = "sk-proj-uCBnRThQfLnji7JDdoXIT3BlbkFJGy366XTSrKOxJi50UgsG"
         val openAI = OpenAI(apiKey)
 
         val chatCompletionRequest = ChatCompletionRequest(
@@ -18,13 +17,13 @@ suspend fun getChat(question: String): String? {
             messages = listOf(
                 ChatMessage(
                     role = ChatRole.System,
-                    content = "Du bist ein hilfreicher Chatbot, " +
-                            "der Studenten aus dem ersten Semester " +
-                            "hilft das Modul Objektorientierte Programmierung zu erlernen"
+                    content = "Du bist ein Professor, der die Antworten von Studenten in einer " +
+                            "Abschlussprüfung für das Modul Objektorientiere Programmierung bewertet. " +
+                            "Du gibst ihnen hilfreiches Feedback auf ihre Antworten."
                 ),
                 ChatMessage(
                     role = ChatRole.User,
-                    content = question
+                    content = answer
                 )
             )
         )
@@ -33,7 +32,6 @@ suspend fun getChat(question: String): String? {
 
         return response
     } catch (e: Exception) {
-        println("Fehler bei der Anfrage an OpenAI API: ${e.message}")
         e.printStackTrace()
         return null
     }
