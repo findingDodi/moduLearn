@@ -11,7 +11,7 @@ import java.io.InputStreamReader
 
 class AssetLoader {
 
-    val fullLectureList: List<Lecture> = loadBundledLectureFromJson()
+    val fullLectureList: List<Lecture> = getAllLectures()
     val fullQuizList : List <Quiz> = getAllQuizzes()
     val finalQuiz : FinalQuiz = loadFinalQuizFromJson()
 
@@ -31,6 +31,17 @@ class AssetLoader {
         return quizList
     }
 
+    fun getAllLectures() : List <Lecture> {
+        val lectureList: MutableList<Lecture> = mutableListOf()
+
+        for (n in 1..9) {
+            val lectureFromJson = loadLectureFromJson(n)
+            lectureList.add(lectureFromJson)
+        }
+
+        return lectureList
+    }
+
     fun getQuizById(id: Int): Quiz? {
         val quiz = fullQuizList.find { it.id == id }
         return quiz
@@ -47,15 +58,14 @@ class AssetLoader {
         return gson.fromJson(reader, type)
     }
 
-    fun loadBundledLectureFromJson(): List<Lecture>  {
-        val fileName = "lectures/bundled_lectures.json"
-
-        val context = AppContext.getContext()
+    fun loadLectureFromJson(id : Int): Lecture {
+        val fileName = "lectures/lecture0$id.json"
 
         val gson = Gson()
+        val context = AppContext.getContext()
         val jsonFile = context.assets.open(fileName)
         val reader = InputStreamReader(jsonFile)
-        val type = object : TypeToken<List<Lecture>>(){}.type
+        val type = object : TypeToken<Lecture>() {}.type
         return gson.fromJson(reader, type)
     }
 

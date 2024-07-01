@@ -8,19 +8,25 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -49,19 +55,23 @@ fun LectureView(navController: NavController, id : Int, title :String) {
             .background(White)
             .fillMaxSize()
             .padding(innerPadding)
-            .padding(20.dp)
+            .padding(start = 30.dp, top = 30.dp, end = 30.dp)
         ){
             Column (
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(15.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
+                val chapterList = AssetLoader().getChaptersFromLectureById(id)
+
                 Text(
                     text = title,
                     style = Typography.headlineMedium
                 )
 
                 ButtonWithIcon(
-                    iconId = R.drawable.round_arrow_forward_24,
+                    iconId = R.drawable.round_lightbulb_24,
                     backgroundcolor = PrimaryDarkLilac,
                     color = White,
                     text = "Quiz starten",
@@ -70,18 +80,8 @@ fun LectureView(navController: NavController, id : Int, title :String) {
                     modifier = Modifier
                 )
 
-                val chapterList = AssetLoader().getChaptersFromLectureById(id)
-
-                if (chapterList != null) {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(2),
-                        modifier = Modifier
-                            .fillMaxHeight(),
-                    ) {
-                        items(chapterList.size){
-                            ChapterItem(chapter = chapterList[it], navController)
-                        }
-                    }
+                chapterList?.forEach { chapter ->
+                    ChapterItem(chapter, navController)
                 }
             }
         }
@@ -96,26 +96,36 @@ fun ChapterItem(
 ) {
     BoxWithConstraints(
         modifier = Modifier
-            .padding(5.dp)
-            .aspectRatio(1.25f)
+            .aspectRatio(3.25f)
             .clip(RoundedCornerShape(10.dp))
             .background(PrimaryMidLilac)
     ) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp)
+                .padding(20.dp)
+                .align(Alignment.CenterStart)
+                .clickable {
+                    navController.navigate(Routes.chapterview + "/" + chapter.title + "/" + chapter.content)
+                }
         ) {
-            Text(
-                text = chapter.title,
-                style = Typography.titleMedium,
-                color = White,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .clickable {
-                        navController.navigate(Routes.chapterview + "/" + chapter.title + "/" + chapter.content)
-                    }
-            )
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.round_library_books_24),
+                    contentDescription = "Lecture",
+                    tint = White,
+                    modifier = Modifier.size(35.dp)
+                )
+
+                Text(
+                    text = chapter.title,
+                    style = Typography.titleLarge,
+                    color = White
+                )
+            }
         }
     }
 }

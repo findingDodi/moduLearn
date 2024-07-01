@@ -28,6 +28,13 @@ val RobotoFontFamily = FontFamily(
 )
 
 val Typography = Typography(
+    displayLarge = TextStyle(
+        fontFamily = RobotoFontFamily,
+        fontWeight = FontWeight.W400,
+        fontSize = 18.sp,
+        lineHeight = 22.sp,
+        letterSpacing = 0.sp,
+    ),
     displayMedium = TextStyle(
         fontFamily = RobotoFontFamily,
         fontWeight = FontWeight.W400,
