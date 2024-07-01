@@ -24,6 +24,7 @@ fun QuizResultView(
     navController: NavController,
     correctAnswers: Int,
     totalQuestions: Int,
+    id : Int,
 ) {
     val passPercentage = 0.7
     val isPassed = correctAnswers >= (totalQuestions * passPercentage)
@@ -69,7 +70,7 @@ fun QuizResultView(
                         backgroundcolor = PrimaryDarkLilac,
                         color = White,
                         text = "Quiz neu Starten",
-                        destinationRoute = Routes.moduleview,
+                        destinationRoute = Routes.quizview + "/" + id,
                         navController = navController,
                         modifier = Modifier
                     )

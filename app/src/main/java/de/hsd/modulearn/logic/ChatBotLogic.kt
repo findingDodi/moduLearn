@@ -10,7 +10,7 @@ import com.aallam.openai.client.OpenAI
 suspend fun getChat(question: String): String? {
     try {
 
-        val apiKey = "sk-proj-GhxeqdvDTIP8ncV3hvdpT3BlbkFJTVEocu1JfdDeqAcZKg4K"
+        val apiKey = "sk-proj-QDQJklP5sWreTQl3PcqQT3BlbkFJmLw3YI9axNGbeXI0SzPd"
         val openAI = OpenAI(apiKey)
 
         val chatCompletionRequest = ChatCompletionRequest(

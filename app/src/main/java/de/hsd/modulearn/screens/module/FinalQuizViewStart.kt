@@ -93,7 +93,7 @@ fun FinalQuizViewStart(navController: NavController) {
                             },
                             modifier = Modifier.align(Alignment.CenterHorizontally)
                         ) {
-                            Text(text = "Frage absenden")
+                            Text(text = "Antwort absenden")
                         }
                     } else {
                         Text(
