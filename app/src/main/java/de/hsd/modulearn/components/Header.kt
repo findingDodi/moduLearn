@@ -90,7 +90,7 @@ fun Header(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .clip(RoundedCornerShape(20.dp))
-                .background(PrimaryDarkLilac)
+                .background(PrimaryMidLilac)
                 .padding(horizontal = 15.dp, vertical = 5.dp)
         ) {
             Text(

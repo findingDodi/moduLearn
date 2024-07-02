@@ -65,7 +65,9 @@ fun FinalQuizViewIntro(navController: NavController) {
                 )
 
                 Box(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(bottom = 30.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     ButtonWithIcon(
