@@ -56,7 +56,7 @@ fun FinalQuizViewIntro(navController: NavController) {
                 )
 
                 Text(
-                    text = "Willkommen zur Abschlussprüfung des Moduls \"Objektorientierte Programmierung\". Diese Prüfung testet Ihr Verständnis der wesentlichen Konzepte wie Klassen, Objekte, Vererbung, Polymorphismus und Schnittstellen.\n" +
+                    text = "Willkommen zur Abschlussprüfung des Moduls \"Objektorientierte Programmierung\". Diese Prüfung testet dein Verständnis der wesentlichen Konzepte wie Klassen, Objekte, Vererbung, Polymorphismus und Schnittstellen.\n" +
                             "\n" +
                             "Bitte beantworte die Fragen sorgfältig und vollständig. Viel Erfolg!",
                     style = Typography.bodyLarge,
