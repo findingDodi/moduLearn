@@ -36,9 +36,11 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
     val sharedPreferences = context.getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
 
     val streak = getStreak(sharedPreferences)
-    val badgeImage1 = if (points >= 300) R.drawable.punkte_finished_badge_foreground else R.drawable.locked_badge_foreground
-    val badgeImage2 = if (streak >= 1) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
+    val badgeImage1 = if (points >= 100) R.drawable.punkte_finished_badge_foreground else R.drawable.locked_badge_foreground
+    val badgeImage2 = if (streak >= 7) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage3 = if (showThirdBadge) R.drawable.modul_finished_foreground else R.drawable.locked_badge_foreground
+
+
     Scaffold(
         topBar = { Header("Erfolge", false, navController) },
         bottomBar = { Footer(navController, 3) },
