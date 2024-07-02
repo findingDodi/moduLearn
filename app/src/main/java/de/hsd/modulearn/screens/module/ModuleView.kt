@@ -41,6 +41,7 @@ import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture
 import de.hsd.modulearn.data.module.Quiz
 import de.hsd.modulearn.theme.Black
+import de.hsd.modulearn.theme.LightMidGrey
 import de.hsd.modulearn.theme.PrimaryDarkLilac
 import de.hsd.modulearn.theme.PrimaryMidBlue
 import de.hsd.modulearn.theme.PrimaryMidLilac
@@ -199,7 +200,7 @@ fun LockedItem() {
         modifier = Modifier
             .aspectRatio(3.25f)
             .clip(RoundedCornerShape(10.dp))
-            .background(PrimaryMidLilac)
+            .background(LightMidGrey)
     ) {
         Box(
             modifier = Modifier
@@ -212,7 +213,7 @@ fun LockedItem() {
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.locked_badge_foreground),
+                    painter = painterResource(R.drawable.round_lock_24),
                     contentDescription = "Locked",
                     tint = White,
                     modifier = Modifier.size(35.dp)
