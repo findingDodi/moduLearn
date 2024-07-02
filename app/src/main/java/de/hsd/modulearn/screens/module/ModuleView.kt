@@ -25,14 +25,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
+import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture
@@ -47,6 +50,14 @@ import de.hsd.modulearn.utils.AssetLoader
 
 @Composable
 fun ModuleView(navController: NavController) {
+
+    //Gerade geändert
+    val context = LocalContext.current
+    val mainActivity = context as MainActivity
+    //Gibt an welche Module freigeschaltet werden
+    val unlockedModules = mainActivity.getUnlockedModules()
+
+
     Scaffold (
 
         topBar = { Header("OOP1", true, navController) },
@@ -60,7 +71,8 @@ fun ModuleView(navController: NavController) {
             .padding(innerPadding)
             .padding(start = 30.dp, top = 30.dp, end = 30.dp)
         ) {
-            Column (modifier = Modifier
+            Column (
+                modifier = Modifier
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(20.dp)
@@ -82,8 +94,13 @@ fun ModuleView(navController: NavController) {
                     modifier = Modifier
                 )
 
-                lectureList.forEach { lecture ->
-                    LectureItem(lecture, navController)
+                //überprüft, ob der Index eines Moduls kleiner oder gleich unlockedModules ist
+                lectureList.forEachIndexed { index, lecture ->
+                    if (index + 1 <= unlockedModules) {
+                        LectureItem(lecture, navController)
+                    } else {
+                        LockedItem()
+                    }
                 }
 
                 FinalQuizItem (navController)
@@ -166,6 +183,43 @@ fun FinalQuizItem (
 
                 Text(
                     text = "Abschlussprüfung",
+                    style = Typography.titleLarge,
+                    color = White
+                )
+            }
+        }
+    }
+}
+
+//Stellt das gespeerte Modul da
+@SuppressLint("UnusedBoxWithConstraintsScope")
+@Composable
+fun LockedItem() {
+    BoxWithConstraints(
+        modifier = Modifier
+            .aspectRatio(3.25f)
+            .clip(RoundedCornerShape(10.dp))
+            .background(PrimaryMidLilac)
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(20.dp)
+                .align(Alignment.CenterStart)
+        ) {
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.locked_badge_foreground),
+                    contentDescription = "Locked",
+                    tint = White,
+                    modifier = Modifier.size(35.dp)
+                )
+
+                Text(
+                    text = "Gesperrt",
                     style = Typography.titleLarge,
                     color = White
                 )

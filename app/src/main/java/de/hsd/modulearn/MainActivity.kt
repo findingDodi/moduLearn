@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes.chatbotview
 import de.hsd.modulearn.data.Routes.homescreen
 import de.hsd.modulearn.data.Routes.moduleview
@@ -46,6 +47,8 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val points = remember { mutableStateOf(getPoints()) }
             val showThirdBadge = remember { mutableStateOf(getShowThirdBadge()) }
+            val unlockeModules = remember { mutableStateOf(getUnlockedModules()) }
+            val moduleProgress = remember { mutableStateOf(getProgress()) }
 
             NavHost(navController = navController, startDestination = homescreen, builder = {
                 composable(homescreen) {
@@ -53,7 +56,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(progressscreen) {
-                    ProgressScreen(navController, points.value, showThirdBadge.value)
+                    ProgressScreen(navController, points.value, showThirdBadge.value, moduleProgress.value)
                 }
 
                 composable(quizzesscreen) {
@@ -184,5 +187,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
+    //liest den aktuellen Stand der freigeschalteten Module aus den SharedPreferences
+    fun getUnlockedModules(): Int {
+        return sharedPreferences.getInt("unlocked_modules", 1)
+    }
+
+    //wird aufgerufen, um die Änderung zu speichern.
+    fun setunlockNextModule() {
+        val currentUnlocked = getUnlockedModules()
+        with(sharedPreferences.edit()) {
+            putInt("unlocked_modules", currentUnlocked + 1)
+            apply()
+        }
+    }
+
+    fun getProgress(): Int {
+        return sharedPreferences.getInt("progress", 10)
+    }
+
+    //wird aufgerufen, um die Änderung zu speichern.
+    fun setProgress() {
+        val moduleProgress = getProgress()
+        with(sharedPreferences.edit()) {
+            putInt("progress", moduleProgress + 10)
+            apply()
+        }
+    }
 
 }

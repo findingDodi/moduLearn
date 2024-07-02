@@ -28,17 +28,19 @@ import de.hsd.modulearn.theme.PrimaryDarkBlue
 import de.hsd.modulearn.theme.PrimaryMidBlue
 import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
+import io.ktor.client.plugins.BodyProgress
 
 @Composable
-fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Boolean) {
+fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Boolean, moduleProgress: Int) {
     val context = LocalContext.current
 
     val sharedPreferences = context.getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
 
     val streak = getStreak(sharedPreferences)
+
     val badgeImage1 = if (points >= 100) R.drawable.punkte_finished_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage2 = if (streak >= 7) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
-    val badgeImage3 = if (showThirdBadge) R.drawable.modul_finished_foreground else R.drawable.locked_badge_foreground
+    val badgeImage3 = if (showThirdBadge) R.drawable.module_finished_foreground else R.drawable.locked_badge_foreground
 
 
     Scaffold(
@@ -72,7 +74,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                         .padding(15.dp)
                 ) {
                     // Fortschrittskreis und Prozentanzeige
-                    val progress = points / 1000f // assuming max points is 1000
+                    val progress = moduleProgress / 100f // assuming max points is 100
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
@@ -89,7 +91,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                                 .padding(8.dp)
                         )
                         Text(
-                            text = "${(progress * 100).toInt()}%",
+                            text = "\"${(progress) * 100}%\"",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
@@ -102,7 +104,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                             .padding(start = 16.dp)
                     ) {
                         Text(
-                            text = "Du hast dieses Modul zu ${(progress * 100).toInt()}% abgeschlossen.",
+                            text = "Du hast dieses Modul zu \"${(progress) * 100}%\" abgeschlossen.",
                             fontSize = 16.sp,
                             color = Color.Black,
                             modifier = Modifier.padding(top = 8.dp)
@@ -118,11 +120,20 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp)
                 )
 
+                // Anzeige der Streak-Informationen
+                Text(
+                    text = "Streak: $moduleProgress",
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    modifier = Modifier.padding(top = 16.dp, start = 16.dp)
+                )
+
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 20.dp)
+
                 ) {
                     Image(
                         painter = painterResource(id = badgeImage1),

@@ -94,11 +94,6 @@ fun ModuleItem (
                 .fillMaxSize()
                 .padding(20.dp)
                 .clickable {
-                    //Für die Punkte: Punkte basierend auf dem Modultitel erhöhen
-                    when (module.title) {
-                        "OOP1" -> mainActivity.setPoints(mainActivity.getPoints() + 20)
-                        "MCI" -> mainActivity.setPoints(mainActivity.getPoints() + 55)
-                    }
                     navController.navigate(roadmapview)
                 }
         ) {

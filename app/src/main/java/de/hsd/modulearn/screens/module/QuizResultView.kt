@@ -22,6 +22,7 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.data.Module
+import io.ktor.client.plugins.BodyProgress
 
 @Composable
 fun QuizResultView(
@@ -29,6 +30,7 @@ fun QuizResultView(
     correctAnswers: Int,
     totalQuestions: Int,
     id : Int,
+
 ) {
     val passPercentage = 0.7
     val isPassed = correctAnswers >= (totalQuestions * passPercentage)
@@ -70,8 +72,10 @@ fun QuizResultView(
                             contentColor = White,
                         ),
                         onClick = {
-                            mainActivity.setPoints(mainActivity.getPoints() + 20)
+                            mainActivity.setPoints(mainActivity.getPoints() + 100)
                             navController.navigate(Routes.moduleview)
+                            mainActivity.setProgress()
+                            mainActivity.setunlockNextModule()
 
                         }
                     ) {
