@@ -33,6 +33,13 @@ import de.hsd.modulearn.data.Routes.moduleview
 import de.hsd.modulearn.data.Routes.roadmapview
 import de.hsd.modulearn.theme.*
 
+/**
+ * Hauptbildschirm der Anwendung, der eine Liste von Modulen darstellt.
+ *
+ * Jedes Modul wird als Karte dargestellt, die den Titel des Moduls und ein Bild enthält.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ */
 @Composable
 fun HomeScreen(navController: NavController) {
     Scaffold (
@@ -72,7 +79,15 @@ fun HomeScreen(navController: NavController) {
         }
     }
 }
-
+/**
+ * Composable Funktion zur Darstellung eines einzelnen Moduls als Karte.
+ *
+ * Die Karte enthält den Titel des Moduls
+ * und ein Bild, das beim Klicken auf das Modul zu einem anderen Bildschirm navigiert.
+ *
+ * @param module Das Modulobjekt, das dargestellt werden soll.
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ */
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun ModuleItem (

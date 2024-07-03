@@ -19,12 +19,17 @@ import de.hsd.modulearn.data.Routes.progressscreen
 import de.hsd.modulearn.data.Routes.quizzesscreen
 import de.hsd.modulearn.theme.*
 
+/**
+ * Eine Composable Funktion, die eine Fußzeilen-Navigationsleiste mit auswählbaren Elementen anzeigt.
+ *
+ * @param navController Der [NavController], der für die Navigation zwischen den Zielen verwendet wird.
+ * @param selectedItemIndex Der Index des aktuell ausgewählten Elements in der Navigationsleiste.
+ */
 @Composable
 fun Footer(
     navController: NavController,
     selectedItemIndex: Int
 ) {
-
     val items = listOf(
         BottomMenuContent("Home", homescreen, R.drawable.round_home_24),
         BottomMenuContent("Lektionen", roadmapview, R.drawable.round_bookmarks_24),

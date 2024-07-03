@@ -49,15 +49,19 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 import de.hsd.modulearn.utils.AssetLoader
 
+/**
+ * Composable-Funktion zur Darstellung des Modulübersichts.
+ *
+ * Diese Funktion zeigt eine Liste von Lektionen und eine Option zum Starten der Abschlussprüfung.
+ *
+ * @param navController Der [NavController], der für die Navigation innerhalb der App verwendet wird.
+ */
 @Composable
 fun ModuleView(navController: NavController) {
-
-    //Gerade geändert
+    // Zugriff auf den Context und die MainActivity für den Zugriff auf freigeschaltete Module
     val context = LocalContext.current
     val mainActivity = context as MainActivity
-    //Gibt an welche Module freigeschaltet werden
     val unlockedModules = mainActivity.getUnlockedModules()
-
 
     Scaffold (
 
@@ -95,7 +99,7 @@ fun ModuleView(navController: NavController) {
                     modifier = Modifier
                 )
 
-                //überprüft, ob der Index eines Moduls kleiner oder gleich unlockedModules ist
+                // überprüft, ob der Index eines Moduls kleiner oder gleich unlockedModules ist
                 lectureList.forEachIndexed { index, lecture ->
                     if (index + 1 <= unlockedModules) {
                         LectureItem(lecture, navController)
@@ -109,6 +113,15 @@ fun ModuleView(navController: NavController) {
         }
     }
 }
+
+/**
+ * Composable-Funktion zur Darstellung einer Lektion innerhalb der Modulübersicht.
+ *
+ * Diese Funktion zeigt eine klickbare Karte für eine Lektion mit ihrem Titel und einem Symbol.
+ *
+ * @param lecture Das [Lecture]-Objekt, das die Lektion repräsentiert.
+ * @param navController Der [NavController], der für die Navigation innerhalb der App verwendet wird.
+ */
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
@@ -151,6 +164,14 @@ fun LectureItem (
         }
     }
 }
+/**
+ * Composable-Funktion zur Darstellung der Abschlussprüfungsoption innerhalb der Lektionenübersicht.
+ *
+ * Diese Funktion zeigt eine klickbare Karte für den Start der Abschlussprüfung.
+ *
+ * @param navController Der [NavController], der für die Navigation innerhalb der App verwendet wird.
+ */
+
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun FinalQuizItem (
@@ -192,7 +213,11 @@ fun FinalQuizItem (
     }
 }
 
-//Stellt das gespeerte Modul da
+/**
+ * Composable-Funktion zur Darstellung einer gesperrten Moduloption innerhalb der Modulübersicht.
+ *
+ * Diese Funktion zeigt eine klickbare Karte für ein gesperrtes Modul.
+ */
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun LockedItem() {

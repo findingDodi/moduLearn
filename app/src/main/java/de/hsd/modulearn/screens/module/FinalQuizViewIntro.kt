@@ -25,6 +25,11 @@ import de.hsd.modulearn.theme.PrimaryDarkLilac
 import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 
+/**
+ * Composable Funktion, die die Einführungsansicht zur Abschlussprüfung eines Moduls darstellt.
+ *
+ * @param navController Der [NavController], der für die Navigation verwendet wird.
+ */
 @Composable
 fun FinalQuizViewIntro(navController: NavController) {
     Scaffold (

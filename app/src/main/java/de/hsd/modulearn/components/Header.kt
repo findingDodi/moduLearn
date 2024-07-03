@@ -27,6 +27,13 @@ import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
 import de.hsd.modulearn.theme.*
 
+/**
+ * Eine Composable Funktion, die einen Header mit optionaler Zurück-Schaltfläche, Titel und optionalen Benutzerpunkten anzeigt.
+ *
+ * @param title Der Titeltext, der im Header angezeigt werden soll.
+ * @param backButton Gibt an, ob eine Zurück-Schaltfläche angezeigt werden soll. Standardmäßig true.
+ * @param navController Der [NavController], der für die Navigation zurück verwendet wird.
+ */
 @Composable
 fun Header(
     title: String,

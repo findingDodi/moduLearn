@@ -40,6 +40,15 @@ import de.hsd.modulearn.data.module.Chapter
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
+/**
+ * Composable-Funktion zur Darstellung einer Lektion mit zugehörigen Kapiteln.
+ *
+ * Diese Funktion zeigt den Titel der Lektion, eine Schaltfläche zum Starten des Quiz und eine Liste der Kapitel an.
+ *
+ * @param navController Der [NavController], der für die Navigation innerhalb der App verwendet wird.
+ * @param id Die eindeutige ID der Lektion.
+ * @param title Der Titel der Lektion
+ */
 @Composable
 fun LectureView(navController: NavController, id : Int, title :String) {
     Scaffold (
@@ -104,6 +113,14 @@ fun LectureView(navController: NavController, id : Int, title :String) {
     }
 }
 
+/**
+ * Composable-Funktion zur Darstellung eines Kapitels innerhalb einer Lektion.
+ *
+ * Diese Funktion zeigt ein einzelnes Kapitel als klickbare Karte mit seinem Titel und einem Symbol.
+ *
+ * @param chapter Das [Chapter]-Objekt, das das Kapitel repräsentiert.
+ * @param navController Der [NavController], der für die Navigation innerhalb der App verwendet wird.
+ */
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun ChapterItem(

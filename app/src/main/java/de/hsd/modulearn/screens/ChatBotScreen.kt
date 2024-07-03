@@ -29,6 +29,15 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 import kotlinx.coroutines.launch
 
+/**
+ * Composable zur Darstellung eines Chatbots für interaktive Fragen und Antworten.
+ *
+ * Diese Funktion stellt eine Benutzeroberfläche für einen Chatbot dar, der Fragen entgegennimmt und
+ * Antworten zurückgibt. Benutzer können Fragen eingeben und die Antworten des Chatbots anzeigen lassen.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatBotView(navController: NavController) {

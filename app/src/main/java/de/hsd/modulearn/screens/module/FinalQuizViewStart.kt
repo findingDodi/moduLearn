@@ -23,7 +23,17 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 import de.hsd.modulearn.utils.AssetLoader
 import kotlinx.coroutines.launch
-
+/**
+ * Composable-Funktion zur Darstellung des Startbildschirms der Abschlussprüfung eines Moduls.
+ *
+ * Diese Funktion zeigt die Fragen der Abschlussprüfung an und ermöglicht es dem Benutzer, seine Antworten einzugeben,
+ * die Antworten abzusenden und Feedback vom Chatbot zu erhalten. Nachdem alle Fragen beantwortet wurden, kann der
+ * Benutzer zur Modulübersicht zurückkehren.
+ *
+ * @param navController Der [NavController], der für die Navigation innerhalb der App verwendet wird.
+ * @param showThirdBadge Ein [Boolean]-Wert, der angibt, ob ein drittes Badge angezeigt werden soll.
+ * @param setShowThirdBadge Eine Funktion, um den Zustand von [showThirdBadge] zu aktualisieren.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FinalQuizViewStart(navController: NavController, showThirdBadge: Boolean, setShowThirdBadge: (Boolean) -> Unit) {

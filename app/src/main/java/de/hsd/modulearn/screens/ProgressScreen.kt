@@ -30,6 +30,17 @@ import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 import io.ktor.client.plugins.BodyProgress
 
+/**
+ * Bildschirm zur Anzeige des Fortschritts und der erreichten Erfolge.
+ *
+ * Diese Funktion zeigt den Fortschritt des Benutzers anhand eines Kreises mit Prozentanzeige für
+ * ein bestimmtes Modul, den aktuellen Streak und bis zu drei mögliche Erfolgsabzeichen.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ * @param points Die Punktezahl des Benutzers.
+ * @param showThirdBadge Gibt an, ob das dritte Abzeichen angezeigt werden soll.
+ * @param moduleProgress Der Fortschritt des Benutzers im aktuellen Modul in Prozent.
+ */
 @Composable
 fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Boolean, moduleProgress: Int) {
     val context = LocalContext.current

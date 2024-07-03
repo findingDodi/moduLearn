@@ -40,6 +40,13 @@ import de.hsd.modulearn.screens.module.LectureItem
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
+/**
+ * Bildschirm zur Anzeige einer Übersicht der Quizze.
+ *
+ * Diese Funktion zeigt eine Liste von Quizzen an, die der Benutzer auswählen kann.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ */
 @Composable
 fun QuizzesScreen(navController: NavController) {
     Scaffold (
@@ -76,6 +83,15 @@ fun QuizzesScreen(navController: NavController) {
     }
 }
 
+/**
+ * Komponente zur Anzeige eines einzelnen Quiz-Eintrags.
+ *
+ * Diese Funktion zeigt ein einzelnes Quiz mit seinem Titel und einer Schaltfläche zur Navigation
+ * zu den Details des Quiz an.
+ *
+ * @param lecture Das Quiz-Objekt, das angezeigt werden soll.
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ */
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun QuizzesItem (

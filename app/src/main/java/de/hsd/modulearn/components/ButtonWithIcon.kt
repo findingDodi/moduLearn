@@ -24,6 +24,18 @@ import de.hsd.modulearn.theme.PrimaryDarkBlue
 import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 
+/**
+ * Eine Composable Funktion, die einen Button mit einem Icon und Text erstellt.
+ * Bei Klick navigiert der Button zu einer angegebenen Route.
+ *
+ * @param iconId Die Ressourcen-ID des Icons, das angezeigt werden soll.
+ * @param backgroundcolor Die Hintergrundfarbe des Buttons.
+ * @param color Die Farbe des Icons und des Textes.
+ * @param text Der Text, der auf dem Button angezeigt werden soll.
+ * @param destinationRoute Die Route, zu der navigiert werden soll, wenn der Button geklickt wird.
+ * @param navController Der [NavController], der für die Navigation verwendet wird.
+ * @param modifier Der [Modifier], der auf den Button angewendet werden soll.
+ */
 @Composable
 fun ButtonWithIcon(
     @DrawableRes iconId: Int,

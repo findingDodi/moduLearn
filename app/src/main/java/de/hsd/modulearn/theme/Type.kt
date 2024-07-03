@@ -9,7 +9,6 @@ import androidx.compose.ui.unit.sp
 
 import de.hsd.modulearn.R
 
-// Set of Material typography styles to start with
 val RalewayFontFamily = FontFamily(
     listOf(
         Font(R.font.raleway_regular),

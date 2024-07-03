@@ -30,10 +30,16 @@ import de.hsd.modulearn.screens.module.*
 import de.hsd.modulearn.utils.AppContext
 import java.time.LocalDate
 
+/**
+ * Hauptaktivität der Anwendung. Verwaltet die Navigation und andere Hauptfunktionalitäten.
+ */
 class MainActivity : ComponentActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
+    /**
+     * Initialisierungsmethode der Aktivität.
+     */
     @SuppressLint("RememberReturnType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,12 +122,20 @@ class MainActivity : ComponentActivity() {
         updateStreak()
     }
 
-    // Für die Punkte: Methode zum Abrufen der aktuellen Punkte aus SharedPreferences
+    /**
+     * Methode zum Abrufen der aktuellen Punkte aus den SharedPreferences.
+     *
+     * @return Die aktuellen Punkte
+     */
     fun getPoints(): Int {
         return sharedPreferences.getInt("points", 0)
     }
 
-    // Für die Punkte: Methode zum Speichern der Punkte in SharedPreferences
+    /**
+     * Methode zum Speichern der Punkte in den SharedPreferences.
+     *
+     * @param points Die zu speichernden Punkte
+     */
     fun setPoints(points: Int) {
         with(sharedPreferences.edit()) {
             putInt("points", points)
@@ -129,7 +143,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    // Streak aktualisieren
+    /**
+     * Aktualisiert die Streak basierend auf dem letzten Öffnungsdatum der App.
+     */
     private fun updateStreak() {
         val lastOpenDate = getLastOpenDate()
         val today = LocalDate.now().toEpochDay()
@@ -148,12 +164,20 @@ class MainActivity : ComponentActivity() {
         setLastOpenDate(today)
     }
 
-    // Methode zum Abrufen der aktuellen Streak aus SharedPreferences
+    /**
+     * Methode zum Abrufen der aktuellen Streak aus den SharedPreferences.
+     *
+     * @return Die aktuelle Streak
+     */
     fun getStreak(): Int {
         return sharedPreferences.getInt("streak", 0)
     }
 
-    // Methode zum Setzen der Streak in SharedPreferences
+    /**
+     * Methode zum Speichern der Streak in den SharedPreferences.
+     *
+     * @param streak Die zu speichernde Streak
+     */
     fun setStreak(streak: Int) {
         with(sharedPreferences.edit()) {
             putInt("streak", streak)
@@ -161,12 +185,20 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    // Methode zum Abrufen des zuletzt geöffneten Datums aus SharedPreferences
+    /**
+     * Methode zum Abrufen des zuletzt geöffneten Datums aus den SharedPreferences.
+     *
+     * @return Das zuletzt geöffnete Datum
+     */
     fun getLastOpenDate(): Long {
         return sharedPreferences.getLong("last_open_date", 0L)
     }
 
-    // Methode zum Setzen des zuletzt geöffneten Datums in SharedPreferences
+    /**
+     * Methode zum Speichern des zuletzt geöffneten Datums in den SharedPreferences.
+     *
+     * @param date Das zu speichernde Datum
+     */
     fun setLastOpenDate(date: Long) {
         with(sharedPreferences.edit()) {
             putLong("last_open_date", date)
@@ -175,11 +207,20 @@ class MainActivity : ComponentActivity() {
     }
 
 
-//Für die Aktuallisierung des 3. Badges
+    /**
+     * Methode zum Abrufen des Status des dritten Badges aus den SharedPreferences.
+     *
+     * @return true, wenn das dritte Badge angezeigt werden soll, false sonst
+     */
     fun getShowThirdBadge(): Boolean {
         return sharedPreferences.getBoolean("show_third_badge", false)
     }
 
+    /**
+     * Methode zum Speichern des Status des dritten Badges in den SharedPreferences.
+     *
+     * @param show true, wenn das dritte Badge angezeigt werden soll, false sonst
+     */
     fun setShowThirdBadge(show: Boolean) {
         with(sharedPreferences.edit()) {
             putBoolean("show_third_badge", show)
@@ -188,12 +229,18 @@ class MainActivity : ComponentActivity() {
     }
 
 
-    //liest den aktuellen Stand der freigeschalteten Module aus den SharedPreferences
+    /**
+     * Methode zum Abrufen des aktuellen Fortschritts der freigeschalteten Module aus den SharedPreferences.
+     *
+     * @return Der aktuelle Fortschritt der freigeschalteten Module
+     */
     fun getUnlockedModules(): Int {
         return sharedPreferences.getInt("unlocked_modules", 1)
     }
 
-    //wird aufgerufen, um die Änderung zu speichern.
+    /**
+     * Methode zum Freischalten des nächsten Moduls und Speichern der Änderung in den SharedPreferences.
+     */
     fun setunlockNextModule() {
         val currentUnlocked = getUnlockedModules()
         with(sharedPreferences.edit()) {
@@ -202,11 +249,18 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * Methode zum Abrufen des aktuellen Modulfortschritts aus den SharedPreferences.
+     *
+     * @return Der aktuelle Modulfortschritt
+     */
     fun getProgress(): Int {
         return sharedPreferences.getInt("progress", 10)
     }
 
-    //wird aufgerufen, um die Änderung zu speichern.
+    /**
+     * Methode zum Erhöhen des Modulfortschritts um 10 und Speichern der Änderung in den SharedPreferences.
+     */
     fun setProgress() {
         val moduleProgress = getProgress()
         with(sharedPreferences.edit()) {

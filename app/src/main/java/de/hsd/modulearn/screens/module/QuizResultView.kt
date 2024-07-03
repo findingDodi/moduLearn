@@ -25,6 +25,17 @@ import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.data.Module
 import io.ktor.client.plugins.BodyProgress
 
+/**
+ * Composable-Funktion zur Anzeige der Quiz-Ergebnisse.
+ *
+ * Diese Funktion zeigt das Ergebnis eines Quiz an und ermöglicht es dem Benutzer,
+ * je nach Bestehen des Quizzes eine nächste Lektion freizuschalten oder das Quiz erneut zu starten.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der App.
+ * @param correctAnswers Die Anzahl der richtig beantworteten Fragen im Quiz.
+ * @param totalQuestions Die Gesamtanzahl der Fragen im Quiz.
+ * @param id Die ID des aktuellen Quiz, verwendet für die Navigation zum Quiz-Start.
+ */
 @Composable
 fun QuizResultView(
     navController: NavController,

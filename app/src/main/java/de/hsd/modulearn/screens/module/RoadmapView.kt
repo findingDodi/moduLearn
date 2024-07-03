@@ -25,6 +25,15 @@ import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
+/**
+ * Composable Funktion zur Darstellung der Roadmap eines Moduls.
+ *
+ * Diese Funktion rendert die Roadmap eines Moduls, die grafisch als SVG-Bild dargestellt wird.
+ * Jede Lektion wird als interaktiver Button auf der Roadmap platziert, der es Benutzern ermöglicht,
+ * direkt zur jeweiligen Lektion zu navigieren.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der Anwendung.
+ */
 @Composable
 fun RoadmapView(navController: NavController) {
 

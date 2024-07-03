@@ -32,6 +32,15 @@ import androidx.compose.ui.Alignment
 import de.hsd.modulearn.logic.QuizLogic
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.utils.AssetLoader
+/**
+ * Composable Funktion zur Darstellung und Durchführung eines Quiz für das Modul.
+ *
+ * Diese Funktion ermöglicht es Benutzern, Fragen zu beantworten und den Fortschritt des
+ * aktuellen Quiz zu verfolgen. Nach Abschluss des Quizzes wird das Ergebnis angezeigt.
+ *
+ * @param navController Der NavController für die Navigation innerhalb der App.
+ * @param id Die ID des Quizzes, um die entsprechenden Quizdaten zu laden.
+ */
 @Composable
 fun Oop1Quiz(
     navController: NavController,
@@ -168,7 +177,7 @@ fun Oop1Quiz(
                                         showNextButton = false
                                         answerColors = List(quiz.questions[currentQuestionIndex].answerOptions!!.size) { LightGrey }
                                     } else {
-                                        navController.navigate(Routes.quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size + "/" + id)
+                                        navController.navigate(Routes.quizresultview + "/" + correctAnswers + "/"+ quiz.questions.size + "/" + quiz.id)
                                     }
                                 }
                             },
@@ -189,7 +198,7 @@ fun Oop1Quiz(
                                     if (question != null) {
                                         val isCorrect = quizLogic.isAnswerCorrect(selectedAnswers, question.answer)
                                         feedbackMessage = if (isCorrect) {
-                                            correctAnswers++ // Erhöhe den Zähler für korrekte Antworten
+                                            correctAnswers++ // Zähler für korrekte Antworten erhöhren
                                             "Richtig!"
                                         } else {
                                             "Falsch. ${question.explanation ?: ""}"
@@ -221,6 +230,12 @@ fun Oop1Quiz(
     }
 }
 
+/**
+ * Composable Funktion zur Anzeige eines Fortschrittsbalkens für das Quiz.
+ *
+ * @param currentQuestionIndex Der Index der aktuellen Frage im Quiz.
+ * @param totalQuestions Die Gesamtanzahl der Fragen im Quiz.
+ */
 @Composable
 fun ProgressBar(
     currentQuestionIndex: Int,
@@ -238,6 +253,17 @@ fun ProgressBar(
     )
 }
 
+/**
+ * Composable Funktion zur Darstellung einer Antwortoption in einem Quiz.
+ *
+ * Diese Funktion rendert eine Antwortoption mit einer Textdarstellung und ermöglicht
+ * Benutzern, diese Option auszuwählen und darauf zu klicken.
+ *
+ * @param answer Die Textdarstellung der Antwortoption.
+ * @param isSelected Gibt an, ob diese Antwortoption aktuell ausgewählt ist.
+ * @param color Die Hintergrundfarbe der Antwortoption.
+ * @param onClick Die Aktion, die ausgeführt wird, wenn auf die Antwortoption geklickt wird.
+ */
 @Composable
 fun AnswerOption(
     answer: String,

@@ -14,6 +14,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.theme.*
 
+/**
+ * Eine Composable Funktion, die einen kreisförmigen Button erstellt, um zu einer angegebenen Zielseite zu navigieren.
+ *
+ * @param text Der Text, der auf dem Button angezeigt werden soll.
+ * @param destinationRoute Die Route, zu der navigiert werden soll, wenn der Button geklickt wird.
+ * @param navController Der [NavController], der für die Navigation verwendet wird.
+ * @param modifier Optionaler [Modifier], um das Erscheinungsbild und Verhalten des Buttons anzupassen.
+ */
 @Composable
 fun RoadmapButton(
     text: String,

@@ -19,6 +19,13 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.theme.Typography
 import de.hsd.modulearn.theme.White
 
+/**
+ * Composable Funktion, die die Ansicht für ein Kapitel innerhalb einer Lektion darstellt.
+ *
+ * @param navController Der [NavController], der für die Navigation verwendet wird.
+ * @param title Der Titel des anzuzeigenden Kapitels.
+ * @param content Der Inhalt des anzuzeigenden Kapitels.
+ */
 @Composable
 fun ChapterView(navController: NavController, title :String, content: String) {
     Scaffold (
