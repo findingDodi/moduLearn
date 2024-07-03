@@ -255,7 +255,7 @@ class MainActivity : ComponentActivity() {
      * @return Der aktuelle Modulfortschritt
      */
     fun getProgress(): Int {
-        return sharedPreferences.getInt("progress", 10)
+        return sharedPreferences.getInt("progress", 0)
     }
 
     /**
