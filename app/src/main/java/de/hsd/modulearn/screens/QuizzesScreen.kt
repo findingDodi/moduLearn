@@ -76,7 +76,15 @@ fun QuizzesScreen(navController: NavController) {
                 )
 
                 lectureList.forEach { lecture ->
-                    QuizzesItem(lecture, navController)
+                    val context = LocalContext.current
+                    val mainActivity = context as MainActivity
+                    val unlockedModules = mainActivity.getUnlockedModules()
+
+                    if (lecture.id <= unlockedModules) {
+                        QuizzesItem(lecture, navController)
+                    } else {
+                        LockedQuizzesItem()
+                    }
                 }
             }
         }
@@ -138,6 +146,49 @@ fun QuizzesItem (
                     style = Typography.headlineSmall,
                     color = White
                 )
+            }
+        }
+    }
+}
+
+
+/**
+ * Composable-Funktion zur Darstellung eines gesperrten Quizzes innerhalb der Quizzesübersicht.
+ *
+ * Diese Funktion zeigt eine nicht-klickbare Karte für ein gesperrtes Quiz.
+ */
+@SuppressLint("UnusedBoxWithConstraintsScope")
+@Composable
+fun LockedQuizzesItem() {
+    BoxWithConstraints(
+        modifier = Modifier
+            .aspectRatio(3.25f)
+            .clip(RoundedCornerShape(10.dp))
+            .background(LightMidGrey)
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(20.dp)
+                .align(Alignment.CenterStart)
+        ) {
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.round_lock_24),
+                    contentDescription = "Locked",
+                    tint = White,
+                    modifier = Modifier.size(35.dp)
+                )
+
+                Text(
+                    text = "Gesperrt",
+                    style = Typography.titleLarge,
+                    color = White
+                )
+
             }
         }
     }

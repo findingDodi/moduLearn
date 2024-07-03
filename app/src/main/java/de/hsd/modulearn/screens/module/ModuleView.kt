@@ -216,7 +216,7 @@ fun FinalQuizItem (
 /**
  * Composable-Funktion zur Darstellung einer gesperrten Moduloption innerhalb der Modulübersicht.
  *
- * Diese Funktion zeigt eine klickbare Karte für ein gesperrtes Modul.
+ * Diese Funktion zeigt eine nicht-klickbare Karte für ein gesperrtes Modul.
  */
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
