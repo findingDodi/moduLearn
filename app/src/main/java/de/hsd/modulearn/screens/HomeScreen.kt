@@ -11,14 +11,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -28,7 +33,9 @@ import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
+import de.hsd.modulearn.components.InfoBox
 import de.hsd.modulearn.data.Module
+import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.data.Routes.moduleview
 import de.hsd.modulearn.data.Routes.roadmapview
 import de.hsd.modulearn.theme.*
@@ -60,6 +67,8 @@ fun HomeScreen(navController: NavController) {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
+
+                InfoBox()
 
                 val modules = listOf(
                     Module(
@@ -94,10 +103,6 @@ fun ModuleItem (
     module: Module,
     navController:NavController
 ) {
-    //Für die Punkte: Kontext und MainActivity-Instanz abrufen
-    val context = LocalContext.current
-    val mainActivity = context as MainActivity
-
     BoxWithConstraints(
         modifier = Modifier
             .aspectRatio(2f)
