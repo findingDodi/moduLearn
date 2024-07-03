@@ -12,6 +12,7 @@ import androidx.compose.runtime.movableContentOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
@@ -35,7 +36,7 @@ fun QuizResultView(
     val passPercentage = 0.7
     val isPassed = correctAnswers >= (totalQuestions * passPercentage)
 
-    //Für die Punkte
+    // Für die Punkte
     val context = LocalContext.current
     val mainActivity = context as MainActivity
 
@@ -52,11 +53,11 @@ fun QuizResultView(
             contentAlignment = Alignment.Center
         ) {
             Column(
-                verticalArrangement = Arrangement.Center,
+                verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Quiz abgeschlossen!",
+                    text = "Quiz beendet!",
                     style = Typography.headlineSmall,
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
@@ -65,6 +66,12 @@ fun QuizResultView(
                     style = Typography.bodyLarge
                 )
                 if (isPassed) {
+
+                    Text(
+                        text = "Herzlichen Glückwunsch! Damit hast du die nächste Lektion freigeschaltet!",
+                        style = Typography.bodyLarge,
+                        textAlign = TextAlign.Center
+                    )
                     
                     Button(
                         colors = ButtonDefaults.buttonColors(
@@ -79,12 +86,17 @@ fun QuizResultView(
 
                         }
                     ) {
-                        Text(text = "Quiz geschaft")
+                        Text(text = "zur nächsten Lektion")
                     }
                         
-                    
 
                 } else {
+                    Text(
+                        text = "Leider hast du weniger als 70% der Fragen richtig beantwortet. Bitte versuche es erneut.",
+                        style = Typography.bodyLarge,
+                        textAlign = TextAlign.Center
+                    )
+
                     ButtonWithIcon(
                         iconId = R.drawable.round_arrow_forward_24,
                         backgroundcolor = PrimaryDarkLilac,
