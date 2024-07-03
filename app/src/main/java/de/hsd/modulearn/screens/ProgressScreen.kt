@@ -105,7 +105,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                                 .padding(8.dp)
                         )
                         Text(
-                            text = "\"${(progress) * 100}%\"",
+                            text = "${(progress * 100).toInt()}%",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
@@ -118,7 +118,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                             .padding(start = 16.dp)
                     ) {
                         Text(
-                            text = "Du hast dieses Modul zu \"${(progress) * 100}%\" abgeschlossen.",
+                            text = "Du hast dieses Modul zu ${(progress * 100).toInt()}% abgeschlossen.",
                             fontSize = 16.sp,
                             color = Color.Black,
                             modifier = Modifier.padding(top = 8.dp)
@@ -128,16 +128,19 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
 
                 // Anzeige der Streak-Informationen
                 Text(
-                    text = "Streak: $streak",
-                    fontSize = 16.sp,
+                    text = if (streak == 1) {
+                        "Du hast $streak Tag in Folge gelernt!"
+                    } else {
+                        "Du hast $streak Tage in Folge gelernt!"
+                    },
+                    style = Typography.headlineSmall,
                     color = Color.Black,
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp)
                 )
 
-                // Anzeige der Streak-Informationen
                 Text(
-                    text = "Streak: $moduleProgress",
-                    fontSize = 16.sp,
+                    text = "Meine Badges:",
+                    style = Typography.bodyLarge,
                     color = Color.Black,
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp)
                 )
