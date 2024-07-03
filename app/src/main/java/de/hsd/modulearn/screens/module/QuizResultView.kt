@@ -98,7 +98,8 @@ fun QuizResultView(
                             mainActivity.setProgress()
                             navController.navigate(Routes.moduleview)
 
-                        }
+                        },
+                        shape = RoundedCornerShape(10.dp)
                     ) {
                         Text(text = "zur nächsten Lektion")
                     }

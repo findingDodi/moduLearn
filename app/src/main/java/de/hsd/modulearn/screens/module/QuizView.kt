@@ -181,6 +181,7 @@ fun Oop1Quiz(
                                     }
                                 }
                             },
+                            shape = RoundedCornerShape(10.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = PrimaryDarkBlue,
                                 contentColor = White,
@@ -214,6 +215,7 @@ fun Oop1Quiz(
                                     }
                                 }
                             },
+                            shape = RoundedCornerShape(10.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = PrimaryDarkBlue,
                                 contentColor = White,

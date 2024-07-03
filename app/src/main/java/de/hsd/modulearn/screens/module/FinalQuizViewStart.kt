@@ -3,6 +3,7 @@ package de.hsd.modulearn.screens.module
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -101,6 +102,7 @@ fun FinalQuizViewStart(navController: NavController, showThirdBadge: Boolean, se
                                 }
                                 feedbackTextVisible = true
                             },
+                            shape = RoundedCornerShape(10.dp),
                             modifier = Modifier.align(Alignment.CenterHorizontally)
                         ) {
                             Text(text = "Antwort absenden")
@@ -124,6 +126,7 @@ fun FinalQuizViewStart(navController: NavController, showThirdBadge: Boolean, se
                                     currentQuestionIndex++
                                     answerText = ""
                                 },
+                                shape = RoundedCornerShape(10.dp),
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
                             ) {
                                 Text(text = "Nächste Frage")
@@ -138,6 +141,7 @@ fun FinalQuizViewStart(navController: NavController, showThirdBadge: Boolean, se
                                     setShowThirdBadge(true) // Aktualisieren von showThirdBadge
                                     navController.navigate(Routes.moduleview)
                                 },
+                                shape = RoundedCornerShape(10.dp),
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
                             ) {
                                 Text(text = "Zurück zur Übersicht")

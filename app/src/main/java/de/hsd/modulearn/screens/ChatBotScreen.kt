@@ -2,6 +2,7 @@ package de.hsd.modulearn.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -88,6 +89,7 @@ fun ChatBotView(navController: NavController) {
                             response = getChat(question) ?: "Keine Antwort erhalten"
                         }
                     },
+                    shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = PrimaryDarkBlue)
                 ) {
                     Text(text = "Frage senden")
