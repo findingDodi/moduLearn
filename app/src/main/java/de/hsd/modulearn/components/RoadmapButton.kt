@@ -34,7 +34,7 @@ fun RoadmapButton(
         modifier = modifier
             .size(60.dp)
             .clip(CircleShape)
-            .background(PrimaryMidLilac)
+            .background(PrimaryMidBlue)
             .clickable {
                 navController.navigate(destinationRoute)
             }

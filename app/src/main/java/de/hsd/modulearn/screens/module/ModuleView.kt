@@ -249,6 +249,7 @@ fun LockedItem() {
                     style = Typography.titleLarge,
                     color = White
                 )
+
             }
         }
     }

@@ -2,18 +2,22 @@ package de.hsd.modulearn.screens.module
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.ImageLoader
 import coil.decode.SvgDecoder
+import de.hsd.modulearn.MainActivity
 
 import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
@@ -42,6 +46,10 @@ fun RoadmapView(navController: NavController) {
             add(SvgDecoder.Factory())
         }
         .build()
+
+    val context = LocalContext.current
+    val mainActivity = context as MainActivity
+    val unlockedModules = mainActivity.getUnlockedModules()
 
     Scaffold(
 
@@ -105,20 +113,53 @@ fun RoadmapView(navController: NavController) {
 
                 Box(modifier = Modifier.fillMaxSize()) {
 
-                    lectureList.forEach { lecture ->
+                    lectureList.forEachIndexed { index, lecture ->
+                        val position = positions[lecture.id] ?: return@forEachIndexed
 
-                        val position = positions[lecture.id] ?: return@forEach
-
-                        RoadmapButton(
-                            text = lecture.id.toString(),
-                            destinationRoute = Routes.lectureview + "/" + lecture.id + "/" + lecture.title,
-                            navController = navController,
-                            modifier = Modifier
-                                .absoluteOffset(x = position.first, y = position.second)
-                        )
+                        if (index + 1 <= unlockedModules) {
+                            RoadmapButton(
+                                text = lecture.id.toString(),
+                                destinationRoute = Routes.lectureview + "/" + lecture.id + "/" + lecture.title,
+                                navController = navController,
+                                modifier = Modifier
+                                    .absoluteOffset(x = position.first, y = position.second)
+                            )
+                        } else {
+                            LockedRoadmapButton(
+                                modifier = Modifier
+                                    .absoluteOffset(x = position.first, y = position.second)
+                            )
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+/**
+ * Eine Composable Funktion, die einen gesperrten kreisförmigen Button erstellt.
+ *
+ * Dieser Button zeigt ein Schloss-Symbol an, um anzuzeigen, dass der Inhalt gesperrt ist.
+ *
+ * @param modifier Optionaler [Modifier], um das Erscheinungsbild und Verhalten des Buttons anzupassen.
+ */
+@Composable
+fun LockedRoadmapButton(
+    modifier: Modifier = Modifier
+) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .size(60.dp)
+            .clip(CircleShape)
+            .background(DarkMidGrey)
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.round_lock_24),
+            contentDescription = "Locked",
+            tint = White,
+            modifier = Modifier.size(24.dp)
+        )
     }
 }

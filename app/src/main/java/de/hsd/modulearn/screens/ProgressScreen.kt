@@ -78,7 +78,6 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                     style = Typography.headlineMedium,
                 )
 
-
                 // Box im selben Stil wie Module in der HomeScreen
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
