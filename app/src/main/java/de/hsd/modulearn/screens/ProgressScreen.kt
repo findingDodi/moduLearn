@@ -52,7 +52,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
 
     val streak = getStreak(sharedPreferences)
 
-    val badgeImage1 = if (points >= 100) R.drawable.punkte_finished_badge_foreground else R.drawable.locked_badge_foreground
+    val badgeImage1 = if (points >= 100) R.drawable.points_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage2 = if (streak >= 7) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage3 = if (showThirdBadge) R.drawable.module_finished_foreground else R.drawable.locked_badge_foreground
 
