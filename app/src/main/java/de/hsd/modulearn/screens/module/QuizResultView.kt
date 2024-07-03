@@ -90,7 +90,7 @@ fun QuizResultView(
                             contentColor = White,
                         ),
                         onClick = {
-                            mainActivity.setPoints(mainActivity.getPoints() + 100)
+                            mainActivity.setPoints(mainActivity.getPoints() + 500)
 
                             mainActivity.markQuizAsCompleted(id)
                             mainActivity.unlockNextModuleIfEligible(id)
