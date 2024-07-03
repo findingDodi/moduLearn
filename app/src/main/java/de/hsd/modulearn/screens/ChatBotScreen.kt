@@ -1,6 +1,11 @@
 package de.hsd.modulearn.screens
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -22,12 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.logic.getChat
-import de.hsd.modulearn.theme.Black
-import de.hsd.modulearn.theme.LightGrey
-import de.hsd.modulearn.theme.PrimaryDarkBlue
-import de.hsd.modulearn.theme.PrimaryLightBlue
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 import kotlinx.coroutines.launch
 
 /**

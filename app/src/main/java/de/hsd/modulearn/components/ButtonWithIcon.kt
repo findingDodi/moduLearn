@@ -19,10 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import de.hsd.modulearn.R
-import de.hsd.modulearn.theme.PrimaryDarkBlue
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 
 /**
  * Eine Composable Funktion, die einen Button mit einem Icon und Text erstellt.

@@ -2,7 +2,6 @@ package de.hsd.modulearn.utils
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.module.Chapter
 import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture

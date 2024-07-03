@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes.chatbotview
 import de.hsd.modulearn.data.Routes.homescreen
 import de.hsd.modulearn.data.Routes.moduleview

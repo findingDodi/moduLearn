@@ -2,7 +2,6 @@ package de.hsd.modulearn.screens.module
 
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,18 +34,9 @@ import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
-import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes
-import de.hsd.modulearn.data.module.FinalQuiz
 import de.hsd.modulearn.data.module.Lecture
-import de.hsd.modulearn.data.module.Quiz
-import de.hsd.modulearn.theme.Black
-import de.hsd.modulearn.theme.LightMidGrey
-import de.hsd.modulearn.theme.PrimaryDarkLilac
-import de.hsd.modulearn.theme.PrimaryMidBlue
-import de.hsd.modulearn.theme.PrimaryMidLilac
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 
 /**

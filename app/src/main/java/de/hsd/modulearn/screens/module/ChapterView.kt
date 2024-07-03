@@ -16,8 +16,7 @@ import androidx.navigation.NavController
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 
 /**
  * Composable Funktion, die die Ansicht für ein Kapitel innerhalb einer Lektion darstellt.

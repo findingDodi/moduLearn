@@ -16,12 +16,7 @@ import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes
 import de.hsd.modulearn.logic.getKiEvaluation
-import de.hsd.modulearn.theme.Black
-import de.hsd.modulearn.theme.LightGrey
-import de.hsd.modulearn.theme.PrimaryDarkBlue
-import de.hsd.modulearn.theme.PrimaryLightBlue
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
+import de.hsd.modulearn.theme.*
 import de.hsd.modulearn.utils.AssetLoader
 import kotlinx.coroutines.launch
 /**

@@ -21,7 +21,10 @@ import androidx.compose.ui.unit.dp
 import de.hsd.modulearn.R
 import de.hsd.modulearn.theme.*
 
-
+/**
+ * Eine Composable Funktion, die eine simple Infobox zur Verfügung stellt.
+ * Diese kann in allen Screens problemlos eingebunden werden.
+ */
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun InfoBox() {

@@ -7,16 +7,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -33,11 +29,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import de.hsd.modulearn.MainActivity
 import de.hsd.modulearn.R
-import de.hsd.modulearn.components.*
+import de.hsd.modulearn.components.ButtonChatBot
+import de.hsd.modulearn.components.Footer
+import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.data.Routes.quizview
 import de.hsd.modulearn.data.module.Lecture
-import de.hsd.modulearn.screens.module.LectureItem
-import de.hsd.modulearn.theme.*
+import de.hsd.modulearn.theme.LightMidGrey
+import de.hsd.modulearn.theme.PrimaryDarkLilac
+import de.hsd.modulearn.theme.Typography
+import de.hsd.modulearn.theme.White
 import de.hsd.modulearn.utils.AssetLoader
 
 /**

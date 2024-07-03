@@ -24,11 +24,7 @@ import de.hsd.modulearn.R
 import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
-import de.hsd.modulearn.theme.PrimaryDarkBlue
-import de.hsd.modulearn.theme.PrimaryMidBlue
-import de.hsd.modulearn.theme.Typography
-import de.hsd.modulearn.theme.White
-import io.ktor.client.plugins.BodyProgress
+import de.hsd.modulearn.theme.*
 
 /**
  * Bildschirm zur Anzeige des Fortschritts und der erreichten Erfolge.
@@ -53,7 +49,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
     val streak = getStreak(sharedPreferences)
 
     val badgeImage1 = if (points >= 1000) R.drawable.points_badge_foreground else R.drawable.locked_badge_foreground
-    val badgeImage2 = if (streak >= 1) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
+    val badgeImage2 = if (streak >= 7) R.drawable.streak_badge_foreground else R.drawable.locked_badge_foreground
     val badgeImage3 = if (showThirdBadge) R.drawable.module_finished_foreground else R.drawable.locked_badge_foreground
 
 

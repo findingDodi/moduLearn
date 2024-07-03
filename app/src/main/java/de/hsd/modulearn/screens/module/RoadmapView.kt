@@ -20,7 +20,6 @@ import coil.decode.SvgDecoder
 import de.hsd.modulearn.MainActivity
 
 import de.hsd.modulearn.R
-import de.hsd.modulearn.components.ButtonChatBot
 import de.hsd.modulearn.components.ButtonWithIcon
 import de.hsd.modulearn.components.Footer
 import de.hsd.modulearn.components.Header
