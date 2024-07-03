@@ -36,6 +36,7 @@ import de.hsd.modulearn.components.Header
 import de.hsd.modulearn.components.InfoBox
 import de.hsd.modulearn.data.Module
 import de.hsd.modulearn.data.Routes
+import de.hsd.modulearn.data.Routes.homescreen
 import de.hsd.modulearn.data.Routes.moduleview
 import de.hsd.modulearn.data.Routes.roadmapview
 import de.hsd.modulearn.theme.*
@@ -73,11 +74,13 @@ fun HomeScreen(navController: NavController) {
                 val modules = listOf(
                     Module(
                         title = "OOP1",
-                        image = R.drawable.oop
+                        image = R.drawable.oop,
+                        view = roadmapview
                     ),
                     Module(
                         title = "MCI",
-                        image = R.drawable.mci
+                        image = R.drawable.mci,
+                        view = homescreen
                     ),
                 )
 
@@ -114,7 +117,7 @@ fun ModuleItem (
                 .fillMaxSize()
                 .padding(20.dp)
                 .clickable {
-                    navController.navigate(roadmapview)
+                    navController.navigate(module.view)
                 }
         ) {
             Row {
