@@ -34,6 +34,9 @@ import io.ktor.client.plugins.BodyProgress
 fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Boolean, moduleProgress: Int) {
     val context = LocalContext.current
 
+    // Fortschrittskreis und Prozentanzeige
+    val progress = moduleProgress / 100f // assuming max points is 100
+
     val sharedPreferences = context.getSharedPreferences("de.hsd.modulearn.PREFERENCES", Context.MODE_PRIVATE)
 
     val streak = getStreak(sharedPreferences)
@@ -60,9 +63,10 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                 verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
                 Text(
-                    text = "Mein Fortschritt",
+                    text = "Mein Fortschritt:",
                     style = Typography.headlineMedium,
                 )
+
 
                 // Box im selben Stil wie Module in der HomeScreen
                 Row(
@@ -73,8 +77,7 @@ fun ProgressScreen(navController: NavController, points: Int, showThirdBadge: Bo
                         .background(PrimaryMidBlue) // Verwenden der gleichen Farbe wie im OOP1 Modul
                         .padding(15.dp)
                 ) {
-                    // Fortschrittskreis und Prozentanzeige
-                    val progress = moduleProgress / 100f // assuming max points is 100
+
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier

@@ -203,7 +203,7 @@ class MainActivity : ComponentActivity() {
     }
 
     fun getProgress(): Int {
-        return sharedPreferences.getInt("progress", 10)
+        return sharedPreferences.getInt("progress", 0)
     }
 
     //wird aufgerufen, um die Änderung zu speichern.
