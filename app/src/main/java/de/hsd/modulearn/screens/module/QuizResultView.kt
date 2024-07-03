@@ -91,9 +91,12 @@ fun QuizResultView(
                         ),
                         onClick = {
                             mainActivity.setPoints(mainActivity.getPoints() + 100)
-                            navController.navigate(Routes.moduleview)
+
+                            mainActivity.markQuizAsCompleted(id)
+                            mainActivity.unlockNextModuleIfEligible(id)
+
                             mainActivity.setProgress()
-                            mainActivity.setunlockNextModule()
+                            navController.navigate(Routes.moduleview)
 
                         }
                     ) {

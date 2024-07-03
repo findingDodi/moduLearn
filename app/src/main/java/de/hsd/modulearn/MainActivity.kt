@@ -239,16 +239,47 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
-     * Methode zum Freischalten des nächsten Moduls und Speichern der Änderung in den SharedPreferences.
+     * Markiert ein Quiz als abgeschlossen.
+     *
+     * Diese Methode speichert den Status eines abgeschlossenen Quizzes in den SharedPreferences.
+     *
+     * @param quizId Die ID des abzuschließenden Quizzes.
      */
-    fun setunlockNextModule() {
-        val currentUnlocked = getUnlockedModules()
+    fun markQuizAsCompleted(quizId: Int) {
         with(sharedPreferences.edit()) {
-            putInt("unlocked_modules", currentUnlocked + 1)
+            putBoolean("quiz_completed_$quizId", true)
             apply()
         }
     }
 
+    /**
+     * Überprüft, ob ein Quiz abgeschlossen wurde.
+     *
+     * Diese Methode überprüft den Status eines Quizzes in den SharedPreferences und gibt zurück, ob das Quiz abgeschlossen wurde.
+     *
+     * @param quizId Die ID des zu überprüfenden Quizzes.
+     * @return true, wenn das Quiz abgeschlossen wurde, false sonst.
+     */
+    fun isQuizCompleted(quizId: Int): Boolean {
+        return sharedPreferences.getBoolean("quiz_completed_$quizId", false)
+    }
+
+    /**
+     * Schaltet das nächste Modul frei, wenn das aktuelle Quiz abgeschlossen wurde.
+     *
+     * Diese Methode überprüft, ob das aktuelle Quiz abgeschlossen wurde und schaltet das nächste Modul frei, indem es den Fortschritt in den SharedPreferences speichert.
+     *
+     * @param quizId Die ID des aktuell abgeschlossenen Quizzes.
+     */
+    fun unlockNextModuleIfEligible(quizId: Int) {
+        val nextModuleId = quizId + 1
+        if (isQuizCompleted(quizId)) {
+            with(sharedPreferences.edit()) {
+                putInt("unlocked_modules", nextModuleId)
+                apply()
+            }
+        }
+    }
     /**
      * Methode zum Abrufen des aktuellen Modulfortschritts aus den SharedPreferences.
      *
