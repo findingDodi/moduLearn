@@ -16,7 +16,8 @@ import com.aallam.openai.client.OpenAI
 suspend fun getKiEvaluation(answer: String): String? {
     try {
         // Initialisierung des OpenAI Clients mit dem API-Schlüssel
-        val apiKey = "sk-proj-QDQJklP5sWreTQl3PcqQT3BlbkFJmLw3YI9axNGbeXI0SzPd"
+        // hier API-Key einfügen
+        val apiKey = ""
         val openAI = OpenAI(apiKey)
 
         // Erstellen der Chat-Vervollständigungsanfrage
@@ -26,7 +27,7 @@ suspend fun getKiEvaluation(answer: String): String? {
                 ChatMessage(
                     role = ChatRole.System,
                     // Kontext, der der KI übergeben wird
-                    content = "Du bist ein Professor, der die Antworten von Studenten in einer " +
+                    content = "Du bist ein Professor, der die Antworten von Studierenden in einer " +
                             "Abschlussprüfung für das Modul Objektorientiere Programmierung bewertet. " +
                             "Du gibst ihnen hilfreiches Feedback auf ihre Antworten."
                 ),
